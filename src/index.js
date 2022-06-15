@@ -10,6 +10,7 @@ import App from "./App";
 import LandingPage from "./pages/LandingPage";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Preview from "./pages/Preview";
 
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
@@ -25,6 +26,7 @@ root.render(
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/home" element={<LandingPage />} />
+        <Route path="/preview" element={<Preview />} />
       </Routes>
     </BrowserRouter>
   </Provider>
