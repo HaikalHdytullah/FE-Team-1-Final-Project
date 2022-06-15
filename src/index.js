@@ -7,6 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 
 import App from "./App";
+import Register from "./pages/Register";
 
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
@@ -19,6 +20,7 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </BrowserRouter>
   </Provider>
