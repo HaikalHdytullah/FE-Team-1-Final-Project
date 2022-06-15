@@ -9,6 +9,7 @@ import "./index.css";
 import App from "./App";
 import LandingPage from "./pages/LandingPage";
 import Register from "./pages/Register";
+import Preview from "./pages/Preview";
 
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
@@ -23,6 +24,7 @@ root.render(
         <Route path="/" element={<App />} />
         <Route path="/register" element={<Register />} />
         <Route path="/home" element={<LandingPage />} />
+        <Route path="/preview" element={<Preview />} />
       </Routes>
     </BrowserRouter>
   </Provider>
