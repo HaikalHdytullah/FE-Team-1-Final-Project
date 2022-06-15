@@ -1,4 +1,4 @@
-# Challange Chapter 7 - Tim 1
+# Final Project - Tim 1
 
 1. Amelia Putri
 2. Fajar Satrio Utomo
