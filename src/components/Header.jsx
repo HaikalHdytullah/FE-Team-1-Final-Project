@@ -13,7 +13,7 @@ function Header() {
   return (
     <>
       <Navbar bg="light" expand="lg">
-        <Container fluid>
+        <Container>
           <Navbar.Brand className="mt-1">
             <img src="../../logo.png" alt="logo" />
           </Navbar.Brand>
