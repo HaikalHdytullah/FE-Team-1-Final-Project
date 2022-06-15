@@ -8,11 +8,12 @@ import "./index.css";
 
 import App from "./App";
 import LandingPage from "./pages/LandingPage";
+import Login from "./pages/Login";
 import Register from "./pages/Register";
 
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
-import { GoogleOAuthProvider } from "@react-oauth/google";
+// import { GoogleOAuthProvider } from "@react-oauth/google";
 import store from "./redux/store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -21,6 +22,7 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/home" element={<LandingPage />} />
       </Routes>
