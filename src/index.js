@@ -7,6 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 
 import App from "./App";
+import LandingPage from "./pages/LandingPage";
 import Register from "./pages/Register";
 
 import reportWebVitals from "./reportWebVitals";
@@ -21,6 +22,7 @@ root.render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/home" element={<LandingPage />} />
       </Routes>
     </BrowserRouter>
   </Provider>
