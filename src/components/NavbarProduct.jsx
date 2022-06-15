@@ -1,4 +1,4 @@
-import { Navbar, Container, Form, Offcanvas, Nav, Button } from "react-bootstrap";
+import { Navbar, Container, Form, Offcanvas, Nav,} from "react-bootstrap";
 import "../css/Preview.css";
 
 import Logo from "../img/logo-image.png";

@@ -1,4 +1,4 @@
-import { Carousel, Row, Col, Container, Form, Button } from "react-bootstrap";
+import { Carousel, Row, Col, Container, Button } from "react-bootstrap";
 import "../css/Preview.css";
 
 import Jam from "../img/jam-image.png";
