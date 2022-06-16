@@ -99,7 +99,7 @@ function RightRegister() {
           <Form.Text className="margin-component">
             <center>
               Sudah punya akun?
-              <a href="#"> Masuk disini</a>
+              <a href="/login"> Masuk disini</a>
             </center>
           </Form.Text>
         </Form>

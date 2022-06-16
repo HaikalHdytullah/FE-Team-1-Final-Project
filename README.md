@@ -5,3 +5,4 @@
 3. Haikal Hidayatullah
 4. Hayisra
 5. Naufal Rizqullah Mubarak
+6. Josie G.F Purba
