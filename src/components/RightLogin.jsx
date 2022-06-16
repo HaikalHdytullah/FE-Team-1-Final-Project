@@ -32,7 +32,7 @@ function RightLogin() {
           <Form.Text className="margin-component">
             <center>
               Belum punya akun?
-              <a href="#"> Daftar disini</a>
+              <a href="/register"> Daftar disini</a>
             </center>
           </Form.Text>
         </Form>
