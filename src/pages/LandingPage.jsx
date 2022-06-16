@@ -9,8 +9,6 @@ const Home = () => {
       <Diskon />
       <Kartu />
       <Kartu />
-      <Kartu />
-      <Kartu />
     </>
   );
 };

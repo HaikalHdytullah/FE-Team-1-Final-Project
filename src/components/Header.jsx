@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Button } from "react-bootstrap";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -191,7 +192,7 @@ export default function Navbar() {
           </Search>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            <IconButton
+            {/* <IconButton
               size="large"
               aria-label="show 4 new mails"
               color="inherit"
@@ -231,7 +232,10 @@ export default function Navbar() {
               color="inherit"
             >
               <MoreIcon />
-            </IconButton>
+            </IconButton> */}
+            <Button className="fw-bold text-white" id="btn-login" href="/login">
+              Masuk
+            </Button>
           </Box>
         </Toolbar>
       </AppBar>
