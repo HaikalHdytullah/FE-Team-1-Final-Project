@@ -1,26 +1,141 @@
+import {
+  Card,
+  CardActionArea,
+  CardContent,
+  CardMedia,
+  Grid,
+  Typography,
+} from "@mui/material";
 import React from "react";
-import { Col, Card, Container } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
 
-function Kartu() {
+const Kartu = () => {
   return (
-    <Container>
-      <Col className="col-2 m-2 mx-2">
-        <Card className="mt-5" style={{ width: "20rem" }}>
-          <Card.Img
-            src="https://picsum.photos/id/133/640/480"
-            className="card-img-top-img-fluid"
-            style={{ height: "250px", objectFit: "cover" }}
-          />
-          <Card.Body style={{ fontSize: "14px" }}>
-            <Card.Title className="fw-bold mt-4">Mobil</Card.Title>
-            <Card.Text className="mt-2">Kendaraan</Card.Text>
-            <Card.Text className="fw-bold mt-3">Rp.2.000.000</Card.Text>
-          </Card.Body>
-        </Card>
-      </Col>
-    </Container>
+    <>
+      <Grid
+        container
+        rowSpacing={3}
+        columnSpacing={{ xs: 3, sm: 3, md: 3 }}
+        mt={3}
+        justifyContent={"center"}
+      >
+        <Grid item xs={6} sm={6} md={4} xl={2}>
+          <Card sx={{ maxWidth: 345 }}>
+            <CardActionArea>
+              <CardMedia
+                component="img"
+                height="140"
+                image="../../jam-image.png"
+                alt="green iguana"
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h6" component="div">
+                  Jam Tangan
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Aksesoris
+                </Typography>
+                <Typography gutterBottom variant="h6" component="div">
+                  Rp.10.000,00
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+          </Card>
+        </Grid>
+        <Grid item xs={6} sm={6} md={4} xl={2}>
+          <Card sx={{ maxWidth: 345 }}>
+            <CardActionArea>
+              <CardMedia
+                component="img"
+                height="140"
+                image="../../jam-image.png"
+                alt="green iguana"
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h6" component="div">
+                  Jam Tangan
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Aksesoris
+                </Typography>
+                <Typography gutterBottom variant="h6" component="div">
+                  Rp.10.000,00
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+          </Card>
+        </Grid>
+        <Grid item xs={6} sm={6} md={4} xl={2}>
+          <Card sx={{ maxWidth: 345 }}>
+            <CardActionArea>
+              <CardMedia
+                component="img"
+                height="140"
+                image="../../jam-image.png"
+                alt="green iguana"
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h6" component="div">
+                  Jam Tangan
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Aksesoris
+                </Typography>
+                <Typography gutterBottom variant="h6" component="div">
+                  Rp.10.000,00
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+          </Card>
+        </Grid>
+        <Grid item xs={6} sm={6} md={4} xl={2}>
+          <Card sx={{ maxWidth: 345 }}>
+            <CardActionArea>
+              <CardMedia
+                component="img"
+                height="140"
+                image="../../jam-image.png"
+                alt="green iguana"
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h6" component="div">
+                  Jam Tangan
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Aksesoris
+                </Typography>
+                <Typography gutterBottom variant="h6" component="div">
+                  Rp.10.000,00
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+          </Card>
+        </Grid>
+        <Grid item xs={6} sm={6} md={4} xl={2}>
+          <Card sx={{ maxWidth: 345 }}>
+            <CardActionArea>
+              <CardMedia
+                component="img"
+                height="140"
+                image="../../jam-image.png"
+                alt="green iguana"
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h6" component="div">
+                  Jam Tangan
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Aksesoris
+                </Typography>
+                <Typography gutterBottom variant="h6" component="div">
+                  Rp.10.000,00
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+          </Card>
+        </Grid>
+      </Grid>
+    </>
   );
-}
+};
 
 export default Kartu;
