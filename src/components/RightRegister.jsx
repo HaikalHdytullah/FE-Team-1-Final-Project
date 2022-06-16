@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "../css/Register.css";
 import { Container, Form, Button } from "react-bootstrap";
 import Swal from "sweetalert2";
@@ -99,7 +99,7 @@ function RightRegister() {
           <Form.Text className="margin-component">
             <center>
               Sudah punya akun?
-              <a href="/login"> Masuk disini</a>
+              <Link to="/login"> Masuk disini</Link>
             </center>
           </Form.Text>
         </Form>

@@ -1,6 +1,7 @@
 import React from "react";
 import "../css/Register.css";
 import { Container, Form, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 function RightLogin() {
   return (
@@ -32,7 +33,7 @@ function RightLogin() {
           <Form.Text className="margin-component">
             <center>
               Belum punya akun?
-              <a href="/register"> Daftar disini</a>
+              <Link to="/register"> Daftar disini</Link>
             </center>
           </Form.Text>
         </Form>
