@@ -9,10 +9,10 @@ const Register = () => {
   return (
     <>
       <Row>
-        <Col>
+        <Col md={6} sm={12} lg={6}>
           <LeftRegister />
         </Col>
-        <Col>
+        <Col md={6} sm={12} lg={6}>
           <RightRegister />
         </Col>
       </Row>

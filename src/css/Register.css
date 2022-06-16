@@ -46,6 +46,19 @@
   z-index: 2;
 }
 
+@media screen and (max-width: 768px) {
+  .text {
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .text {
+    text-align: center;
+    margin-left: 160px;
+  }
+}
+
 /* Right component */
 
 h3 {
