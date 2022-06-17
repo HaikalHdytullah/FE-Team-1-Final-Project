@@ -54,25 +54,22 @@ const PreviewProduct = () => {
                             </Carousel>
                             </Row>
                             <Row className="mt-4 mx-1 shadow-sm mb-4" style={{borderRadius: "20px"}}>
-                                <p className="fw-bold text-family pt-3 ps-3">Deskripsi</p>
-                                <p className="text-color ps-3 lh-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                <p className="text-color ps-3 lh-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                <p className="fw-bold text-family pt-3 ps-3 pb-3">Deskripsi</p>
+                                <p className="text-color ps-3 pb-3 lh-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                <p className="text-color ps-3 pb-4 lh-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                             </Row>
                         </Col>
                         <Col sm={4}>
                             <Row className="shadow-sm" style={{borderRadius: "20px"}}>
                                 <p className="fw-bold text-family pt-3 ps-4 fs-4">Jam Tangan Casio</p>
-                                <p className="text-color ps-4">Aksesoris</p>
-                                <p className="fw-bold text-family ps-4">Rp 250.000</p>
+                                <p className="text-color ps-4 pt-1">Aksesoris</p>
+                                <p className="fw-bold text-family pt-3 ps-4">Rp 250.000</p>
                                 <div className="d-grid gap-3 mt-4">
                                     <Button className="button-add fw-semibold text-white" style={{backgroundColor: "#7126B5"}}>
                                         Terbitkan
                                     </Button>
-                                    <Button className="button-edit fw-semibold text-black" style={{backgroundColor: "white"}}>
+                                    <Button className="button-edit fw-semibold text-black mb-4" style={{backgroundColor: "white"}}>
                                         Edit
-                                    </Button>
-                                    <Button className="button-delete fw-semibold text-black mb-4" style={{backgroundColor: "white"}}>
-                                        Delete
                                     </Button>
                                 </div>
                             </Row>
@@ -82,9 +79,9 @@ const PreviewProduct = () => {
                                             <img className="foto" src={Foto}alt="Foto Profile"/>
                                         </div>
                                     </Col>
-                                    <Col lg={9} sm={9}>
-                                        <p className="fw-bold text-family ps-2 fs-6">Nama Penjual</p>
-                                        <p className="text-color ps-2 fs-6" style={{marginTop:"-5px"}}>Kota</p>
+                                    <Col lg={9} sm={10}>
+                                        <p className="fw-bold text-family ps-3 fs-6">Nama Penjual</p>
+                                        <p className="text-color pt-2 ps-3 fs-6 pb-2" style={{marginTop:"-5px"}}>Kota</p>
                                     </Col>
                             </Row>
                         </Col>
@@ -92,9 +89,9 @@ const PreviewProduct = () => {
                 </Col>
             </Row>
         </Container>
-        
+
         </>
     );
 }
 
-export default PreviewProduct;
+export default PreviewProduct; 
