@@ -11,6 +11,7 @@ import LandingPage from "./pages/LandingPage";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Preview from "./pages/Preview";
+import InfoProduct from "./pages/InfoProduct";
 
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
@@ -27,6 +28,7 @@ root.render(
         <Route path="/register" element={<Register />} />
         <Route path="/" element={<LandingPage />} />
         <Route path="/preview" element={<Preview />} />
+        <Route path="/infoproduct" element={<InfoProduct />} />
       </Routes>
     </BrowserRouter>
   </Provider>
