@@ -20,7 +20,7 @@ const Kartu = () => {
       >
         <Grid item xs={6} sm={6} md={4} xl={2}>
           <Card sx={{ maxWidth: 345 }}>
-            <CardActionArea>
+            <CardActionArea href="/preview">
               <CardMedia
                 component="img"
                 height="140"
@@ -43,7 +43,7 @@ const Kartu = () => {
         </Grid>
         <Grid item xs={6} sm={6} md={4} xl={2}>
           <Card sx={{ maxWidth: 345 }}>
-            <CardActionArea>
+            <CardActionArea href="/preview">
               <CardMedia
                 component="img"
                 height="140"
@@ -66,7 +66,7 @@ const Kartu = () => {
         </Grid>
         <Grid item xs={6} sm={6} md={4} xl={2}>
           <Card sx={{ maxWidth: 345 }}>
-            <CardActionArea>
+            <CardActionArea href="/preview">
               <CardMedia
                 component="img"
                 height="140"
@@ -89,7 +89,7 @@ const Kartu = () => {
         </Grid>
         <Grid item xs={6} sm={6} md={4} xl={2}>
           <Card sx={{ maxWidth: 345 }}>
-            <CardActionArea>
+            <CardActionArea href="/preview">
               <CardMedia
                 component="img"
                 height="140"
@@ -112,7 +112,7 @@ const Kartu = () => {
         </Grid>
         <Grid item xs={6} sm={6} md={4} xl={2}>
           <Card sx={{ maxWidth: 345 }}>
-            <CardActionArea>
+            <CardActionArea href="/preview">
               <CardMedia
                 component="img"
                 height="140"
