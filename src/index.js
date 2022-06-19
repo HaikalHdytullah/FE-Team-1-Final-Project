@@ -12,6 +12,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Preview from "./pages/Preview";
 import InfoProduct from "./pages/InfoProduct";
+import EditProfile from "./pages/EditProfile"
 
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
@@ -29,6 +30,8 @@ root.render(
         <Route path="/" element={<LandingPage />} />
         <Route path="/preview" element={<Preview />} />
         <Route path="/infoproduct" element={<InfoProduct />} />
+        <Route path="/profile" element={<EditProfile />} />
+
       </Routes>
     </BrowserRouter>
   </Provider>
