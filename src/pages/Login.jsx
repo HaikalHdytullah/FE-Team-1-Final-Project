@@ -8,11 +8,11 @@ import "../css/Login.css";
 const Login = () => {
   return (
     <>
-      <Row>
-        <Col>
+      <Row className="regis-container">
+        <Col className="background-cover">
           <LeftLogin />
         </Col>
-        <Col>
+        <Col className="register-form">
           <RightLogin />
         </Col>
       </Row>

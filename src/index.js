@@ -12,15 +12,14 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Preview from "./pages/Preview";
 import InfoProduct from "./pages/InfoProduct";
-import EditProfile from "./pages/EditProfile"
+import EditProfile from "./pages/EditProfile";
 import NotFound from "./components/404";
 import ProfileHeader from "./components/ProfileHeader";
 import ProfileForm from "./components/ProfileForm";
 
-
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
-// import { GoogleOAuthProvider } from "@react-oauth/google";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 import store from "./redux/store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -29,15 +28,20 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/." element={<App />} />
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/login"
+          element={
+            <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_ID}>
+              <Login />
+            </GoogleOAuthProvider>
+          }
+        />
         <Route path="/register" element={<Register />} />
         <Route path="/" element={<LandingPage />} />
         <Route path="/preview" element={<Preview />} />
         <Route path="/infoproduct" element={<InfoProduct />} />
         <Route path="/profile" element={<EditProfile />} />
         <Route path="*" element={<NotFound />} />
-        
-
       </Routes>
     </BrowserRouter>
   </Provider>

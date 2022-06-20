@@ -8,11 +8,11 @@ import "../css/Register.css";
 const Register = () => {
   return (
     <>
-      <Row>
-        <Col md={6} sm={12} lg={6}>
+      <Row className="regis-container">
+        <Col className="background-cover">
           <LeftRegister />
         </Col>
-        <Col md={6} sm={12} lg={6}>
+        <Col className="register-form">
           <RightRegister />
         </Col>
       </Row>
