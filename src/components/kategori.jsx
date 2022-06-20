@@ -1,23 +1,60 @@
 import * as React from "react";
-import { Container } from "react-bootstrap";
-import { Typography } from "@mui/material";
 import Stack from "@mui/material/Stack";
+import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import "../css/kartu.css";
+import SearchIcon from "@mui/icons-material/Search";
+import { Container, Typography, Grid } from "@mui/material";
 
 function Kategori() {
   return (
-    <Container>
-      <Typography gutterBottom variant="h6" component="div">
+    <Container fixed>
+      <Typography variant="h6" sx={{ marginTop: 5 }}>
         Telusuri Kategori
       </Typography>
-      <Stack spacing={2} direction="row">
-        <Button variant="text">Electronic</Button>
-        <Button variant="contained">Fashion</Button>
-        <Button variant="text">Productivity</Button>
-        <Button variant="text">Sport</Button>
-        <Button variant="text">Home</Button>
-      </Stack>
+      <Box sx={{ mx: "auto", marginTop: 1 }}>
+        <Stack spacing={4} direction="row">
+          <Button
+            variant="contained"
+            sx={{ borderRadius: "10px" }}
+            startIcon={<SearchIcon />}
+            color="secondary"
+          >
+            All
+          </Button>
+          <Button
+            variant="outlined"
+            sx={{ borderRadius: "10px" }}
+            startIcon={<SearchIcon />}
+            color="secondary"
+          >
+            Fashion
+          </Button>
+          <Button
+            variant="outlined"
+            sx={{ borderRadius: "10px" }}
+            startIcon={<SearchIcon />}
+            color="secondary"
+          >
+            Productivity
+          </Button>
+          <Button
+            variant="outlined"
+            sx={{ borderRadius: "10px" }}
+            startIcon={<SearchIcon />}
+            color="secondary"
+          >
+            Electronic
+          </Button>
+          <Button
+            variant="outlined"
+            sx={{ borderRadius: "10px" }}
+            startIcon={<SearchIcon />}
+            color="secondary"
+          >
+            Transportation
+          </Button>
+        </Stack>
+      </Box>
     </Container>
   );
 }
