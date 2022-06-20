@@ -1,13 +1,60 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import "../css/Register.css";
 import { Container, Form, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { login } from "../redux/actions/authActions";
+
+import Swal from "sweetalert2";
 
 function RightLogin() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { error } = useSelector((state) => state.auth);
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    if (error) {
+      Swal.fire({
+        title: "Warning!!",
+        text: error,
+        icon: "warning",
+        confirmButtonText: "Ok",
+      });
+    }
+  }, [error]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (email === "") {
+      Swal.fire({
+        title: "Warning!!",
+        text: "Email harus diisi",
+        icon: "warning",
+        confirmButtonText: "Ok",
+      });
+      return;
+    }
+    if (password === "") {
+      Swal.fire({
+        title: "Warning!!",
+        text: "Password harus diisi",
+        icon: "warning",
+        confirmButtonText: "Ok",
+      });
+      return;
+    }
+    if (email !== "" && password !== "") {
+      dispatch(login({ email, password }));
+    }
+  };
+
   return (
     <>
       <Container className="form-container">
-        <Form className="form">
+        <Form className="form" onSubmit={handleSubmit}>
           <h3>Masuk</h3>
           <Form.Group controlId="formBasicEmail" className="margin-component">
             <Form.Label className="label">Email</Form.Label>
@@ -15,6 +62,8 @@ function RightLogin() {
               type="text"
               className="form-border"
               placeholder="Contoh: johndee@gmail.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </Form.Group>
           <Form.Group controlId="password" className="margin-component">
@@ -23,10 +72,12 @@ function RightLogin() {
               type="password"
               className="form-border"
               placeholder="Masukkan password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </Form.Group>
           <div className="margin-component">
-            <Button type="submit" className="w-100 mt-2 mb-3 color form-border">
+            <Button type="submit" className="w-100 color form-border mt-2 mb-3">
               Masuk
             </Button>
           </div>

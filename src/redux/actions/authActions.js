@@ -1,4 +1,4 @@
-import { AUTH_ERROR, REGISTER } from "./types";
+import { AUTH_ERROR, REGISTER, LOGIN, LOGOUT } from "./types";
 import Swal from "sweetalert2";
 
 const authError = (error) => async (dispatch) => {
@@ -13,6 +13,62 @@ const authError = (error) => async (dispatch) => {
       payload: null,
     });
   }, 5000);
+};
+
+export const login = (data) => async (dispatch) => {
+  try {
+    const response = await fetch(
+      `${process.env.REACT_APP_BACKEND_URL}/api/v1/login`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    );
+    const result = await response.json();
+
+    if (result.token) {
+      await Swal.fire({
+        title: "Success",
+        text: "You have successfully logged in",
+        icon: "success",
+      });
+      dispatch({
+        type: LOGIN,
+        payload: result.token,
+        user: result.user,
+      });
+    } else {
+      await Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: result.message,
+        timer: 2000,
+      });
+      authError(result.error);
+    }
+  } catch (error) {
+    await Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: error.message,
+      timer: 2000,
+    });
+    authError(error);
+  }
+};
+
+export const logout = () => async (dispatch) => {
+  await Swal.fire({
+    title: "Success",
+    text: "You have successfully logged out",
+    icon: "success",
+  });
+  dispatch({
+    type: LOGOUT,
+  });
 };
 
 export const register = (data) => async (dispatch) => {

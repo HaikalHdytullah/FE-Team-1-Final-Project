@@ -53,7 +53,7 @@ function RightRegister() {
       return;
     } else {
       dispatch(register({ nama, email, password }));
-      return navigate("/register");
+      return navigate("/login");
     }
   };
   return (
@@ -92,7 +92,7 @@ function RightRegister() {
             />
           </Form.Group>
           <div className="margin-component">
-            <Button type="submit" className="w-100 mt-2 mb-3 color form-border">
+            <Button type="submit" className="w-100 color form-border mt-2 mb-3">
               Daftar
             </Button>
           </div>
