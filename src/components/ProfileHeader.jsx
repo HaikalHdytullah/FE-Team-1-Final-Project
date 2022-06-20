@@ -1,16 +1,21 @@
-import {Container, Navbar, Nav} from "react-bootstrap";
+import {Container, Nav, Navbar} from "react-bootstrap";
 import Logo from "../img/logo-image.png";
+import {Person} from "react-bootstrap-icons";
+
 
 const ProfileHeader = () => {
   return(
-    <Navbar expand="md" mb="2" sticky="top">
-      <Container>
+    <Navbar expand="lg" mb="2" sticky="top" className="shadow-sm" style={{backgroundColor:"white"}}>
+      <Container className="justify-content-between">
         <Navbar.Brand>
           <img src={Logo} className="img-fluid my-2" alt="logo.png" />
         </Navbar.Brand>
-        <Nav className="mx-auto">Lengkapi Profile</Nav>
+        <h1 style={{fontSize:24}}>Lengkapi Profile</h1>
+        <Nav>
+          <Nav.Link><Person size={25}/></Nav.Link>
+        </Nav>
       </Container>
-    </Navbar>         
+    </Navbar>
   )   
 }
 export default ProfileHeader;

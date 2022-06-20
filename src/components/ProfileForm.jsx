@@ -2,7 +2,7 @@ import {Container, Form, Image, Button, Row, Col} from "react-bootstrap";
 import LogoProfile from "../img/info-profile.png"
 import BackArrow from "../img/info-backarrow.png"
 
-const FormProfile = () => {
+const ProfileForm = () => {
   return(
     <Container className="my-5 w-50 ">
       <Row className="justify-content-center mb-3">
@@ -35,11 +35,11 @@ const FormProfile = () => {
           <Form.Label>No Handphone*</Form.Label>
           <Form.Control type="tel" placeholder="+62 *********" />
         </Form.Group>
-        <div className="my-5" controlId="exampleForm.ControlInput1">
+        <div className="my-5">
           <Button variant="primary" type="submit" className="w-100">Simpan</Button>
         </div>
       </Form>
     </Container>
   )
 }
-export default FormProfile;
+export default ProfileForm;

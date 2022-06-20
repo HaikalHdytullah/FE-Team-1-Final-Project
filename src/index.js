@@ -13,6 +13,10 @@ import Register from "./pages/Register";
 import Preview from "./pages/Preview";
 import InfoProduct from "./pages/InfoProduct";
 import EditProfile from "./pages/EditProfile"
+import NotFound from "./components/404";
+import ProfileHeader from "./components/ProfileHeader";
+import ProfileForm from "./components/ProfileForm";
+
 
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
@@ -31,6 +35,8 @@ root.render(
         <Route path="/preview" element={<Preview />} />
         <Route path="/infoproduct" element={<InfoProduct />} />
         <Route path="/profile" element={<EditProfile />} />
+        <Route path="*" element={<NotFound />} />
+        
 
       </Routes>
     </BrowserRouter>
