@@ -31,8 +31,57 @@ export const login = (data) => async (dispatch) => {
 
     if (result.token) {
       await Swal.fire({
-        title: "Success",
-        text: "You have successfully logged in",
+        title: "Berhasil",
+        text: "Berhasil melakukan login",
+        icon: "success",
+      });
+      dispatch({
+        type: LOGIN,
+        payload: result.token,
+        user: result.user,
+      });
+    } else {
+      await Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: result.message,
+        timer: 2000,
+      });
+      authError(result.error);
+    }
+  } catch (error) {
+    await Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: error.message,
+      timer: 2000,
+    });
+    authError(error);
+  }
+};
+
+export const loginWithGoogle = (accessToken) => async (dispatch) => {
+  try {
+    const data = {
+      access_token: accessToken,
+    };
+    const response = await fetch(
+      `${process.env.REACT_APP_BACKEND_URL}/api/v1/auth/google`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    );
+
+    const result = await response.json();
+
+    if (result.token) {
+      await Swal.fire({
+        title: "Berhasil",
+        text: "Berhasil melakukan login",
         icon: "success",
       });
       dispatch({
@@ -62,8 +111,8 @@ export const login = (data) => async (dispatch) => {
 
 export const logout = () => async (dispatch) => {
   await Swal.fire({
-    title: "Success",
-    text: "You have successfully logged out",
+    title: "Berhasil",
+    text: "Kamu berhasil logout",
     icon: "success",
   });
   dispatch({
@@ -91,8 +140,8 @@ export const register = (data) => async (dispatch) => {
     if (result.user) {
       await Swal.fire({
         icon: "success",
-        title: "Success",
-        text: "You have successfully registered",
+        title: "Berhasil",
+        text: "Berhasil melakukan registrasi",
       });
     } else {
       Swal.fire({

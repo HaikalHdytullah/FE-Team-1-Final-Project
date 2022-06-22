@@ -3,7 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import "../css/Register.css";
 import { Container, Form, Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import { login } from "../redux/actions/authActions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { useGoogleLogin } from "@react-oauth/google";
+import { login, loginWithGoogle } from "../redux/actions/authActions";
 
 import Swal from "sweetalert2";
 
@@ -51,6 +54,15 @@ function RightLogin() {
     }
   };
 
+  const handleGoogleLogin = useGoogleLogin({
+    onSuccess: async (tokenResponse) => {
+      dispatch(loginWithGoogle(tokenResponse.access_token));
+    },
+    onError: (error) => {
+      alert(error);
+    },
+  });
+
   return (
     <>
       <Container className="form-container">
@@ -85,6 +97,15 @@ function RightLogin() {
             <center>
               Belum punya akun?
               <Link to="/register"> Daftar disini</Link>
+              <div className="mb-2 mt-2">Or</div>
+              <Button
+                type="button"
+                variant="success"
+                className="w-100 form-border color-google mt-2 mb-3"
+                onClick={() => handleGoogleLogin()}
+              >
+                <FontAwesomeIcon icon={faGoogle} /> Sign in with Google
+              </Button>
             </center>
           </Form.Text>
         </Form>
