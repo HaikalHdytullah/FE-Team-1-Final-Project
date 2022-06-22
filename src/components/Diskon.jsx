@@ -12,12 +12,19 @@ const Banner = () => {
     >
       <Box
         component={"img"}
+        display={"flex"}
         src="../../rectangle-left.png"
         sx={{ height: "100%" }}
       />
-      <Box component={"img"} src="../../banner.png" sx={{ height: "100%" }} />
       <Box
         component={"img"}
+        display={"flex"}
+        src="../../banner.png"
+        sx={{ height: "100%" }}
+      />
+      <Box
+        component={"img"}
+        display={"flex"}
         src="../../rectangle-right.png"
         sx={{ height: "100%" }}
       />

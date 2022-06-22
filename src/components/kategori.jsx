@@ -3,7 +3,7 @@ import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import SearchIcon from "@mui/icons-material/Search";
-import { Container, Typography, Grid } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 
 function Kategori() {
   return (

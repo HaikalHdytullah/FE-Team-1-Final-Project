@@ -1,11 +1,4 @@
-import {
-  Button,
-  Navbar,
-  Container,
-  Form,
-  Offcanvas,
-  Nav,
-} from "react-bootstrap";
+import { Button, Navbar, Container, Form, Nav } from "react-bootstrap";
 import "../css/Preview.css";
 
 import Logo from "../img/logo-image.png";
@@ -23,7 +16,7 @@ const Header = () => {
         style={{ backgroundColor: "white" }}
       >
         <Container>
-          <Navbar.Brand>
+          <Navbar.Brand href="/">
             <img src={Logo} className="img-fluid my-2" alt="logo.png" />
           </Navbar.Brand>
           <Form className="ms-2 searchbar">
@@ -36,28 +29,13 @@ const Header = () => {
             <Search size={20} />
           </Form>
           <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-lg`} />
-          <Navbar.Offcanvas
-            id={`offcanvasNavbar-expand-lg`}
-            aria-labelledby={`offcanvasNavbarLabel-expand-lg`}
-            placement="start"
-          >
-            <Offcanvas.Header closeButton>
-              <Offcanvas.Title id={`offcanvasNavbarLabel-expand-lg`}>
-                Menu
-              </Offcanvas.Title>
-            </Offcanvas.Header>
-            <Offcanvas.Body className="justify-content-end">
-              <Nav>
-                <Button
-                  className="fw-bold text-white"
-                  id="btn-login"
-                  href="/login"
-                >
-                  Masuk
-                </Button>
-              </Nav>
-            </Offcanvas.Body>
-          </Navbar.Offcanvas>
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="ms-auto">
+              <Button variant="success" className="mx-3" href="/login">
+                Masuk
+              </Button>
+            </Nav>
+          </Navbar.Collapse>
         </Container>
       </Navbar>
     </Container>
