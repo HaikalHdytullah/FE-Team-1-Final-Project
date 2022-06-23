@@ -13,6 +13,8 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
+import Header from "./Header";
+
 import { addProduct, previewImg } from "../redux/actions/productsActions";
 
 import "../css/addProduct.css";
@@ -424,11 +426,9 @@ const InfoProduk = () => {
                   fullscreen={fullscreen}
                   onHide={() => setShow(false)}
                 >
-                  <Modal.Header closeButton>
-                    <Modal.Title>Preview Product</Modal.Title>
-                  </Modal.Header>
                   <Modal.Body>
-                    <Container>
+                    <Header></Header>
+                    <Container className="mt-5">
                       <Row className="justify-content-md-center">
                         <Col lg={6} md={7} xs={11}>
                           <Carousel>
