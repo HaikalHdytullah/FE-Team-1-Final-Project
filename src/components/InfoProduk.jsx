@@ -1,11 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FiArrowLeft, FiPlus, FiChevronDown } from "react-icons/fi";
-import { Container, Row, Col } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Modal,
+  Button,
+  Stack,
+  Carousel,
+} from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
-import { addProduct } from "../redux/actions/productsActions";
+import { addProduct, previewImg } from "../redux/actions/productsActions";
 
 import "../css/addProduct.css";
 
@@ -16,6 +24,7 @@ const InfoProduk = () => {
   const navigate = useNavigate();
   const { error } = useSelector((state) => state.auth);
   const { status } = useSelector((state) => state.product);
+  const { previewProduct } = useSelector((state) => state.product);
   // const { previewProduct } = useSelector((state) => state.product);
 
   const [nama, setNama] = useState("");
@@ -26,6 +35,10 @@ const InfoProduk = () => {
   const [gambar2, setGambar2] = useState("");
   const [gambar3, setGambar3] = useState("");
   const [gambar4, setGambar4] = useState("");
+  const [fullscreen, setFullscreen] = useState(true);
+  const [show, setShow] = useState(false);
+
+  const imgTemp = [];
 
   useEffect(() => {
     if (error) {
@@ -167,6 +180,75 @@ const InfoProduk = () => {
       })
     );
   };
+
+  function handleShow() {
+    if (nama === "") {
+      Swal.fire({
+        title: "Warning",
+        icon: "warning",
+        text: "Nama produk harus diisi",
+        confirmButtonText: "Ok",
+      });
+      return;
+    }
+    if (harga === "") {
+      Swal.fire({
+        title: "Warning",
+        icon: "warning",
+        text: "Harga produk harus diisi",
+        confirmButtonText: "Ok",
+      });
+      return;
+    }
+    if (kategori === "") {
+      Swal.fire({
+        title: "Warning",
+        icon: "warning",
+        text: "Kategori produk harus diisi",
+        confirmButtonText: "Ok",
+      });
+      return;
+    }
+    if (deskripsi === "") {
+      Swal.fire({
+        title: "Warning",
+        icon: "warning",
+        text: "Deskripsi produk harus diisi",
+        confirmButtonText: "Ok",
+      });
+      return;
+    }
+    if (gambar1 === "") {
+      Swal.fire({
+        title: "Warning",
+        icon: "warning",
+        text: "Gambar produk harus diisi minimal 1 gambar",
+        confirmButtonText: "Ok",
+      });
+      return;
+    } else {
+      imgTemp.splice(0, imgTemp.length);
+      imgTemp.push(document.getElementById("img-preview1").src);
+      if (document.getElementById("file-input2").value !== "") {
+        imgTemp.push(document.getElementById("img-preview2").src);
+      }
+      if (document.getElementById("file-input3").value !== "") {
+        imgTemp.push(document.getElementById("img-preview3").src);
+      }
+      if (document.getElementById("file-input4").value !== "") {
+        imgTemp.push(document.getElementById("img-preview4").src);
+      }
+      dispatch(previewImg(imgTemp));
+
+      setFullscreen(true);
+      setShow(true);
+    }
+  }
+
+  function handleClose() {
+    setFullscreen(false);
+    setShow(false);
+  }
 
   return (
     <Container>
@@ -322,7 +404,10 @@ const InfoProduk = () => {
                     </div>
                   </div>
                   <div className="flex justify-between">
-                    <button className="sm:w-74 w-[48%] rounded-xl border border-primary-purple-04  py-3 font-medium">
+                    <button
+                      onClick={() => handleShow()}
+                      className="sm:w-74 w-[48%] rounded-xl border border-primary-purple-04  py-3 font-medium"
+                    >
                       Preview
                     </button>
                     <button
@@ -334,6 +419,74 @@ const InfoProduk = () => {
                     </button>
                   </div>
                 </div>
+                <Modal
+                  show={show}
+                  fullscreen={fullscreen}
+                  onHide={() => setShow(false)}
+                >
+                  <Modal.Header closeButton>
+                    <Modal.Title>Preview Product</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>
+                    <Container>
+                      <Row className="justify-content-md-center">
+                        <Col lg={6} md={7} xs={11}>
+                          <Carousel>
+                            {previewProduct.map((item, index) => {
+                              return (
+                                <Carousel.Item key={index}>
+                                  <img
+                                    className="d-block w-100 boxImagePreview"
+                                    src={item}
+                                    alt="First slide"
+                                  />
+                                </Carousel.Item>
+                              );
+                            })}
+                          </Carousel>
+
+                          <div className="boxPreview">
+                            <h5>Deskripsi</h5>
+                            <p>{deskripsi}</p>
+                          </div>
+                        </Col>
+                        <Col lg={4} md={5} xs={11}>
+                          <div className="boxPreview">
+                            <h5>{nama}</h5>
+                            <p>{kategori}</p>
+                            <h5>Rp. {harga}</h5>
+                            <Button
+                              type="button"
+                              onClick={() => handleSubmit()}
+                              className="btn-block w-100 btnPrimary my-2"
+                            >
+                              Terbitkan
+                            </Button>
+                            <Button
+                              onClick={handleClose}
+                              className="btn-block w-100 btnOutline my-1"
+                            >
+                              Edit
+                            </Button>
+                          </div>
+                          <div className="boxPreview">
+                            <Stack direction="horizontal" gap={3}>
+                              <img
+                                src={UploadImage}
+                                alt=""
+                                className="image-profile"
+                              />
+                              <div>
+                                <h5 className="my-auto">Nama Penjual</h5>
+                                <p className="my-auto">Kota</p>
+                              </div>
+                            </Stack>
+                          </div>
+                        </Col>
+                      </Row>
+                    </Container>
+                  </Modal.Body>
+                </Modal>
               </Row>
             </Col>
             <Col sm={2}></Col>
