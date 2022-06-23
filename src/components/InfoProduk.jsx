@@ -15,6 +15,7 @@ const InfoProduk = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { error } = useSelector((state) => state.auth);
+  const { status } = useSelector((state) => state.product);
   // const { previewProduct } = useSelector((state) => state.product);
 
   const [nama, setNama] = useState("");
@@ -37,7 +38,9 @@ const InfoProduk = () => {
     }
   }, [error]);
 
-  const imgTemp = [];
+  if (status === true) {
+    return navigate("/");
+  }
 
   const imgPreview1 = (e) => {
     if (e.target.files[0]) {

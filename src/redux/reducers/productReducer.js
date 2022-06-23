@@ -13,6 +13,7 @@ const initialState = {
   detailProduct: [],
   newproduct: [],
   previewProduct: [],
+  status: false,
   error: null,
 };
 
@@ -22,6 +23,7 @@ const productReducer = (state = initialState, action) => {
       return {
         ...state,
         newproduct: action.payload,
+        status: true,
       };
     case PREVIEW_PROODUCT:
       return {
