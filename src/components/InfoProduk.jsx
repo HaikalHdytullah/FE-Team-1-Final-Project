@@ -231,19 +231,29 @@ const InfoProduk = () => {
     } else {
       imgTemp.splice(0, imgTemp.length);
       imgTemp.push(document.getElementById("img-preview1").src);
-      if (document.getElementById("file-input2").value !== "") {
+      if (
+        gambar1 !== "" &&
+        document.getElementById("file-input2").value !== ""
+      ) {
         imgTemp.push(document.getElementById("img-preview2").src);
       }
-      if (document.getElementById("file-input3").value !== "") {
+      if (
+        gambar2 !== "" &&
+        document.getElementById("file-input3").value !== ""
+      ) {
         imgTemp.push(document.getElementById("img-preview3").src);
       }
-      if (document.getElementById("file-input4").value !== "") {
+      if (
+        gambar3 !== "" &&
+        document.getElementById("file-input4").value !== ""
+      ) {
         imgTemp.push(document.getElementById("img-preview4").src);
       }
       dispatch(previewImg(imgTemp));
-
-      setFullscreen(true);
-      setShow(true);
+      if (previewProduct !== []) {
+        setFullscreen(true);
+        setShow(true);
+      }
     }
   }
 
