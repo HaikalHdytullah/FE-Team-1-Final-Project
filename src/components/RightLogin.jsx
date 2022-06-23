@@ -71,7 +71,22 @@ function RightLogin() {
 
   const handleGoogleLogin = useGoogleLogin({
     onSuccess: async (tokenResponse) => {
+      Swal.fire({
+        title: "Loading",
+        text: "Permintaan anda sedang diproses, harap tunggu sebentar",
+        icon: "info",
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        allowEnterKey: false,
+        showConfirmButton: false,
+        showCloseButton: false,
+        showCancelButton: false,
+        showClass: {
+          popup: "animate__animated animate__fadeInDown",
+        },
+      });
       dispatch(loginWithGoogle(tokenResponse.access_token));
+      return navigate("/");
     },
     onError: (error) => {
       alert(error);
