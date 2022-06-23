@@ -52,6 +52,20 @@ function RightRegister() {
       });
       return;
     } else {
+      Swal.fire({
+        title: "Loading",
+        text: "Permintaan anda sedang diproses, harap tunggu sebentar",
+        icon: "info",
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        allowEnterKey: false,
+        showConfirmButton: false,
+        showCloseButton: false,
+        showCancelButton: false,
+        showClass: {
+          popup: "animate__animated animate__fadeInDown",
+        },
+      });
       dispatch(register({ nama, email, password }));
       return navigate("/login");
     }
