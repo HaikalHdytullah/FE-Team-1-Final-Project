@@ -11,7 +11,7 @@ import LandingPage from "./pages/LandingPage";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Preview from "./pages/Preview";
-import InfoProduct from "./pages/InfoProduct";
+import AddProduct from "./pages/InfoProduct";
 import EditProfile from "./pages/EditProfile";
 import NotFound from "./components/404";
 import ProfileHeader from "./components/ProfileHeader";
@@ -39,7 +39,7 @@ root.render(
         <Route path="/register" element={<Register />} />
         <Route path="/" element={<LandingPage />} />
         <Route path="/preview" element={<Preview />} />
-        <Route path="/infoproduct" element={<InfoProduct />} />
+        <Route path="/addproduct" element={<AddProduct />} />
         <Route path="/profile" element={<EditProfile />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
