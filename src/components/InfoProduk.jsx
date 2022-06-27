@@ -27,7 +27,6 @@ const InfoProduk = () => {
   const { error } = useSelector((state) => state.auth);
   const { status } = useSelector((state) => state.product);
   const { previewProduct } = useSelector((state) => state.product);
-  // const { previewProduct } = useSelector((state) => state.product);
 
   const [nama, setNama] = useState("");
   const [harga, setHarga] = useState("");
@@ -310,11 +309,11 @@ const InfoProduk = () => {
                         value={kategori}
                       >
                         <option value="">Pilih Kategori</option>
-                        <option value="Hobi">Hobi</option>
-                        <option value="Kendaraan">Kendaraan</option>
-                        <option value="Baju">Baju</option>
-                        <option value="Elektronik">Elektronik</option>
-                        <option value="Kesehatan">Kesehatan</option>
+                        <option value="hobi">Hobi</option>
+                        <option value="kendaraan">Kendaraan</option>
+                        <option value="baju">Baju</option>
+                        <option value="elektronik">Elektronik</option>
+                        <option value="kesehatan">Kesehatan</option>
                       </select>
                     </label>
                   </div>

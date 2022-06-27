@@ -4,10 +4,72 @@ import {
   GET_PRODUCT,
   CREATE_PRODUCT,
   UPDATE_PRODUCT,
-  PREVIEW_PROODUCT,
+  PREVIEW_PRODUCT,
   CLEAR_PRODUCT,
   PRODUCT_ERROR,
 } from "./types";
+
+export const getAllProducts = () => async (dispatch) => {
+  try {
+    const response = await fetch(
+      process.env.REACT_APP_BACKEND_URL + "/api/v1/products",
+      {
+        method: "GET",
+      }
+    );
+    const data = await response.json();
+    dispatch({
+      type: GET_ALL_PRODUCT,
+      payload: data,
+      status: "GET_ALL",
+    });
+  } catch (error) {
+    dispatch({
+      type: PRODUCT_ERROR,
+      payload: error.response,
+    });
+    Swal.fire({
+      position: "center",
+      icon: "error",
+      title: error.message,
+      showConfirmButton: false,
+      timer: 1500,
+    });
+  }
+};
+
+export const getProductByNama = (params) => async (dispatch) => {
+  try {
+    const namaProduk = params;
+    const response = await fetch(
+      process.env.REACT_APP_BACKEND_URL +
+        "/api/v1/products" +
+        new URLSearchParams({
+          namaProduk,
+        })
+    );
+    const data = await response.json();
+
+    dispatch({
+      type: GET_ALL_PRODUCT,
+      payload: data,
+      status: "GET_ALL",
+    });
+  } catch (error) {
+    dispatch({
+      type: PRODUCT_ERROR,
+      payload: error.response,
+    });
+
+    Swal.fire({
+      position: "center",
+      icon: "error",
+      title: error.message,
+      showConfirmButton: false,
+      timer: 1500,
+    });
+  }
+};
 
 export const addProduct = (data) => async (dispatch) => {
   try {
@@ -92,7 +154,7 @@ export const clearProduct = () => async (dispatch) => {
 
 export const previewImg = (params) => async (dispatch) => {
   dispatch({
-    type: PREVIEW_PROODUCT,
+    type: PREVIEW_PRODUCT,
     payload: params,
   });
 };

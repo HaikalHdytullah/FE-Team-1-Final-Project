@@ -1,4 +1,10 @@
-import { AUTH_ERROR, REGISTER, LOGIN, LOGOUT } from "./types";
+import {
+  AUTH_ERROR,
+  REGISTER,
+  LOGIN,
+  LOGOUT,
+  UPDATE_INFO_USERS,
+} from "./types";
 import Swal from "sweetalert2";
 
 const authError = (error) => async (dispatch) => {
@@ -38,7 +44,6 @@ export const login = (data) => async (dispatch) => {
       dispatch({
         type: LOGIN,
         payload: result.token,
-        user: result.user,
       });
     } else {
       await Swal.fire({
@@ -109,6 +114,54 @@ export const loginWithGoogle = (accessToken) => async (dispatch) => {
   }
 };
 
+export const updateInfoUsers = (data) => async (dispatch) => {
+  try {
+    var formdata = new FormData();
+    formdata.append("idUser", data.idUser);
+    formdata.append("nama", data.nama);
+    formdata.append("kota", data.kota);
+    formdata.append("alamat", data.alamat);
+    formdata.append("noHp", data.hp);
+    if (data.gambar) {
+      formdata.append("gambar", data.gambar);
+    }
+
+    const response = await fetch(
+      process.env.REACT_APP_BACKEND_URL + "/api/v1/profile",
+      {
+        method: "PUT",
+        body: formdata,
+      }
+    );
+
+    const result = await response.json();
+    console.log(result.message);
+    if (result.message) {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Profile berhasil diperbaharui",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      dispatch({
+        type: UPDATE_INFO_USERS,
+        payload: result.data,
+      });
+    }
+  } catch (error) {
+    authError(error);
+    Swal.fire({
+      position: "center",
+      icon: "error",
+      title: "gagal",
+      text: error.message,
+      showConfirmButton: false,
+      timer: 1500,
+    });
+  }
+};
+
 export const logout = () => async (dispatch) => {
   await Swal.fire({
     title: "Berhasil",
@@ -152,5 +205,39 @@ export const register = (data) => async (dispatch) => {
     }
   } catch (error) {
     authError(error);
+  }
+};
+
+export const whoami = () => async (dispatch) => {
+  try {
+    const response = await fetch(
+      process.env.REACT_APP_BACKEND_URL + "/api/v1/whoami",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
+    const result = await response.json();
+    const userInfo = JSON.parse(JSON.stringify(result.user));
+
+    dispatch({
+      type: LOGIN,
+      payload: localStorage.getItem("token"),
+      user: userInfo,
+    });
+  } catch (error) {
+    dispatch({
+      type: LOGOUT,
+    });
+    Swal.fire({
+      position: "center",
+      icon: "error",
+      title: "Session anda telah berakhir, silahkan login kembali",
+      showConfirmButton: false,
+      timer: 1500,
+    });
   }
 };

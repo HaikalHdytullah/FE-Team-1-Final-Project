@@ -1,9 +1,9 @@
-import { AUTH_ERROR, LOGIN, LOGOUT } from "../actions/types";
+import { AUTH_ERROR, LOGIN, LOGOUT, UPDATE_INFO_USERS } from "../actions/types";
 
 const initialState = {
   isAuthenticated: !!localStorage.getItem("token"),
   token: localStorage.getItem("token"),
-  user: [],
+  user: null,
   error: null,
 };
 
@@ -17,6 +17,11 @@ const authReducer = (state = initialState, action) => {
         token: action.payload,
         user: action.user,
         error: null,
+      };
+    case UPDATE_INFO_USERS:
+      return {
+        ...state,
+        user: action.payload,
       };
     case LOGOUT:
       localStorage.removeItem("token");

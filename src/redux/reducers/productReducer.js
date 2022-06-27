@@ -2,7 +2,7 @@ import {
   GET_ALL_PRODUCT,
   GET_PRODUCT,
   CREATE_PRODUCT,
-  PREVIEW_PROODUCT,
+  PREVIEW_PRODUCT,
   PRODUCT_ERROR,
   UPDATE_PRODUCT,
   CLEAR_PRODUCT,
@@ -19,13 +19,19 @@ const initialState = {
 
 const productReducer = (state = initialState, action) => {
   switch (action.type) {
+    case GET_ALL_PRODUCT:
+      return {
+        ...state,
+        product: action.payload,
+        status: true,
+      };
     case CREATE_PRODUCT:
       return {
         ...state,
         newproduct: action.payload,
         status: true,
       };
-    case PREVIEW_PROODUCT:
+    case PREVIEW_PRODUCT:
       return {
         ...state,
         previewProduct: action.payload,

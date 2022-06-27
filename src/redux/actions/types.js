@@ -3,12 +3,13 @@ export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
 export const REGISTER = "REGISTER";
 export const AUTH_ERROR = "AUTH_ERROR";
+export const UPDATE_INFO_USERS = "UPDATE_INFO_USERS";
 
 // ACTIONS FOR PRODUCT
 export const GET_ALL_PRODUCT = "GET_ALL_PRODUCT";
 export const GET_PRODUCT = "GET_PRODUCT";
 export const CREATE_PRODUCT = "CREATE_PRODUCT";
 export const UPDATE_PRODUCT = "UPDATE_PRODUCT";
-export const PREVIEW_PROODUCT = "PREVIEW_PROODUCT";
+export const PREVIEW_PRODUCT = "PREVIEW_PRODUCT";
 export const CLEAR_PRODUCT = "CLEAR_PRODUCT";
 export const PRODUCT_ERROR = "PRODUCT_ERROR";
