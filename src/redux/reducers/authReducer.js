@@ -4,6 +4,7 @@ const initialState = {
   isAuthenticated: !!localStorage.getItem("token"),
   token: localStorage.getItem("token"),
   user: null,
+  status: "",
   error: null,
 };
 
@@ -22,6 +23,7 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         user: action.payload,
+        status: action.status,
       };
     case LOGOUT:
       localStorage.removeItem("token");

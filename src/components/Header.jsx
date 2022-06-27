@@ -156,12 +156,10 @@ const NavbarComponent = () => {
                           <img src={ListIcon} alt="" />
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
-                          <Dropdown.Item onClick={() => navigate("/")}>
+                          <Dropdown.Item onClick={navigate("/")}>
                             Beranda
                           </Dropdown.Item>
-                          <Dropdown.Item
-                            onClick={() => navigate("/daftar-jual")}
-                          >
+                          <Dropdown.Item onClick={navigate("/")}>
                             Daftar Jual
                           </Dropdown.Item>
                         </Dropdown.Menu>
@@ -175,55 +173,8 @@ const NavbarComponent = () => {
                           <img src={Bell} alt="" />
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
-                          <Dropdown.Item onClick={() => navigate("/transaksi")}>
-                            <Stack direction="horizontal" gap={3}>
-                              <img
-                                src={ProfileImage}
-                                alt=""
-                                className="imageSmall align-self-start mt-1"
-                              />
-                              <div>
-                                <p
-                                  className="my-auto"
-                                  style={{ fontSize: "10px", color: "#BABABA" }}
-                                >
-                                  Penawaran Produk
-                                </p>
-                                <h5
-                                  className="my-auto"
-                                  style={{
-                                    fontSize: "12px",
-                                    lineHeight: "22px",
-                                  }}
-                                >
-                                  Jam Tangan Casio
-                                </h5>
-                                <h5
-                                  className="my-auto"
-                                  style={{
-                                    fontSize: "12px",
-                                    lineHeight: "22px",
-                                  }}
-                                >
-                                  Rp. 250.000
-                                </h5>
-                                <h5
-                                  className="my-auto"
-                                  style={{
-                                    fontSize: "12px",
-                                    lineHeight: "22px",
-                                  }}
-                                >
-                                  Ditawar Rp.200.000
-                                </h5>
-                              </div>
-                              <p
-                                className="align-self-start ms-auto"
-                                style={{ fontSize: "12px", color: "#BABABA" }}
-                              >
-                                20 Apr, 14:04
-                              </p>
-                            </Stack>
+                          <Dropdown.Item>
+                            <Stack direction="horizontal" gap={3}></Stack>
                           </Dropdown.Item>
                         </Dropdown.Menu>
                       </Dropdown>
@@ -236,11 +187,11 @@ const NavbarComponent = () => {
                           <img src={User} alt="" />
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
-                          <Dropdown.Item onClick={() => navigate("/info-akun")}>
+                          <Dropdown.Item onClick={navigate("/profile")}>
                             Akun Saya
                           </Dropdown.Item>
                           <Dropdown.Item onClick={handleLogout}>
-                            Logout
+                            Keluar
                           </Dropdown.Item>
                         </Dropdown.Menu>
                       </Dropdown>

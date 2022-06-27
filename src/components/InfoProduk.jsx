@@ -110,6 +110,7 @@ const InfoProduk = () => {
   };
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
     if (nama === "") {
       Swal.fire({
         title: "Warning",

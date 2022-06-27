@@ -12,7 +12,9 @@ import { updateInfoUsers } from "../redux/actions/authActions";
 const ProfileForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { error, user, isAuthenticated } = useSelector((state) => state.auth);
+  const { error, user, isAuthenticated, status } = useSelector(
+    (state) => state.auth
+  );
   const [gambar, setGambar] = useState("");
 
   useEffect(() => {
@@ -72,7 +74,12 @@ const ProfileForm = () => {
     }
   }
 
+  if (status === "Updated") {
+    return navigate("/");
+  }
+
   const handleSubmit = async (e) => {
+    e.preventDefault();
     Swal.fire({
       title: "Loading",
       text: "Permintaan anda sedang diproses, harap tunggu sebentar",
@@ -158,7 +165,7 @@ const ProfileForm = () => {
         <div className="my-5">
           <Button
             variant="primary"
-            onClick={() => handleSubmit()}
+            onClick={handleSubmit}
             type="submit"
             className="w-100 form-text-box button-link"
           >

@@ -135,8 +135,7 @@ export const updateInfoUsers = (data) => async (dispatch) => {
     );
 
     const result = await response.json();
-    console.log(result.message);
-    if (result.message) {
+    if (result) {
       Swal.fire({
         position: "center",
         icon: "success",
@@ -147,6 +146,7 @@ export const updateInfoUsers = (data) => async (dispatch) => {
       dispatch({
         type: UPDATE_INFO_USERS,
         payload: result.data,
+        status: "Updated",
       });
     }
   } catch (error) {

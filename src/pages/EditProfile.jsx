@@ -1,11 +1,11 @@
 import React from "react";
-import ProfileHeader from "../components/ProfileHeader";
+import Header from "../components/Header";
 import ProfileForm from "../components/ProfileForm";
 
 const EditProfile = () => {
   return (
     <>
-      <ProfileHeader className="mb-3" />
+      <Header className="mb-3" />
       <ProfileForm />
     </>
   );
