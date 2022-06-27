@@ -5,79 +5,74 @@ import BackArrow from "../img/info-backarrow.png";
 import UploadImage from "../img/uploadImage.png";
 import { useNavigate } from "react-router-dom";
 import "../css/addProduct.css";
+import "../css/Profile.css";
 import Swal from "sweetalert2";
 import { updateInfoUsers } from "../redux/actions/authActions";
 
 const ProfileForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { error } = useSelector((state) => state.auth);
-
-  const [nama, setNama] = useState("");
-  const [kota, setKota] = useState("");
-  const [alamat, setAlamat] = useState("");
-  const [hp, setHp] = useState("");
+  const { error, user, isAuthenticated } = useSelector((state) => state.auth);
   const [gambar, setGambar] = useState("");
+
+  useEffect(() => {
+    if (error) {
+      Swal.fire({
+        title: "Warning!!",
+        text: error,
+        icon: "warning",
+        confirmButtonText: "Ok",
+      });
+    }
+  }, [error]);
 
   const imgPreview = (e) => {
     if (e.target.files[0]) {
       const reader = new FileReader();
       reader.onload = (event) => {
-        document.getElementById("img-preview1").src = event.target.result;
+        document.getElementById("gambar").src = event.target.result;
       };
       reader.readAsDataURL(e.target.files[0]);
       setGambar(e.target.files[0]);
     } else {
-      document.getElementById("img-preview1").src = UploadImage;
+      document.getElementById("gambar").src = UploadImage;
       setGambar("");
     }
   };
+
+  React.useEffect(() => {
+    cekUserInfo();
+  });
+
+  function cekUserInfo() {
+    if (!isAuthenticated) {
+      Swal.fire({
+        title: "Warning!!",
+        text: "Harus login terlebih dahulu",
+        icon: "warning",
+        confirmButtonText: "Ok",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          return navigate("/login");
+        }
+      });
+    } else {
+      if (user !== null) {
+        if (user.nama !== null)
+          document.getElementById("nama").value = user.nama;
+        if (user.kota !== null)
+          document.getElementById("kota").value = user.kota;
+        if (user.alamat !== null)
+          document.getElementById("alamat").value = user.alamat;
+        if (user.noHp !== null) document.getElementById("hp").value = user.noHp;
+        if (user.gambar !== null) {
+          document.getElementById("gambar").src = user.gambar;
+        }
+      }
+    }
+  }
+
   const handleSubmit = async (e) => {
-    if (nama === "") {
-      Swal.fire({
-        title: "Warning",
-        icon: "warning",
-        text: "Nama produk harus diisi",
-        confirmButtonText: "Ok",
-      });
-      return;
-    }
-    if (kota === "") {
-      Swal.fire({
-        title: "Warning",
-        icon: "warning",
-        text: "Harga produk harus diisi",
-        confirmButtonText: "Ok",
-      });
-      return;
-    }
-    if (alamat === "") {
-      Swal.fire({
-        title: "Warning",
-        icon: "warning",
-        text: "Kategori produk harus diisi",
-        confirmButtonText: "Ok",
-      });
-      return;
-    }
-    if (hp === "") {
-      Swal.fire({
-        title: "Warning",
-        icon: "warning",
-        text: "Deskripsi produk harus diisi",
-        confirmButtonText: "Ok",
-      });
-      return;
-    }
-    if (gambar === "") {
-      Swal.fire({
-        title: "Warning",
-        icon: "warning",
-        text: "Gambar produk harus diisi minimal 1 gambar",
-        confirmButtonText: "Ok",
-      });
-      return;
-    }
     Swal.fire({
       title: "Loading",
       text: "Permintaan anda sedang diproses, harap tunggu sebentar",
@@ -94,11 +89,11 @@ const ProfileForm = () => {
     });
     dispatch(
       updateInfoUsers({
-        idUser: 1,
-        nama,
-        kota,
-        alamat,
-        hp,
+        idUser: user.id,
+        nama: document.getElementById("nama").value,
+        kota: document.getElementById("kota").value,
+        alamat: document.getElementById("alamat").value,
+        hp: document.getElementById("hp").value,
         gambar,
       })
     );
@@ -109,7 +104,7 @@ const ProfileForm = () => {
       <div className="image-upload d-flex justify-content-center">
         <label htmlFor="file-input1" id="preview">
           <img
-            id="img-preview1"
+            id="gambar"
             className="display-none image-preview m-2"
             src={UploadImage}
             alt=""
@@ -117,48 +112,47 @@ const ProfileForm = () => {
         </label>
         <input
           id="file-input1"
-          name="gambar1"
+          name="gambar"
           type="file"
           onChange={imgPreview}
           required
         />
       </div>
       <Form>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-          <Form.Label>Nama*</Form.Label>
+        <Form.Group className="mb-3">
+          <Form.Label className="font-weight">Nama*</Form.Label>
           <Form.Control
+            className="form-text-box"
             type="text"
-            value={nama}
-            onChange={(e) => setNama(e.target.value)}
             placeholder="Nama"
+            id="nama"
           />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-          <Form.Label>Kota*</Form.Label>
+        <Form.Group className="mb-3">
+          <Form.Label className="font-weight">Kota*</Form.Label>
           <Form.Control
+            className="form-text-box"
             type="text"
-            value={kota}
-            onChange={(e) => setKota(e.target.value)}
             placeholder="Kota"
+            id="kota"
           />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-          <Form.Label>Alamat*</Form.Label>
+        <Form.Group className="mb-3">
+          <Form.Label className="font-weight">Alamat*</Form.Label>
           <Form.Control
-            as="textarea"
-            row={2}
             placeholder="Contoh: Jl Ikan Hiu  No. 33"
-            value={alamat}
-            onChange={(e) => setAlamat(e.target.value)}
+            id="alamat"
+            className="form-text-box"
+            style={{ height: "80px" }}
           />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-          <Form.Label>No Handphone*</Form.Label>
+        <Form.Group className="mb-3">
+          <Form.Label className="font-weight">No Handphone*</Form.Label>
           <Form.Control
+            className="form-text-box"
             type="text"
-            value={hp}
-            onChange={(e) => setHp(e.target.value)}
             placeholder="+62 *********"
+            id="hp"
           />
         </Form.Group>
         <div className="my-5">
@@ -166,7 +160,7 @@ const ProfileForm = () => {
             variant="primary"
             onClick={() => handleSubmit()}
             type="submit"
-            className="w-100"
+            className="w-100 form-text-box button-link"
           >
             Simpan
           </Button>

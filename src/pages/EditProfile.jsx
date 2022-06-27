@@ -3,11 +3,11 @@ import ProfileHeader from "../components/ProfileHeader";
 import ProfileForm from "../components/ProfileForm";
 
 const EditProfile = () => {
-  return(
+  return (
     <>
-      <ProfileHeader className="mb-3"/>
-      <ProfileForm/>
+      <ProfileHeader className="mb-3" />
+      <ProfileForm />
     </>
-  )
-}
+  );
+};
 export default EditProfile;
