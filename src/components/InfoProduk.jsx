@@ -25,8 +25,7 @@ const InfoProduk = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { error } = useSelector((state) => state.auth);
-  const { status } = useSelector((state) => state.product);
-  const { previewProduct } = useSelector((state) => state.product);
+  const { previewProduct, status } = useSelector((state) => state.product);
 
   const [nama, setNama] = useState("");
   const [harga, setHarga] = useState("");
@@ -52,7 +51,7 @@ const InfoProduk = () => {
     }
   }, [error]);
 
-  if (status === true) {
+  if (status === "Created") {
     return navigate("/");
   }
 
@@ -110,7 +109,6 @@ const InfoProduk = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
     if (nama === "") {
       Swal.fire({
         title: "Warning",

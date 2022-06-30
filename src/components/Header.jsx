@@ -156,10 +156,10 @@ const NavbarComponent = () => {
                           <img src={ListIcon} alt="" />
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
-                          <Dropdown.Item onClick={navigate("/")}>
+                          <Dropdown.Item onClick={() => navigate("/")}>
                             Beranda
                           </Dropdown.Item>
-                          <Dropdown.Item onClick={navigate("/")}>
+                          <Dropdown.Item onClick={() => navigate("/")}>
                             Daftar Jual
                           </Dropdown.Item>
                         </Dropdown.Menu>
@@ -187,7 +187,7 @@ const NavbarComponent = () => {
                           <img src={User} alt="" />
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
-                          <Dropdown.Item onClick={navigate("/profile")}>
+                          <Dropdown.Item onClick={() => navigate("/profile")}>
                             Akun Saya
                           </Dropdown.Item>
                           <Dropdown.Item onClick={handleLogout}>

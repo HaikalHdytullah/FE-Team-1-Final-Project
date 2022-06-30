@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Container, Form, Image, Button, Row, Col } from "react-bootstrap";
 import BackArrow from "../img/info-backarrow.png";
 import UploadImage from "../img/uploadImage.png";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import "../css/addProduct.css";
 import "../css/Profile.css";
 import Swal from "sweetalert2";
@@ -43,7 +43,9 @@ const ProfileForm = () => {
   };
 
   React.useEffect(() => {
-    cekUserInfo();
+    if (window.location.pathname === "/profile") {
+      cekUserInfo();
+    }
   });
 
   function cekUserInfo() {
