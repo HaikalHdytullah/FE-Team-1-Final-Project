@@ -20,8 +20,7 @@ export const getAllProducts = () => async (dispatch) => {
     const data = await response.json();
     dispatch({
       type: GET_ALL_PRODUCT,
-      payload: data,
-      status: "GET_ALL",
+      payload: data.data.products,
     });
   } catch (error) {
     dispatch({

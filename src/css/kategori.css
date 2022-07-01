@@ -1,0 +1,13 @@
+.kategory-active {
+  background: #7126b5 !important;
+  color: white !important;
+}
+
+.kategory-deactive {
+  background: #e2d4f0 !important;
+  color: black !important;
+}
+
+.btn-kategory {
+  padding: 14px 24px !important;
+}

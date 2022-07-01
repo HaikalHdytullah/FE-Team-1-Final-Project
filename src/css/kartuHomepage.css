@@ -1,0 +1,13 @@
+.product-card {
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  padding: 8px 8px 16px;
+  width: 100%;
+  color: black !important;
+}
+
+.product-img {
+  object-fit: cover;
+  height: 200px;
+  border-radius: 4px;
+}
