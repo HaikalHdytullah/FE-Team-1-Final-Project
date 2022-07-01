@@ -148,6 +148,13 @@ export const updateInfoUsers = (data) => async (dispatch) => {
         payload: result.data,
         status: "Updated",
       });
+      setTimeout(() => {
+        dispatch({
+          type: UPDATE_INFO_USERS,
+          payload: result.data,
+          status: "",
+        });
+      }, 1000);
     }
   } catch (error) {
     authError(error);

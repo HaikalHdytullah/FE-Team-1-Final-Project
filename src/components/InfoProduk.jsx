@@ -439,24 +439,33 @@ const InfoProduk = () => {
                     <Container className="mt-5">
                       <Row className="justify-content-md-center">
                         <Col lg={6} md={7} xs={11}>
-                          <Carousel>
+                          <Carousel variant="dark">
                             {previewProduct.map((item, index) => {
                               return (
-                                <Carousel.Item key={index}>
-                                  <img
-                                    className="d-block w-100 boxImagePreview"
-                                    src={item}
-                                    alt="First slide"
-                                  />
-                                </Carousel.Item>
+                                <>
+                                  <Carousel.Item key={index}>
+                                    <img
+                                      className="d-block w-100"
+                                      src={item}
+                                      alt="First slide"
+                                    />
+                                  </Carousel.Item>
+                                </>
                               );
                             })}
                           </Carousel>
 
-                          <div className="boxPreview">
-                            <h5>Deskripsi</h5>
-                            <p>{deskripsi}</p>
-                          </div>
+                          <Row
+                            className="mx-1 mt-4 mb-4 shadow-sm"
+                            style={{ borderRadius: "20px" }}
+                          >
+                            <p className="fw-bold text-family ps-3 pt-3 pb-3">
+                              Deskripsi
+                            </p>
+                            <p className="text-color ps-3 lh-base pb-3">
+                              {deskripsi}
+                            </p>
+                          </Row>
                         </Col>
                         <Col lg={4} md={5} xs={11}>
                           <div className="boxPreview">

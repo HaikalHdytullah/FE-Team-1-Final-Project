@@ -42,11 +42,11 @@ const ProfileForm = () => {
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (window.location.pathname === "/profile") {
       cekUserInfo();
     }
-  });
+  }, []);
 
   function cekUserInfo() {
     if (!isAuthenticated) {
