@@ -460,7 +460,7 @@ const InfoProduk = () => {
                             <p className="fw-bold text-family ps-3 pt-3 pb-3">
                               Deskripsi
                             </p>
-                            <p className="text-color ps-3 lh-base pb-3">
+                            <p className="text-color ps-3 lh-base pb-3 text-justify">
                               {deskripsi}
                             </p>
                           </Row>
