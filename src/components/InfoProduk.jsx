@@ -442,15 +442,13 @@ const InfoProduk = () => {
                           <Carousel variant="dark">
                             {previewProduct.map((item, index) => {
                               return (
-                                <>
-                                  <Carousel.Item key={index}>
-                                    <img
-                                      className="d-block w-100"
-                                      src={item}
-                                      alt="First slide"
-                                    />
-                                  </Carousel.Item>
-                                </>
+                                <Carousel.Item key={index}>
+                                  <img
+                                    className="d-block w-100 h-100 carousel-img"
+                                    src={item}
+                                    alt="First slide"
+                                  />
+                                </Carousel.Item>
                               );
                             })}
                           </Carousel>
@@ -468,37 +466,59 @@ const InfoProduk = () => {
                           </Row>
                         </Col>
                         <Col lg={4} md={5} xs={11}>
-                          <div className="boxPreview">
-                            <h5>{nama}</h5>
-                            <p>{kategori}</p>
-                            <h5>Rp. {harga}</h5>
-                            <Button
-                              type="button"
-                              onClick={() => handleSubmit()}
-                              className="btn-block w-100 btnPrimary my-2"
-                            >
-                              Terbitkan
-                            </Button>
-                            <Button
-                              onClick={handleClose}
-                              className="btn-block w-100 btnOutline my-1"
-                            >
-                              Edit
-                            </Button>
-                          </div>
-                          <div className="boxPreview">
-                            <Stack direction="horizontal" gap={3}>
-                              <img
-                                src={UploadImage}
-                                alt=""
-                                className="image-profile"
-                              />
-                              <div>
-                                <h5 className="my-auto">Nama Penjual</h5>
-                                <p className="my-auto">Kota</p>
+                          <Row
+                            className="shadow-sm"
+                            style={{ borderRadius: "20px" }}
+                          >
+                            <p className="fw-bold text-family ps-4 fs-4 pt-3">
+                              {nama}
+                            </p>
+                            <p className="text-color ps-4 pt-1">{kategori}</p>
+                            <p className="fw-bold text-family ps-4 pt-3">
+                              Rp {harga}
+                            </p>
+                            <div className="d-grid mt-4 gap-3">
+                              <Button
+                                className="button-add fw-semibold text-white"
+                                style={{ backgroundColor: "#7126B5" }}
+                                onClick={() => handleSubmit()}
+                              >
+                                Terbitkan
+                              </Button>
+                              <Button
+                                className="button-edit fw-semibold mb-4 text-black"
+                                style={{ backgroundColor: "white" }}
+                                onClick={handleClose}
+                              >
+                                Edit
+                              </Button>
+                            </div>
+                          </Row>
+                          <Row
+                            className="mt-4 pt-3 shadow-sm"
+                            style={{ borderRadius: "20px" }}
+                          >
+                            <Col lg={2} sm={3} className="me-3">
+                              <div className="layout-foto">
+                                <img
+                                  className="foto"
+                                  src={UploadImage}
+                                  alt="Foto Profile"
+                                />
                               </div>
-                            </Stack>
-                          </div>
+                            </Col>
+                            <Col lg={9} sm={10}>
+                              <p className="fw-bold text-family ps-3 fs-6">
+                                Nama Penjual
+                              </p>
+                              <p
+                                className="text-color ps-3 fs-6 pt-2 pb-2"
+                                style={{ marginTop: "-5px" }}
+                              >
+                                Kota
+                              </p>
+                            </Col>
+                          </Row>
                         </Col>
                       </Row>
                     </Container>

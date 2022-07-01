@@ -10,3 +10,7 @@
   border: 2px solid grey;
   border-radius: 16px;
 }
+
+.carousel-img {
+  object-fit: cover;
+}

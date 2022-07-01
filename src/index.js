@@ -14,8 +14,6 @@ import Preview from "./pages/Preview";
 import AddProduct from "./pages/InfoProduct";
 import EditProfile from "./pages/EditProfile";
 import NotFound from "./components/404";
-import ProfileHeader from "./components/ProfileHeader";
-import ProfileForm from "./components/ProfileForm";
 
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
