@@ -131,7 +131,7 @@ const ProfileForm = () => {
         <Form.Group className="mb-3">
           <Form.Label className="font-weight">Nama*</Form.Label>
           <Form.Control
-            className="form-text-box"
+            className="form-text-box w-full resize-none rounded-2xl border border-neutral-02 bg-neutral-01 py-3 px-4 text-neutral-03 focus:outline-none"
             type="text"
             placeholder="Nama"
             id="nama"
@@ -140,25 +140,26 @@ const ProfileForm = () => {
         <Form.Group className="mb-3">
           <Form.Label className="font-weight">Kota*</Form.Label>
           <Form.Control
-            className="form-text-box"
+            className="form-text-box w-full resize-none rounded-2xl border border-neutral-02 bg-neutral-01 py-3 px-4 text-neutral-03 focus:outline-none"
             type="text"
             placeholder="Kota"
             id="kota"
           />
         </Form.Group>
         <Form.Group className="mb-3">
-          <Form.Label className="font-weight">Alamat*</Form.Label>
-          <Form.Control
-            placeholder="Contoh: Jl Ikan Hiu  No. 33"
+          <Form.Label className="font-weight ">Alamat*</Form.Label>
+          <textarea
             id="alamat"
-            className="form-text-box"
-            style={{ height: "80px" }}
+            rows="2"
+            className="w-full resize-none rounded-2xl border border-neutral-02 bg-neutral-01 py-3 px-4 text-neutral-03 focus:outline-none"
+            placeholder="Contoh: Jalan Ikan Hiu 33"
+            required
           />
         </Form.Group>
         <Form.Group className="mb-3">
           <Form.Label className="font-weight">No Handphone*</Form.Label>
           <Form.Control
-            className="form-text-box"
+            className="form-text-box w-full resize-none rounded-2xl border border-neutral-02 bg-neutral-01 py-3 px-4 text-neutral-03 focus:outline-none"
             type="text"
             placeholder="+62 *********"
             id="hp"

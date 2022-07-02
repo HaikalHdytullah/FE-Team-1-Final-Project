@@ -21,6 +21,7 @@ export const getAllProducts = () => async (dispatch) => {
     dispatch({
       type: GET_ALL_PRODUCT,
       payload: data.data.products,
+      status: "Get All",
     });
   } catch (error) {
     dispatch({
@@ -39,12 +40,12 @@ export const getAllProducts = () => async (dispatch) => {
 
 export const getProductByNama = (params) => async (dispatch) => {
   try {
-    const namaProduk = params;
+    const nama = params;
     const response = await fetch(
       process.env.REACT_APP_BACKEND_URL +
-        "/api/v1/products" +
+        "/api/v1/product/name?" +
         new URLSearchParams({
-          namaProduk,
+          nama,
         })
     );
     const data = await response.json();
@@ -52,7 +53,39 @@ export const getProductByNama = (params) => async (dispatch) => {
     dispatch({
       type: GET_ALL_PRODUCT,
       payload: data,
-      status: "GET_ALL",
+      status: "Get All by Nama",
+    });
+  } catch (error) {
+    dispatch({
+      type: PRODUCT_ERROR,
+      payload: error.response,
+    });
+
+    Swal.fire({
+      position: "center",
+      icon: "error",
+      title: error.message,
+      showConfirmButton: false,
+      timer: 1500,
+    });
+  }
+};
+export const getProductByKategory = (params) => async (dispatch) => {
+  try {
+    const kategori = params;
+    const response = await fetch(
+      process.env.REACT_APP_BACKEND_URL +
+        "/api/v1/product/kategory?" +
+        new URLSearchParams({
+          kategori,
+        })
+    );
+    const data = await response.json();
+
+    dispatch({
+      type: GET_ALL_PRODUCT,
+      payload: data,
+      status: "Get All by Kategory",
     });
   } catch (error) {
     dispatch({

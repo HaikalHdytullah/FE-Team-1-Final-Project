@@ -59,12 +59,6 @@ const NavbarComponent = () => {
     }
   };
 
-  const handleKeyPress = async (target) => {
-    if (target.charCode === 13) {
-      handleSubmit();
-    }
-  };
-
   return (
     <div className="navbar-component py-1">
       {["md"].map((expand) => (
@@ -102,7 +96,6 @@ const NavbarComponent = () => {
                             id="form-search"
                             placeholder="Cari di sini ..."
                             className="search-box-field"
-                            onKeyPress={handleKeyPress}
                           />
                           <Button
                             type="submit"
@@ -134,7 +127,6 @@ const NavbarComponent = () => {
                             id="form-search"
                             placeholder="Cari di sini ..."
                             className="search-box-field"
-                            onKeyPress={handleKeyPress}
                           />
                           <Button
                             type="submit"

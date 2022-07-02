@@ -23,7 +23,7 @@ const productReducer = (state = initialState, action) => {
       return {
         ...state,
         product: action.payload,
-        status: "Get All",
+        status: action.status,
       };
     case CREATE_PRODUCT:
       return {
