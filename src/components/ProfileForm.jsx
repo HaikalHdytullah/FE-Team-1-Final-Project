@@ -107,7 +107,6 @@ const ProfileForm = () => {
       })
     );
   };
-
   return (
     <Container className="w-50 my-5 ">
       <div className="image-upload d-flex justify-content-center">
