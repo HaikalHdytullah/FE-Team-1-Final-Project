@@ -4,6 +4,7 @@ import {
   LOGIN,
   LOGOUT,
   UPDATE_INFO_USERS,
+  CLEAR_STATUS,
 } from "./types";
 import Swal from "sweetalert2";
 
@@ -148,13 +149,6 @@ export const updateInfoUsers = (data) => async (dispatch) => {
         payload: result.data,
         status: "Updated",
       });
-      setTimeout(() => {
-        dispatch({
-          type: UPDATE_INFO_USERS,
-          payload: result.data,
-          status: "",
-        });
-      }, 1000);
     }
   } catch (error) {
     authError(error);
@@ -177,6 +171,12 @@ export const logout = () => async (dispatch) => {
   });
   dispatch({
     type: LOGOUT,
+  });
+};
+
+export const clearStatus = () => async (dispatch) => {
+  dispatch({
+    type: CLEAR_STATUS,
   });
 };
 

@@ -183,10 +183,8 @@ const InfoProduk = () => {
   };
   if (status === "Created") {
     dispatch(getAllProducts());
-    setTimeout(() => {
-      dispatch(clearProduct());
-      return navigate("/");
-    }, 1000);
+    dispatch(clearProduct());
+    return navigate("/");
   }
 
   function handleShow() {

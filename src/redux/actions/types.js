@@ -4,6 +4,7 @@ export const LOGOUT = "LOGOUT";
 export const REGISTER = "REGISTER";
 export const AUTH_ERROR = "AUTH_ERROR";
 export const UPDATE_INFO_USERS = "UPDATE_INFO_USERS";
+export const CLEAR_STATUS = "CLEAR_STATUS";
 
 // ACTIONS FOR PRODUCT
 export const GET_ALL_PRODUCT = "GET_ALL_PRODUCT";
