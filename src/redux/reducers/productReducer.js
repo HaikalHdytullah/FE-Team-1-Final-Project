@@ -10,7 +10,7 @@ import {
 
 const initialState = {
   product: [],
-  detailProduct: [],
+  productdetail: [],
   newproduct: [],
   previewProduct: [],
   status: "",
@@ -25,6 +25,11 @@ const productReducer = (state = initialState, action) => {
         product: action.payload,
         status: action.status,
       };
+    case GET_PRODUCT:
+      return {
+        ...state,
+        productdetail: action.payload,
+      };
     case CREATE_PRODUCT:
       return {
         ...state,
@@ -35,7 +40,7 @@ const productReducer = (state = initialState, action) => {
       return {
         ...state,
         newproduct: action.payload,
-        status: "Updated", 
+        status: "Updated",
       };
     case PREVIEW_PRODUCT:
       return {
@@ -45,7 +50,7 @@ const productReducer = (state = initialState, action) => {
     case CLEAR_PRODUCT:
       return {
         ...state,
-        detailProduct: [],
+        productdetail: [],
         newproduct: [],
         previewProduct: [],
         error: null,

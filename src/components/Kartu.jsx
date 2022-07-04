@@ -2,7 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Container, Card, Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+
 import productImg from "../img/product.png";
+import { getProductById } from "../redux/actions/productsActions";
 
 import { Typography } from "@mui/material";
 
@@ -10,6 +12,11 @@ import "../css/kartuHomepage.css";
 
 const Kartu = () => {
   const { product } = useSelector((state) => state.product);
+  const dispatch = useDispatch();
+
+  const handleSubmit = (event) => {
+    dispatch(getProductById(product.id));
+  };
   return (
     <Container>
       <Row>
@@ -27,8 +34,8 @@ const Kartu = () => {
         ) : (
           product.map((product) => (
             <Col key={product.id} lg={2} md={3} sm={4} xs={6} className="mt-3">
-              <Link to={"/"}>
-                <Card className="product-card">
+              <Link to={"/preview"}>
+                <Card className="product-card" onClick={handleSubmit}>
                   <Card.Img
                     variant="top"
                     src={product.productpics[0].gambar}
