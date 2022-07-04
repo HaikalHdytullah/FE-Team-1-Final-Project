@@ -26,14 +26,7 @@ const Kartu = () => {
           </>
         ) : (
           product.map((product) => (
-            <Col
-              key={product.id}
-              lg={3}
-              md={3}
-              sm={4}
-              xs={6}
-              className="my-2 mt-5"
-            >
+            <Col key={product.id} lg={2} md={3} sm={4} xs={6} className="mt-3">
               <Link to={"/"}>
                 <Card className="product-card">
                   <Card.Img
@@ -51,7 +44,7 @@ const Kartu = () => {
                     <Typography
                       gutterBottom
                       variant="h6"
-                      className="mt-2"
+                      className="mt-1"
                       component="div"
                     >
                       Rp.{product.harga}

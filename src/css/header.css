@@ -74,3 +74,13 @@
   border: 0px !important;
   box-shadow: 0px !important;
 }
+
+.search-wrapper {
+  position: relative;
+}
+
+.search-wrapper img {
+  position: absolute;
+  top: 21%;
+  left: 92%;
+}

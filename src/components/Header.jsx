@@ -50,7 +50,8 @@ const NavbarComponent = () => {
     }
   }, 5 * 60000);
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     let keyword = document.getElementById("form-search").value;
     if (keyword === "") {
       dispatch(getAllProducts());
@@ -92,20 +93,16 @@ const NavbarComponent = () => {
                       {/* Search Box */}
                       <div className="search-box me-auto">
                         <InputGroup>
-                          <Form.Control
-                            id="form-search"
-                            placeholder="Cari di sini ..."
-                            className="search-box-field"
-                          />
-                          <Button
-                            type="submit"
-                            variant="light"
-                            id="button-addon2"
-                            className="search-box-button"
-                            onClick={handleSubmit}
-                          >
-                            <img src={SearchIcon} alt="" />
-                          </Button>
+                          <Form onSubmit={handleSubmit}>
+                            <div className="search-wrapper">
+                              <Form.Control
+                                id="form-search"
+                                placeholder="Cari di sini ..."
+                                className="search-box-field"
+                              />
+                              <img src={SearchIcon} alt="" />
+                            </div>
+                          </Form>
                         </InputGroup>
                       </div>
                       {/* Login */}
@@ -123,20 +120,16 @@ const NavbarComponent = () => {
                       {/* Search Box */}
                       <div className="search-box me-auto">
                         <InputGroup>
-                          <Form.Control
-                            id="form-search"
-                            placeholder="Cari di sini ..."
-                            className="search-box-field"
-                          />
-                          <Button
-                            type="submit"
-                            variant="light"
-                            id="button-addon2"
-                            className="search-box-button"
-                            onClick={handleSubmit}
-                          >
-                            <img src={SearchIcon} alt="" />
-                          </Button>
+                          <Form onSubmit={handleSubmit}>
+                            <div className="search-wrapper">
+                              <Form.Control
+                                id="form-search"
+                                placeholder="Cari di sini ..."
+                                className="search-box-field"
+                              />
+                              <img src={SearchIcon} alt="" />
+                            </div>
+                          </Form>
                         </InputGroup>
                       </div>
                       {/* Menu */}

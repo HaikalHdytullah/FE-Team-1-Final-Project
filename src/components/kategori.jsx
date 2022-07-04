@@ -178,7 +178,7 @@ function Kategori() {
   };
 
   return (
-    <Container fixed>
+    <Container>
       <Typography variant="h6" sx={{ marginTop: 5 }}>
         Telusuri Kategori
       </Typography>
