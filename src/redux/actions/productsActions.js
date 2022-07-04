@@ -38,6 +38,36 @@ export const getAllProducts = () => async (dispatch) => {
   }
 };
 
+export const getProductById = (params) => async (dispatch) => {
+  try {
+    const id = params;
+    const response = await fetch(
+      process.env.REACT_APP_BACKEND_URL +
+        new URLSearchParams({
+          id,
+        })
+    );
+    const data = await response.json();
+
+    dispatch({
+      type: GET_PRODUCT,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: PRODUCT_ERROR,
+      payload: error.response,
+    });
+    Swal.fire({
+      position: "center",
+      icon: "error",
+      title: error.message,
+      showConfirmButton: false,
+      timer: 1500,
+    });
+  }
+};
+
 export const getProductByNama = (params) => async (dispatch) => {
   try {
     const nama = params;
