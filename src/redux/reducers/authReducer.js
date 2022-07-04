@@ -23,6 +23,7 @@ const authReducer = (state = initialState, action) => {
         isAuthenticated: true,
         token: action.payload,
         user: action.user,
+        status: action.status,
         error: null,
       };
     case UPDATE_INFO_USERS:

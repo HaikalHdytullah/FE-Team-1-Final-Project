@@ -158,6 +158,9 @@ export const addProduct = (data) => async (dispatch) => {
       {
         method: "POST",
         body: formdata,
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
       }
     );
 
@@ -234,6 +237,9 @@ export const updateProduct = (data) => async (dispatch) => {
       {
         method: "PUT",
         body: formdata,
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
       }
     );
 

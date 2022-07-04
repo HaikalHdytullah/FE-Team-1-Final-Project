@@ -45,6 +45,7 @@ export const login = (data) => async (dispatch) => {
       dispatch({
         type: LOGIN,
         payload: result.token,
+        status: "login success",
       });
     } else {
       await Swal.fire({
@@ -94,6 +95,7 @@ export const loginWithGoogle = (accessToken) => async (dispatch) => {
         type: LOGIN,
         payload: result.token,
         user: result.user,
+        status: "login success",
       });
     } else {
       await Swal.fire({
