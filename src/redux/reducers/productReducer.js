@@ -31,6 +31,12 @@ const productReducer = (state = initialState, action) => {
         newproduct: action.payload,
         status: "Created",
       };
+    case UPDATE_PRODUCT:
+      return {
+        ...state,
+        newproduct: action.payload,
+        status: "Updated", 
+      };
     case PREVIEW_PRODUCT:
       return {
         ...state,

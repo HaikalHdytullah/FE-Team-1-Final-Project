@@ -13,6 +13,7 @@ import Register from "./pages/Register";
 import Preview from "./pages/Preview";
 import AddProduct from "./pages/InfoProduct";
 import EditProfile from "./pages/EditProfile";
+import HalamanProduct from "./pages/HalamanProduct";
 import NotFound from "./components/404";
 
 import reportWebVitals from "./reportWebVitals";
@@ -39,6 +40,7 @@ root.render(
         <Route path="/preview" element={<Preview />} />
         <Route path="/addproduct" element={<AddProduct />} />
         <Route path="/profile" element={<EditProfile />} />
+        <Route path="/halamanproduct" element={<HalamanProduct />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
