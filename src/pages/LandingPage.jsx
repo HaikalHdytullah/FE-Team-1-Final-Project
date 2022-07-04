@@ -2,6 +2,7 @@ import Header from "../components/Header";
 import BannerSection from "../components/HomepageCarousel";
 import Kartu from "../components/Kartu";
 import Kategori from "../components/kategori";
+import Footer from "../components/Footer";
 // import Slider from "../components/Slider";
 
 const Home = () => {
@@ -12,6 +13,7 @@ const Home = () => {
       {/* <Diskon /> */}
       <Kategori />
       <Kartu />
+      <Footer />
     </>
   );
 };

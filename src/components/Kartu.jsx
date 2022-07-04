@@ -35,20 +35,9 @@ const Kartu = () => {
                     className="product-img"
                   />
                   <Card.Body>
-                    <Typography gutterBottom variant="h6" component="div">
-                      {product.nama}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      {product.kategori}
-                    </Typography>
-                    <Typography
-                      gutterBottom
-                      variant="h6"
-                      className="mt-1"
-                      component="div"
-                    >
-                      Rp.{product.harga}
-                    </Typography>
+                    <p className="product-nama mb-1">{product.nama}</p>
+                    <p className="product-kategori mb-1">{product.kategori}</p>
+                    <p className="product-nama">Rp.{product.harga}</p>
                   </Card.Body>
                 </Card>
               </Link>

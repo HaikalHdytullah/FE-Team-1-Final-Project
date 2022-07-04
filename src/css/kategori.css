@@ -1,6 +1,8 @@
 .kategory-active {
   background: #7126b5 !important;
   color: white !important;
+  flex-direction: row;
+  align-items: flex-start;
 }
 
 .kategory-deactive {
