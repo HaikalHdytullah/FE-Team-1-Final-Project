@@ -15,7 +15,12 @@ import Swal from "sweetalert2";
 
 import Header from "./Header";
 
-import { addProduct, previewImg } from "../redux/actions/productsActions";
+import {
+  addProduct,
+  previewImg,
+  getAllProducts,
+  clearProduct,
+} from "../redux/actions/productsActions";
 
 import "../css/addProduct.css";
 
@@ -24,7 +29,7 @@ import UploadImage from "../img/uploadImage.png";
 const InfoProduk = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { error } = useSelector((state) => state.auth);
+  const { error, user } = useSelector((state) => state.auth);
   const { previewProduct, status } = useSelector((state) => state.product);
 
   const [nama, setNama] = useState("");
@@ -50,10 +55,6 @@ const InfoProduk = () => {
       });
     }
   }, [error]);
-
-  if (status === "Created") {
-    return navigate("/");
-  }
 
   const imgPreview1 = (e) => {
     if (e.target.files[0]) {
@@ -180,6 +181,13 @@ const InfoProduk = () => {
       })
     );
   };
+  if (status === "Created") {
+    dispatch(getAllProducts());
+    setTimeout(() => {
+      dispatch(clearProduct());
+      return navigate("/");
+    }, 1000);
+  }
 
   function handleShow() {
     if (nama === "") {
@@ -502,20 +510,20 @@ const InfoProduk = () => {
                               <div className="layout-foto">
                                 <img
                                   className="foto"
-                                  src={UploadImage}
+                                  src={user.gambar}
                                   alt="Foto Profile"
                                 />
                               </div>
                             </Col>
                             <Col lg={9} sm={10}>
                               <p className="fw-bold text-family ps-3 fs-6">
-                                Nama Penjual
+                                {user.nama}
                               </p>
                               <p
                                 className="text-color ps-3 fs-6 pt-2 pb-2"
                                 style={{ marginTop: "-5px" }}
                               >
-                                Kota
+                                {user.kota}
                               </p>
                             </Col>
                           </Row>

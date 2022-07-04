@@ -1,6 +1,8 @@
 import { Carousel, Row, Col, Container, Button } from "react-bootstrap";
 import "../css/Preview.css";
 
+import { useSelector, useDispatch } from "react-redux";
+
 import Jam from "../img/jam-image.png";
 import Jam2 from "../img/jam2-image.png";
 import Foto from "../img/profile-image.png";

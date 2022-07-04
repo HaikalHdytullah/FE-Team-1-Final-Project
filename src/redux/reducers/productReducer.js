@@ -34,13 +34,13 @@ const productReducer = (state = initialState, action) => {
       return {
         ...state,
         newproduct: action.payload,
-        status: "Created",
+        status: action.status,
       };
     case UPDATE_PRODUCT:
       return {
         ...state,
         newproduct: action.payload,
-        status: "Updated",
+        status: action.status,
       };
     case PREVIEW_PRODUCT:
       return {

@@ -43,6 +43,7 @@ export const getProductById = (params) => async (dispatch) => {
     const id = params;
     const response = await fetch(
       process.env.REACT_APP_BACKEND_URL +
+        "/api/v1/product?" +
         new URLSearchParams({
           id,
         })
@@ -166,6 +167,7 @@ export const addProduct = (data) => async (dispatch) => {
       dispatch({
         type: CREATE_PRODUCT,
         payload: data,
+        status: "Created",
       });
 
       Swal.fire({
@@ -241,6 +243,7 @@ export const updateProduct = (data) => async (dispatch) => {
       dispatch({
         type: UPDATE_PRODUCT,
         payload: data,
+        status: "Updated",
       });
 
       Swal.fire({
