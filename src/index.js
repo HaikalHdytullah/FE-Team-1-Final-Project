@@ -40,11 +40,7 @@ root.render(
         <Route path="/preview" element={<Preview />} />
         <Route path="/addproduct" element={<AddProduct />} />
         <Route path="/profile" element={<EditProfile />} />
-<<<<<<< HEAD
         <Route path="/daftarjual" element={<DaftarJual />}></Route>
-=======
-        <Route path="/halamanproduct" element={<HalamanProduct />} />
->>>>>>> 70bc3be72a60ced6a5d4c15c4e8ac7ce8c4cf016
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
