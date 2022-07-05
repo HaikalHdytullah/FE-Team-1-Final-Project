@@ -19,6 +19,25 @@ export const getAllProducts = () => async (dispatch) => {
       }
     );
     const data = await response.json();
+    if (data.length === 0) {
+      Swal.fire({
+        position: "center",
+        icon: "warning",
+        title: "Data kosong",
+        text: "Data yang anda cari tidak ditemukan",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    } else {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Berhasil",
+        text: "Pencarian data berhasil",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
     dispatch({
       type: GET_ALL_PRODUCT,
       payload: data.data.products,
@@ -83,6 +102,26 @@ export const getProductByNama = (params) => async (dispatch) => {
     );
     const data = await response.json();
 
+    if (data.length === 0) {
+      Swal.fire({
+        position: "center",
+        icon: "warning",
+        title: "Data kosong",
+        text: "Data yang anda cari tidak ditemukan",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    } else {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Berhasil",
+        text: "Pencarian data berhasil",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+
     dispatch({
       type: GET_ALL_PRODUCT,
       payload: data,
@@ -114,6 +153,25 @@ export const getProductByKategory = (params) => async (dispatch) => {
         })
     );
     const data = await response.json();
+    if (data.length === 0) {
+      Swal.fire({
+        position: "center",
+        icon: "warning",
+        title: "Data kosong",
+        text: "Data yang anda cari tidak ditemukan",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    } else {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Berhasil",
+        text: "Pencarian data berhasil",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
 
     dispatch({
       type: GET_ALL_PRODUCT,

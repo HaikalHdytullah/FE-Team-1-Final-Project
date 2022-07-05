@@ -10,12 +10,27 @@ import Button from "@mui/material/Button";
 import SearchIcon from "@mui/icons-material/Search";
 import { Container, Typography } from "@mui/material";
 import "../css/kategori.css";
+import Swal from "sweetalert2";
 
 function Kategori() {
   const dispatch = useDispatch();
   const { product, status } = useSelector((state) => state.product);
 
   if (status === "" && product.length === 0) {
+    Swal.fire({
+      title: "Loading",
+      text: "Permintaan anda sedang diproses, harap tunggu sebentar",
+      icon: "info",
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      allowEnterKey: false,
+      showConfirmButton: false,
+      showCloseButton: false,
+      showCancelButton: false,
+      showClass: {
+        popup: "animate__animated animate__fadeInDown",
+      },
+    });
     dispatch(getAllProducts());
   }
 
@@ -45,6 +60,20 @@ function Kategori() {
     document
       .getElementById("filter-kesehatan")
       .classList.add("kategory-deactive");
+    Swal.fire({
+      title: "Loading",
+      text: "Permintaan anda sedang diproses, harap tunggu sebentar",
+      icon: "info",
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      allowEnterKey: false,
+      showConfirmButton: false,
+      showCloseButton: false,
+      showCancelButton: false,
+      showClass: {
+        popup: "animate__animated animate__fadeInDown",
+      },
+    });
     dispatch(getAllProducts());
   };
 
@@ -74,6 +103,20 @@ function Kategori() {
     document
       .getElementById("filter-kesehatan")
       .classList.add("kategory-deactive");
+    Swal.fire({
+      title: "Loading",
+      text: "Permintaan anda sedang diproses, harap tunggu sebentar",
+      icon: "info",
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      allowEnterKey: false,
+      showConfirmButton: false,
+      showCloseButton: false,
+      showCancelButton: false,
+      showClass: {
+        popup: "animate__animated animate__fadeInDown",
+      },
+    });
     dispatch(getProductByKategory(statusFilter));
   };
   const filterByVehicle = (event) => {
@@ -98,6 +141,20 @@ function Kategori() {
     document
       .getElementById("filter-kesehatan")
       .classList.add("kategory-deactive");
+    Swal.fire({
+      title: "Loading",
+      text: "Permintaan anda sedang diproses, harap tunggu sebentar",
+      icon: "info",
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      allowEnterKey: false,
+      showConfirmButton: false,
+      showCloseButton: false,
+      showCancelButton: false,
+      showClass: {
+        popup: "animate__animated animate__fadeInDown",
+      },
+    });
     dispatch(getProductByKategory(statusFilter));
   };
   const filterByCLothe = (event) => {
@@ -126,6 +183,20 @@ function Kategori() {
     document
       .getElementById("filter-kesehatan")
       .classList.add("kategory-deactive");
+    Swal.fire({
+      title: "Loading",
+      text: "Permintaan anda sedang diproses, harap tunggu sebentar",
+      icon: "info",
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      allowEnterKey: false,
+      showConfirmButton: false,
+      showCloseButton: false,
+      showCancelButton: false,
+      showClass: {
+        popup: "animate__animated animate__fadeInDown",
+      },
+    });
     dispatch(getProductByKategory(statusFilter));
   };
   const filterByElectronic = (event) => {
@@ -150,6 +221,20 @@ function Kategori() {
     document
       .getElementById("filter-kesehatan")
       .classList.add("kategory-deactive");
+    Swal.fire({
+      title: "Loading",
+      text: "Permintaan anda sedang diproses, harap tunggu sebentar",
+      icon: "info",
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      allowEnterKey: false,
+      showConfirmButton: false,
+      showCloseButton: false,
+      showCancelButton: false,
+      showClass: {
+        popup: "animate__animated animate__fadeInDown",
+      },
+    });
     dispatch(getProductByKategory(statusFilter));
   };
   const filterByHealth = (event) => {
@@ -174,6 +259,20 @@ function Kategori() {
     document
       .getElementById("filter-elektronik")
       .classList.add("kategory-deactive");
+    Swal.fire({
+      title: "Loading",
+      text: "Permintaan anda sedang diproses, harap tunggu sebentar",
+      icon: "info",
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      allowEnterKey: false,
+      showConfirmButton: false,
+      showCloseButton: false,
+      showCancelButton: false,
+      showClass: {
+        popup: "animate__animated animate__fadeInDown",
+      },
+    });
     dispatch(getProductByKategory(statusFilter));
   };
 

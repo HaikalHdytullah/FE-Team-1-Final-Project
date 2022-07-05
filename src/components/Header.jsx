@@ -29,6 +29,7 @@ import {
   getAllProducts,
   clearProduct,
 } from "../redux/actions/productsActions";
+import Swal from "sweetalert2";
 
 const NavbarComponent = () => {
   const dispatch = useDispatch();
@@ -54,9 +55,73 @@ const NavbarComponent = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     let keyword = document.getElementById("form-search").value;
+    if (window.location.pathname !== "/") {
+      if (keyword === "") {
+        Swal.fire({
+          title: "Loading",
+          text: "Mengambil data produk harap tunggu sebentar",
+          icon: "info",
+          allowOutsideClick: false,
+          allowEscapeKey: false,
+          allowEnterKey: false,
+          showConfirmButton: false,
+          showCloseButton: false,
+          showCancelButton: false,
+          showClass: {
+            popup: "animate__animated animate__fadeInDown",
+          },
+        });
+        dispatch(getAllProducts());
+      } else {
+        Swal.fire({
+          title: "Loading",
+          text: "Mengambil data produk harap tunggu sebentar",
+          icon: "info",
+          allowOutsideClick: false,
+          allowEscapeKey: false,
+          allowEnterKey: false,
+          showConfirmButton: false,
+          showCloseButton: false,
+          showCancelButton: false,
+          showClass: {
+            popup: "animate__animated animate__fadeInDown",
+          },
+        });
+        dispatch(getProductByNama(keyword));
+      }
+      return navigate("/");
+    }
     if (keyword === "") {
+      Swal.fire({
+        title: "Loading",
+        text: "Mengambil data produk harap tunggu sebentar",
+        icon: "info",
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        allowEnterKey: false,
+        showConfirmButton: false,
+        showCloseButton: false,
+        showCancelButton: false,
+        showClass: {
+          popup: "animate__animated animate__fadeInDown",
+        },
+      });
       dispatch(getAllProducts());
     } else {
+      Swal.fire({
+        title: "Loading",
+        text: "Mengambil data produk harap tunggu sebentar",
+        icon: "info",
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        allowEnterKey: false,
+        showConfirmButton: false,
+        showCloseButton: false,
+        showCancelButton: false,
+        showClass: {
+          popup: "animate__animated animate__fadeInDown",
+        },
+      });
       dispatch(getProductByNama(keyword));
     }
   };
