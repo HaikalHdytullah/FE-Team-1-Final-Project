@@ -129,6 +129,7 @@ const NavbarComponent = () => {
   const handleHome = async (e) => {
     e.preventDefault();
     dispatch(clearProduct());
+    dispatch(getAllProducts());
     return navigate("/");
   };
 
