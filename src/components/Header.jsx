@@ -78,7 +78,7 @@ const NavbarComponent = () => {
         >
           <Container className="navbar-body">
             <Navbar.Brand>
-              <Button onClick={handleHome}>
+              <Button onClick={handleHome} className="btn-home">
                 <img src={Brand} alt="" />
               </Button>
             </Navbar.Brand>

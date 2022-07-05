@@ -9,6 +9,16 @@
   width: 105px;
   height: 48px;
 }
+.btn-home {
+  outline: none;
+  border-style: none;
+}
+.btn-home:hover,
+.btn-home:active,
+.btn-home:focus {
+  background-color: #7126b5;
+}
+
 .button-link img {
   margin-right: 5px;
   margin-bottom: 3px;
