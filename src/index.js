@@ -14,7 +14,7 @@ import Preview from "./pages/Preview";
 import AddProduct from "./pages/InfoProduct";
 import EditProfile from "./pages/EditProfile";
 import NotFound from "./components/404";
-
+import DaftarJual from "./pages//DaftarJual";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import { GoogleOAuthProvider } from "@react-oauth/google";
@@ -39,6 +39,7 @@ root.render(
         <Route path="/preview" element={<Preview />} />
         <Route path="/addproduct" element={<AddProduct />} />
         <Route path="/profile" element={<EditProfile />} />
+        <Route path="/daftarjual" element={<DaftarJual />}></Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
