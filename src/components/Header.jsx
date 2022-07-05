@@ -27,6 +27,7 @@ import "../css/header.css";
 import {
   getProductByNama,
   getAllProducts,
+  clearProduct,
 } from "../redux/actions/productsActions";
 
 const NavbarComponent = () => {
@@ -60,6 +61,12 @@ const NavbarComponent = () => {
     }
   };
 
+  const handleHome = async (e) => {
+    e.preventDefault();
+    dispatch(clearProduct());
+    return navigate("/");
+  };
+
   return (
     <div className="navbar-component py-1">
       {["md"].map((expand) => (
@@ -71,9 +78,9 @@ const NavbarComponent = () => {
         >
           <Container className="navbar-body">
             <Navbar.Brand>
-              <Link to="/">
+              <Button onClick={handleHome}>
                 <img src={Brand} alt="" />
-              </Link>
+              </Button>
             </Navbar.Brand>
 
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />

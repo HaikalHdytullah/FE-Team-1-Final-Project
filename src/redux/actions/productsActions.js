@@ -7,6 +7,7 @@ import {
   PREVIEW_PRODUCT,
   CLEAR_PRODUCT,
   PRODUCT_ERROR,
+  CLEAR_STATUS_PRODUCT,
 } from "./types";
 
 export const getAllProducts = () => async (dispatch) => {
@@ -53,6 +54,7 @@ export const getProductById = (params) => async (dispatch) => {
     dispatch({
       type: GET_PRODUCT,
       payload: data,
+      status: "Get Product",
     });
   } catch (error) {
     dispatch({
@@ -295,6 +297,11 @@ export const updateProduct = (data) => async (dispatch) => {
 export const clearProduct = () => async (dispatch) => {
   dispatch({
     type: CLEAR_PRODUCT,
+  });
+};
+export const clearStatusProduct = () => async (dispatch) => {
+  dispatch({
+    type: CLEAR_STATUS_PRODUCT,
   });
 };
 
