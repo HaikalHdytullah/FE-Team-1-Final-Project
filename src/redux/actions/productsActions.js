@@ -69,6 +69,14 @@ export const getProductById = (params) => async (dispatch) => {
         })
     );
     const data = await response.json();
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Berhasil",
+      text: "Pencarian data berhasil",
+      showConfirmButton: false,
+      timer: 1500,
+    });
 
     dispatch({
       type: GET_PRODUCT,

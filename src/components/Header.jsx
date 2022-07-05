@@ -129,6 +129,20 @@ const NavbarComponent = () => {
   const handleHome = async (e) => {
     e.preventDefault();
     dispatch(clearProduct());
+    Swal.fire({
+      title: "Loading",
+      text: "Mengambil data produk harap tunggu sebentar",
+      icon: "info",
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      allowEnterKey: false,
+      showConfirmButton: false,
+      showCloseButton: false,
+      showCancelButton: false,
+      showClass: {
+        popup: "animate__animated animate__fadeInDown",
+      },
+    });
     dispatch(getAllProducts());
     return navigate("/");
   };

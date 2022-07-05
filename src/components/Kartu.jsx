@@ -9,6 +9,7 @@ import { getProductById } from "../redux/actions/productsActions";
 import { Typography } from "@mui/material";
 
 import "../css/kartuHomepage.css";
+import Swal from "sweetalert2";
 
 const Kartu = () => {
   const { product, status } = useSelector((state) => state.product);
@@ -16,6 +17,21 @@ const Kartu = () => {
   const navigate = useNavigate();
 
   const handleSubmit = (id) => {
+    Swal.fire({
+      title: "Loading",
+      text: "Mengambil data produk harap tunggu sebentar",
+      icon: "info",
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      allowEnterKey: false,
+      showConfirmButton: false,
+      showCloseButton: false,
+      showCancelButton: false,
+      showClass: {
+        popup: "animate__animated animate__fadeInDown",
+      },
+    });
+    localStorage.setItem("productId", id);
     dispatch(getProductById(id));
   };
 
