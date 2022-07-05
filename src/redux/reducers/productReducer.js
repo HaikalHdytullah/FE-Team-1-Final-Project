@@ -6,11 +6,12 @@ import {
   PRODUCT_ERROR,
   UPDATE_PRODUCT,
   CLEAR_PRODUCT,
+  CLEAR_STATUS_PRODUCT,
 } from "../actions/types";
 
 const initialState = {
   product: [],
-  detailProduct: [],
+  productdetail: [],
   newproduct: [],
   previewProduct: [],
   status: "",
@@ -25,11 +26,23 @@ const productReducer = (state = initialState, action) => {
         product: action.payload,
         status: action.status,
       };
+    case GET_PRODUCT:
+      return {
+        ...state,
+        productdetail: action.payload,
+        status: action.status,
+      };
     case CREATE_PRODUCT:
       return {
         ...state,
         newproduct: action.payload,
-        status: "Created",
+        status: action.status,
+      };
+    case UPDATE_PRODUCT:
+      return {
+        ...state,
+        newproduct: action.payload,
+        status: action.status,
       };
     case PREVIEW_PRODUCT:
       return {
@@ -39,10 +52,16 @@ const productReducer = (state = initialState, action) => {
     case CLEAR_PRODUCT:
       return {
         ...state,
-        detailProduct: [],
+        productdetail: [],
         newproduct: [],
         previewProduct: [],
+        status: "",
         error: null,
+      };
+    case CLEAR_STATUS_PRODUCT:
+      return {
+        ...state,
+        status: "",
       };
     case PRODUCT_ERROR:
       return {

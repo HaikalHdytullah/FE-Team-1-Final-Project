@@ -9,6 +9,16 @@
   width: 105px;
   height: 48px;
 }
+.btn-home {
+  outline: none;
+  border-style: none;
+}
+.btn-home:hover,
+.btn-home:active,
+.btn-home:focus {
+  background-color: #7126b5;
+}
+
 .button-link img {
   margin-right: 5px;
   margin-bottom: 3px;
@@ -73,4 +83,14 @@
   color: black !important;
   border: 0px !important;
   box-shadow: 0px !important;
+}
+
+.search-wrapper {
+  position: relative;
+}
+
+.search-wrapper img {
+  position: absolute;
+  top: 21%;
+  left: 92%;
 }

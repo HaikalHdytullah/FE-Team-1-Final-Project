@@ -7,7 +7,7 @@ import { useNavigate, Navigate } from "react-router-dom";
 import "../css/addProduct.css";
 import "../css/Profile.css";
 import Swal from "sweetalert2";
-import { updateInfoUsers } from "../redux/actions/authActions";
+import { updateInfoUsers, clearStatus } from "../redux/actions/authActions";
 
 const ProfileForm = () => {
   const dispatch = useDispatch();
@@ -76,10 +76,6 @@ const ProfileForm = () => {
     }
   }
 
-  if (status === "Updated") {
-    return navigate("/");
-  }
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     Swal.fire({
@@ -107,6 +103,10 @@ const ProfileForm = () => {
       })
     );
   };
+  if (status === "Updated") {
+    dispatch(clearStatus());
+    return navigate("/");
+  }
   return (
     <Container className="w-50 my-5 ">
       <div className="image-upload d-flex justify-content-center">

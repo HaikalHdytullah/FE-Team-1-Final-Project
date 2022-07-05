@@ -1,13 +1,13 @@
-import NavbarProduct from "../components/NavbarProduct";
 import PreviewProduct from "../components/PreviewProduct";
+import Header from "../components/Header";
 
 const Preview = () => {
-    return (
-        <>
-        <NavbarProduct />
-        <PreviewProduct />
-        </>
-    );
-}
+  return (
+    <>
+      <Header />
+      <PreviewProduct />
+    </>
+  );
+};
 
 export default Preview;

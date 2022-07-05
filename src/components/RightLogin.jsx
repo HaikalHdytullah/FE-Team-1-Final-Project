@@ -6,14 +6,18 @@ import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { useGoogleLogin } from "@react-oauth/google";
-import { login, loginWithGoogle } from "../redux/actions/authActions";
+import {
+  login,
+  loginWithGoogle,
+  clearStatus,
+} from "../redux/actions/authActions";
 
 import Swal from "sweetalert2";
 
 function RightLogin() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { error } = useSelector((state) => state.auth);
+  const { error, status } = useSelector((state) => state.auth);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -65,7 +69,6 @@ function RightLogin() {
         },
       });
       dispatch(login({ email, password }));
-      return navigate("/");
     }
   };
 
@@ -86,13 +89,16 @@ function RightLogin() {
         },
       });
       dispatch(loginWithGoogle(tokenResponse.access_token));
-      return navigate("/");
     },
     onError: (error) => {
       alert(error);
     },
   });
 
+  if (status === "login success") {
+    navigate("/");
+    dispatch(clearStatus());
+  }
   return (
     <>
       <Container className="form-container">

@@ -27,7 +27,9 @@ import "../css/header.css";
 import {
   getProductByNama,
   getAllProducts,
+  clearProduct,
 } from "../redux/actions/productsActions";
+import Swal from "sweetalert2";
 
 const NavbarComponent = () => {
   const dispatch = useDispatch();
@@ -50,13 +52,85 @@ const NavbarComponent = () => {
     }
   }, 5 * 60000);
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     let keyword = document.getElementById("form-search").value;
+    if (window.location.pathname !== "/") {
+      if (keyword === "") {
+        Swal.fire({
+          title: "Loading",
+          text: "Mengambil data produk harap tunggu sebentar",
+          icon: "info",
+          allowOutsideClick: false,
+          allowEscapeKey: false,
+          allowEnterKey: false,
+          showConfirmButton: false,
+          showCloseButton: false,
+          showCancelButton: false,
+          showClass: {
+            popup: "animate__animated animate__fadeInDown",
+          },
+        });
+        dispatch(getAllProducts());
+      } else {
+        Swal.fire({
+          title: "Loading",
+          text: "Mengambil data produk harap tunggu sebentar",
+          icon: "info",
+          allowOutsideClick: false,
+          allowEscapeKey: false,
+          allowEnterKey: false,
+          showConfirmButton: false,
+          showCloseButton: false,
+          showCancelButton: false,
+          showClass: {
+            popup: "animate__animated animate__fadeInDown",
+          },
+        });
+        dispatch(getProductByNama(keyword));
+      }
+      return navigate("/");
+    }
     if (keyword === "") {
+      Swal.fire({
+        title: "Loading",
+        text: "Mengambil data produk harap tunggu sebentar",
+        icon: "info",
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        allowEnterKey: false,
+        showConfirmButton: false,
+        showCloseButton: false,
+        showCancelButton: false,
+        showClass: {
+          popup: "animate__animated animate__fadeInDown",
+        },
+      });
       dispatch(getAllProducts());
     } else {
+      Swal.fire({
+        title: "Loading",
+        text: "Mengambil data produk harap tunggu sebentar",
+        icon: "info",
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        allowEnterKey: false,
+        showConfirmButton: false,
+        showCloseButton: false,
+        showCancelButton: false,
+        showClass: {
+          popup: "animate__animated animate__fadeInDown",
+        },
+      });
       dispatch(getProductByNama(keyword));
     }
+  };
+
+  const handleHome = async (e) => {
+    e.preventDefault();
+    dispatch(clearProduct());
+    dispatch(getAllProducts());
+    return navigate("/");
   };
 
   return (
@@ -70,9 +144,9 @@ const NavbarComponent = () => {
         >
           <Container className="navbar-body">
             <Navbar.Brand>
-              <Link to="/">
+              <Button onClick={handleHome} className="btn-home">
                 <img src={Brand} alt="" />
-              </Link>
+              </Button>
             </Navbar.Brand>
 
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
@@ -92,20 +166,16 @@ const NavbarComponent = () => {
                       {/* Search Box */}
                       <div className="search-box me-auto">
                         <InputGroup>
-                          <Form.Control
-                            id="form-search"
-                            placeholder="Cari di sini ..."
-                            className="search-box-field"
-                          />
-                          <Button
-                            type="submit"
-                            variant="light"
-                            id="button-addon2"
-                            className="search-box-button"
-                            onClick={handleSubmit}
-                          >
-                            <img src={SearchIcon} alt="" />
-                          </Button>
+                          <Form onSubmit={handleSubmit}>
+                            <div className="search-wrapper">
+                              <Form.Control
+                                id="form-search"
+                                placeholder="Cari di sini ..."
+                                className="search-box-field"
+                              />
+                              <img src={SearchIcon} alt="" />
+                            </div>
+                          </Form>
                         </InputGroup>
                       </div>
                       {/* Login */}
@@ -123,20 +193,16 @@ const NavbarComponent = () => {
                       {/* Search Box */}
                       <div className="search-box me-auto">
                         <InputGroup>
-                          <Form.Control
-                            id="form-search"
-                            placeholder="Cari di sini ..."
-                            className="search-box-field"
-                          />
-                          <Button
-                            type="submit"
-                            variant="light"
-                            id="button-addon2"
-                            className="search-box-button"
-                            onClick={handleSubmit}
-                          >
-                            <img src={SearchIcon} alt="" />
-                          </Button>
+                          <Form onSubmit={handleSubmit}>
+                            <div className="search-wrapper">
+                              <Form.Control
+                                id="form-search"
+                                placeholder="Cari di sini ..."
+                                className="search-box-field"
+                              />
+                              <img src={SearchIcon} alt="" />
+                            </div>
+                          </Form>
                         </InputGroup>
                       </div>
                       {/* Menu */}
