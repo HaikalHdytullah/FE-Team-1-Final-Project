@@ -14,3 +14,15 @@
 .carousel-img {
   object-fit: cover;
 }
+
+.btn-back {
+  outline: none;
+  border-style: none;
+  color: black;
+  transition: none !important;
+}
+
+.btn-back:hover {
+  background-color: unset !important;
+  color: unset !important;
+}

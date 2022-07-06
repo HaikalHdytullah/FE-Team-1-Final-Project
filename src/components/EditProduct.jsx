@@ -261,6 +261,11 @@ const InfoProduk = () => {
     }
   }
 
+  const handleBack = async () => {
+    dispatch(clearProduct());
+    return navigate("/");
+  };
+
   function handleClose() {
     setFullscreen(false);
     setShow(false);
@@ -272,9 +277,9 @@ const InfoProduk = () => {
         <Col sm={10} className="mx-auto">
           <Row className="gx-5">
             <Col sm={2} className="text-center">
-              <Link to="/">
+              <Button className="btn-back" onClick={handleBack}>
                 <FiArrowLeft size={25} />
-              </Link>
+              </Button>
             </Col>
             <Col sm={8}>
               <Row>

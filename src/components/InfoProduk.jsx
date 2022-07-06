@@ -266,15 +266,20 @@ const InfoProduk = () => {
     setShow(false);
   }
 
+  const handleBack = async () => {
+    dispatch(clearProduct());
+    return navigate("/");
+  };
+
   return (
     <Container>
       <Row className="mt-5">
         <Col sm={10} className="mx-auto">
           <Row className="gx-5">
             <Col sm={2} className="text-center">
-              <Link to="/">
+              <Button className="btn-back" onClick={handleBack}>
                 <FiArrowLeft size={25} />
-              </Link>
+              </Button>
             </Col>
             <Col sm={8}>
               <Row>

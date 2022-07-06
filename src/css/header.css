@@ -17,6 +17,8 @@
 .btn-home:active,
 .btn-home:focus {
   background-color: #7126b5;
+  background-color: unset !important;
+  color: unset !important;
 }
 
 .button-link img {

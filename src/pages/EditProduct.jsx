@@ -1,5 +1,5 @@
 import React from "react";
-import EditProduk from "../components/EditProduk";
+import EditProduk from "../components/EditProduct";
 import Header from "../components/Header";
 
 export default function InfoProduct() {

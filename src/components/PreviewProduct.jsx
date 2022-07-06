@@ -31,6 +31,10 @@ const PreviewProduct = () => {
       dispatch(getProductById(productId.id));
     }, 1000);
   }
+  let id = useParams();
+  const handleEdit = async () => {
+    return navigate("/editproduct/" + id.id);
+  };
   return (
     <>
       {productdetail.length === 0 ? (
@@ -88,6 +92,7 @@ const PreviewProduct = () => {
                             <Button
                               className="button-edit fw-semibold mb-4 text-black"
                               style={{ backgroundColor: "white" }}
+                              onClick={handleEdit}
                             >
                               Edit
                             </Button>
