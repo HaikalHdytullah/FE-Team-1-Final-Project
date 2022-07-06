@@ -37,7 +37,7 @@ root.render(
         />
         <Route path="/register" element={<Register />} />
         <Route path="/" element={<LandingPage />} />
-        <Route path="/preview" element={<Preview />} />
+        <Route path="/preview/:id" element={<Preview />} />
         <Route path="/addproduct" element={<AddProduct />} />
         <Route path="/profile" element={<EditProfile />} />
         <Route path="/daftarjual" element={<DaftarJual />}></Route>

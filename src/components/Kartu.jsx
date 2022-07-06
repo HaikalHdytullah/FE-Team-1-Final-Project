@@ -12,7 +12,9 @@ import "../css/kartuHomepage.css";
 import Swal from "sweetalert2";
 
 const Kartu = () => {
-  const { product, status } = useSelector((state) => state.product);
+  const { product, status, productdetail } = useSelector(
+    (state) => state.product
+  );
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -31,16 +33,15 @@ const Kartu = () => {
         popup: "animate__animated animate__fadeInDown",
       },
     });
-    localStorage.setItem("productId", id);
     dispatch(getProductById(id));
   };
 
   if (status === "Get Product") {
-    return navigate("/preview");
+    return navigate("/preview/" + productdetail.id);
   }
 
   return (
-    <Container>
+    <Container className="mb-5">
       <Row>
         {product.length === 0 ? (
           <>

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import NavbarProduct from "../components/NavbarProduct";
 import "../css/DaftarJual/DaftarJual.css";
 import SemuaProduk from "../components/DaftarJual/SemuaProduk";
 import DiminatiNotFound from "../components/DaftarJual/DiminatiNotFound";
@@ -8,11 +7,12 @@ import Diminati from "../components/DaftarJual/Diminati";
 import Terjual from "../components/DaftarJual/Terjual";
 import DaftarJualHeader from "../components/DaftarJual/DaftarJualHeader";
 import SidebarDaftarJual from "../components/DaftarJual/SidebarDaftarJual";
+import Header from "../components/Header";
 
 function DaftarJual() {
   return (
     <div>
-      <NavbarProduct />
+      <Header />
       <div className="container mt-5">
         <DaftarJualHeader />
         <div className="row">

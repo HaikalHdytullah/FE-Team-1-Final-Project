@@ -231,7 +231,9 @@ const NavbarComponent = () => {
                           <Dropdown.Item onClick={() => navigate("/")}>
                             Beranda
                           </Dropdown.Item>
-                          <Dropdown.Item onClick={() => navigate("/")}>
+                          <Dropdown.Item
+                            onClick={() => navigate("/daftarjual")}
+                          >
                             Daftar Jual
                           </Dropdown.Item>
                         </Dropdown.Menu>

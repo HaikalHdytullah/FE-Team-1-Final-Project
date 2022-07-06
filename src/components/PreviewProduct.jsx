@@ -2,7 +2,7 @@ import { Carousel, Row, Col, Container, Button } from "react-bootstrap";
 import "../css/Preview.css";
 
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getProductById } from "../redux/actions/productsActions";
 
 const PreviewProduct = () => {
@@ -10,9 +10,9 @@ const PreviewProduct = () => {
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
   const { productdetail } = useSelector((state) => state.product);
-  let productId = localStorage.getItem("productId");
+  let productId = useParams();
   if (productdetail.length === 0) {
-    dispatch(getProductById(productId));
+    dispatch(getProductById(productId.id));
   }
   return (
     <>

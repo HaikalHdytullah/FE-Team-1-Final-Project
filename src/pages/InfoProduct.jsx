@@ -1,11 +1,11 @@
 import React from "react";
-import NavbarInfoProduct from "../components/NavbarInfoProduct";
 import InfoProduk from "../components/InfoProduk";
+import Header from "../components/Header";
 
 export default function InfoProduct() {
   return (
     <>
-      <NavbarInfoProduct />
+      <Header />
       <InfoProduk />
     </>
   );
