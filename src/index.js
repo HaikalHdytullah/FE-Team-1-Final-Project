@@ -13,6 +13,7 @@ import Register from "./pages/Register";
 import Preview from "./pages/Preview";
 import AddProduct from "./pages/InfoProduct";
 import EditProfile from "./pages/EditProfile";
+import EditProduk from "./components/EditProduk";
 import HalamanProduct from "./pages/HalamanProduct";
 import NotFound from "./components/404";
 import DaftarJual from "./pages//DaftarJual";
@@ -41,6 +42,7 @@ root.render(
         <Route path="/addproduct" element={<AddProduct />} />
         <Route path="/profile" element={<EditProfile />} />
         <Route path="/daftarjual" element={<DaftarJual />}></Route>
+        <Route path="/editproduct/:id" element={<EditProduk />}></Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

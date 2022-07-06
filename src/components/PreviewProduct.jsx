@@ -4,6 +4,7 @@ import "../css/Preview.css";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { getProductById } from "../redux/actions/productsActions";
+import Swal from "sweetalert2";
 
 const PreviewProduct = () => {
   const dispatch = useDispatch();
@@ -12,7 +13,23 @@ const PreviewProduct = () => {
   const { productdetail } = useSelector((state) => state.product);
   let productId = useParams();
   if (productdetail.length === 0) {
-    dispatch(getProductById(productId.id));
+    setTimeout(() => {
+      Swal.fire({
+        title: "Loading",
+        text: "Mengambil data produk harap tunggu sebentar",
+        icon: "info",
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        allowEnterKey: false,
+        showConfirmButton: false,
+        showCloseButton: false,
+        showCancelButton: false,
+        showClass: {
+          popup: "animate__animated animate__fadeInDown",
+        },
+      });
+      dispatch(getProductById(productId.id));
+    }, 1000);
   }
   return (
     <>
@@ -64,7 +81,7 @@ const PreviewProduct = () => {
                     <p className="fw-bold text-family ps-4 pt-3">
                       Rp {productdetail.harga}
                     </p>
-                    {localStorage.getItem("token") ? (
+                    {localStorage.getItem("token") && user.length > 0 ? (
                       <>
                         {productdetail.user.id === user.id ? (
                           <div className="d-grid mt-4 gap-3">
