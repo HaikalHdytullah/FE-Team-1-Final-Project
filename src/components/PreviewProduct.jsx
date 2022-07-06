@@ -81,7 +81,7 @@ const PreviewProduct = () => {
                     <p className="fw-bold text-family ps-4 pt-3">
                       Rp {productdetail.harga}
                     </p>
-                    {localStorage.getItem("token") && user.length > 0 ? (
+                    {localStorage.getItem("token") && user ? (
                       <>
                         {productdetail.user.id === user.id ? (
                           <div className="d-grid mt-4 gap-3">
