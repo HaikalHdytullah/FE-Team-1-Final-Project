@@ -13,3 +13,8 @@
 .font-weight {
   font-weight: 500;
 }
+
+#kota {
+  margin-left: 0 !important;
+  font-size: 1rem !important;
+}
