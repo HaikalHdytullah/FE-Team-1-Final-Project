@@ -504,26 +504,32 @@ const InfoProduk = () => {
                             className="mt-4 pt-3 shadow-sm"
                             style={{ borderRadius: "20px" }}
                           >
-                            <Col lg={2} sm={3} className="me-3">
-                              <div className="layout-foto">
-                                <img
-                                  className="foto"
-                                  src={user.gambar}
-                                  alt="Foto Profile"
-                                />
-                              </div>
-                            </Col>
-                            <Col lg={9} sm={10}>
-                              <p className="fw-bold text-family ps-3 fs-6">
-                                {user.nama}
-                              </p>
-                              <p
-                                className="text-color ps-3 fs-6 pt-2 pb-2"
-                                style={{ marginTop: "-5px" }}
-                              >
-                                {user.kota}
-                              </p>
-                            </Col>
+                            {user ? (
+                              <>
+                                <Col lg={2} sm={3} className="me-3">
+                                  <div className="layout-foto">
+                                    <img
+                                      className="foto"
+                                      src={user.gambar}
+                                      alt="Foto Profile"
+                                    />
+                                  </div>
+                                </Col>
+                                <Col lg={9} sm={10}>
+                                  <p className="fw-bold text-family ps-3 fs-6">
+                                    {user.nama}
+                                  </p>
+                                  <p
+                                    className="text-color ps-3 fs-6 pt-2 pb-2"
+                                    style={{ marginTop: "-5px" }}
+                                  >
+                                    {user.kota}
+                                  </p>
+                                </Col>
+                              </>
+                            ) : (
+                              <></>
+                            )}
                           </Row>
                         </Col>
                       </Row>
