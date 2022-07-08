@@ -16,7 +16,9 @@ function Kategori() {
   const dispatch = useDispatch();
   const { product, status } = useSelector((state) => state.product);
 
-  if (status === "" && product.length === 0) {
+  // if (status === "" && product.length === 0) {
+  // }
+  if (status !== "produk kosong") {
     Swal.fire({
       title: "Loading",
       text: "Mengambil data produk harap tunggu sebentar",
@@ -285,67 +287,69 @@ function Kategori() {
     };
 
     return (
-      <Container>
-        <Typography variant="h6" sx={{ marginTop: 5 }}>
-          Telusuri Kategori
-        </Typography>
-        <div className="d-flex justify-content-start scroll py-3">
-          <Button
-            sx={{ borderRadius: "10px" }}
-            startIcon={<SearchIcon />}
-            id="filter-all"
-            className="kategory-active btn-kategory me-2"
-            onClick={filterAll}
-          >
-            Semua
-          </Button>
-          <Button
-            sx={{ borderRadius: "10px" }}
-            startIcon={<SearchIcon />}
-            id="filter-hobi"
-            className="kategory-deactive btn-kategory me-2"
-            onClick={filterByHobby}
-          >
-            Hobi
-          </Button>
-          <Button
-            sx={{ borderRadius: "10px" }}
-            startIcon={<SearchIcon />}
-            id="filter-kendaraan"
-            className="kategory-deactive btn-kategory me-2"
-            onClick={filterByVehicle}
-          >
-            Kendaraan
-          </Button>
-          <Button
-            className="kategory-deactive btn-kategory me-2"
-            id="filter-baju"
-            sx={{ borderRadius: "10px" }}
-            startIcon={<SearchIcon />}
-            onClick={filterByCLothe}
-          >
-            Baju
-          </Button>
-          <Button
-            className="kategory-deactive btn-kategory me-2"
-            sx={{ borderRadius: "10px" }}
-            startIcon={<SearchIcon />}
-            id="filter-elektronik"
-            onClick={filterByElectronic}
-          >
-            Elektronik
-          </Button>
-          <Button
-            className="kategory-deactive btn-kategory me-2"
-            sx={{ borderRadius: "10px" }}
-            id="filter-kesehatan"
-            startIcon={<SearchIcon />}
-            onClick={filterByHealth}
-          >
-            Kesehatan
-          </Button>
-        </div>
-      </Container>
+      <>
+        <Container>
+          <Typography variant="h6" sx={{ marginTop: 5 }}>
+            Telusuri Kategori
+          </Typography>
+          <div className="d-flex justify-content-start scroll py-3">
+            <Button
+              sx={{ borderRadius: "10px" }}
+              startIcon={<SearchIcon />}
+              id="filter-all"
+              className="kategory-active btn-kategory me-2"
+              onClick={filterAll}
+            >
+              Semua
+            </Button>
+            <Button
+              sx={{ borderRadius: "10px" }}
+              startIcon={<SearchIcon />}
+              id="filter-hobi"
+              className="kategory-deactive btn-kategory me-2"
+              onClick={filterByHobby}
+            >
+              Hobi
+            </Button>
+            <Button
+              sx={{ borderRadius: "10px" }}
+              startIcon={<SearchIcon />}
+              id="filter-kendaraan"
+              className="kategory-deactive btn-kategory me-2"
+              onClick={filterByVehicle}
+            >
+              Kendaraan
+            </Button>
+            <Button
+              className="kategory-deactive btn-kategory me-2"
+              id="filter-baju"
+              sx={{ borderRadius: "10px" }}
+              startIcon={<SearchIcon />}
+              onClick={filterByCLothe}
+            >
+              Baju
+            </Button>
+            <Button
+              className="kategory-deactive btn-kategory me-2"
+              sx={{ borderRadius: "10px" }}
+              startIcon={<SearchIcon />}
+              id="filter-elektronik"
+              onClick={filterByElectronic}
+            >
+              Elektronik
+            </Button>
+            <Button
+              className="kategory-deactive btn-kategory me-2"
+              sx={{ borderRadius: "10px" }}
+              id="filter-kesehatan"
+              startIcon={<SearchIcon />}
+              onClick={filterByHealth}
+            >
+              Kesehatan
+            </Button>
+          </div>
+        </Container>
+      </>
     );
   };
 }

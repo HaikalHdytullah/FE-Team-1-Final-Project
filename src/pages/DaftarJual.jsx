@@ -18,9 +18,9 @@ function DaftarJual() {
         <div className="row">
           <SidebarDaftarJual />
           <div className="col-lg-9">
-            {/* <SemuaProduk/> */}
+            <SemuaProduk />
             {/* <DiminatiNotFound /> */}
-            <TerjualNotFound />
+            {/* <TerjualNotFound /> */}
             {/* <Diminati /> */}
             {/* <Terjual /> */}
           </div>

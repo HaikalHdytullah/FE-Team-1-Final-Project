@@ -67,6 +67,7 @@ const productReducer = (state = initialState, action) => {
       return {
         ...state,
         error: action.payload,
+        status: action.status,
       };
     default:
       return state;

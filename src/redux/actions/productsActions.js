@@ -19,7 +19,8 @@ export const getAllProducts = () => async (dispatch) => {
       }
     );
     const data = await response.json();
-    if (data.length === 0) {
+    console.log(data);
+    if (data.message === "Product is Empty") {
       Swal.fire({
         position: "center",
         icon: "warning",
@@ -27,6 +28,11 @@ export const getAllProducts = () => async (dispatch) => {
         text: "Data yang anda cari tidak ditemukan",
         showConfirmButton: false,
         timer: 1500,
+      });
+      return dispatch({
+        type: GET_ALL_PRODUCT,
+        payload: "",
+        status: "produk kosong",
       });
     } else {
       Swal.fire({
@@ -47,6 +53,7 @@ export const getAllProducts = () => async (dispatch) => {
     dispatch({
       type: PRODUCT_ERROR,
       payload: error.response,
+      status: "produk kosong",
     });
     Swal.fire({
       position: "center",
