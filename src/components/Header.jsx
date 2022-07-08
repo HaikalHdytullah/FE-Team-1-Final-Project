@@ -52,6 +52,10 @@ const NavbarComponent = () => {
     }
   }, 5 * 60000);
 
+  const handleLoginButton = async () => {
+    dispatch(clearProduct());
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     let keyword = document.getElementById("form-search").value;
@@ -194,7 +198,7 @@ const NavbarComponent = () => {
                       </div>
                       {/* Login */}
                       <div className="fw-bold">
-                        <Link to="/login">
+                        <Link to="/login" onClick={handleLoginButton}>
                           <Button className="button-link border-0">
                             <img src={LoginIcon} alt="" />
                             Masuk

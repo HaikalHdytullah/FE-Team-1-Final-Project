@@ -7,6 +7,7 @@ import {
   UPDATE_PRODUCT,
   CLEAR_PRODUCT,
   CLEAR_STATUS_PRODUCT,
+  DELETE_PRODUCT,
 } from "../actions/types";
 
 const initialState = {
@@ -44,6 +45,11 @@ const productReducer = (state = initialState, action) => {
         newproduct: action.payload,
         status: action.status,
       };
+    case DELETE_PRODUCT:
+      return {
+        ...state,
+        status: action.status,
+      };
     case PREVIEW_PRODUCT:
       return {
         ...state,
@@ -67,6 +73,7 @@ const productReducer = (state = initialState, action) => {
       return {
         ...state,
         error: action.payload,
+        status: action.status,
       };
     default:
       return state;

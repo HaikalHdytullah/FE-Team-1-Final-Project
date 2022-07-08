@@ -172,7 +172,6 @@ const InfoProduk = () => {
 
     dispatch(
       addProduct({
-        idUser: 2,
         nama,
         harga,
         kategori,
@@ -307,7 +306,7 @@ const InfoProduk = () => {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="block">Category</label>
+                    <label className="block">Kategori</label>
                     <label className="relative block">
                       <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-neutral-03">
                         <FiChevronDown />

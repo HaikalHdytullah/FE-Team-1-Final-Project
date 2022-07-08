@@ -8,6 +8,7 @@ import {
   CLEAR_PRODUCT,
   PRODUCT_ERROR,
   CLEAR_STATUS_PRODUCT,
+  DELETE_PRODUCT,
 } from "./types";
 
 export const getAllProducts = () => async (dispatch) => {
@@ -19,7 +20,7 @@ export const getAllProducts = () => async (dispatch) => {
       }
     );
     const data = await response.json();
-    if (data.length === 0) {
+    if (data.message === "Product is Empty") {
       Swal.fire({
         position: "center",
         icon: "warning",
@@ -27,6 +28,11 @@ export const getAllProducts = () => async (dispatch) => {
         text: "Data yang anda cari tidak ditemukan",
         showConfirmButton: false,
         timer: 1500,
+      });
+      return dispatch({
+        type: GET_ALL_PRODUCT,
+        payload: "",
+        status: "produk kosong",
       });
     } else {
       Swal.fire({
@@ -47,6 +53,7 @@ export const getAllProducts = () => async (dispatch) => {
     dispatch({
       type: PRODUCT_ERROR,
       payload: error.response,
+      status: "produk kosong",
     });
     Swal.fire({
       position: "center",
@@ -201,11 +208,63 @@ export const getProductByKategory = (params) => async (dispatch) => {
     });
   }
 };
+export const getProductsByMinatAndSeller = (params) => async (dispatch) => {
+  try {
+    const idUser = params.idUser;
+    const minat = params.minat;
+    const response = await fetch(
+      process.env.REACT_APP_BACKEND_URL +
+        "/api/v1/product/minat?" +
+        new URLSearchParams({
+          idUser,
+          minat,
+        })
+    );
+    const data = await response.json();
+    if (data.length === 0) {
+      Swal.fire({
+        position: "center",
+        icon: "warning",
+        title: "Data kosong",
+        text: "Data yang anda cari tidak ditemukan",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    } else {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Berhasil",
+        text: "Pencarian data berhasil",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+
+    dispatch({
+      type: GET_ALL_PRODUCT,
+      payload: data,
+      status: "Get All My Products",
+    });
+  } catch (error) {
+    dispatch({
+      type: PRODUCT_ERROR,
+      payload: error.response,
+    });
+
+    Swal.fire({
+      position: "center",
+      icon: "error",
+      title: error.message,
+      showConfirmButton: false,
+      timer: 1500,
+    });
+  }
+};
 
 export const addProduct = (data) => async (dispatch) => {
   try {
     var formdata = new FormData();
-    formdata.append("idUser", data.idUser);
     formdata.append("nama", data.nama);
     formdata.append("harga", data.harga);
     formdata.append("kategori", data.kategori);
@@ -284,19 +343,23 @@ export const addProduct = (data) => async (dispatch) => {
 export const updateProduct = (data) => async (dispatch) => {
   try {
     var formdata = new FormData();
-    formdata.append("idUser", data.idUser);
     formdata.append("nama", data.nama);
     formdata.append("harga", data.harga);
     formdata.append("kategori", data.kategori);
     formdata.append("deskripsi", data.deskripsi);
-    if (data.gambar.length > 0) {
-      for (var i = 0; i < data.gambar.length; i++) {
-        if (
-          data.gambar[i].type === "image/jpeg" ||
-          data.gambar[i].type === "image/png"
-        ) {
-          formdata.append("gambar", data.gambar[i]);
-        }
+    // Upload File Image
+    for (var i = 0; i < data.gambar.length; i++) {
+      if (
+        data.gambar[i].type === "image/jpeg" ||
+        data.gambar[i].type === "image/png"
+      ) {
+        formdata.append("gambar", data.gambar[i]);
+      }
+    }
+    // Delete File Image
+    if (data.imgTemp.length > 0) {
+      for (i = 0; i < data.imgTemp.length; i++) {
+        formdata.append("imgTemp", data.imgTemp[i]);
       }
     }
 
@@ -360,6 +423,52 @@ export const updateProduct = (data) => async (dispatch) => {
   }
 };
 
+export const deleteProduct = (params) => async (dispatch) => {
+  try {
+    const response = await fetch(
+      process.env.REACT_APP_BACKEND_URL + "/api/v1/products/" + params,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
+    const data = await response.json();
+    if (data.message === "delete product berhasil") {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Berhasil",
+        text: "Data berhasil dihapus",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      return dispatch({
+        type: DELETE_PRODUCT,
+        status: "deleted",
+      });
+    } else {
+      dispatch({
+        type: PRODUCT_ERROR,
+        status: data.message,
+      });
+    }
+  } catch (error) {
+    dispatch({
+      type: PRODUCT_ERROR,
+      payload: error.response,
+      status: "produk kosong",
+    });
+    Swal.fire({
+      position: "center",
+      icon: "error",
+      title: error.message,
+      showConfirmButton: false,
+      timer: 1500,
+    });
+  }
+};
 export const clearProduct = () => async (dispatch) => {
   dispatch({
     type: CLEAR_PRODUCT,

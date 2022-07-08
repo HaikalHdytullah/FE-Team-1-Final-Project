@@ -14,7 +14,6 @@ import Preview from "./pages/Preview";
 import AddProduct from "./pages/InfoProduct";
 import EditProfile from "./pages/EditProfile";
 import EditProduk from "./pages/EditProduct";
-import HalamanProduct from "./pages/HalamanProduct";
 import NotFound from "./components/404";
 import DaftarJual from "./pages//DaftarJual";
 import reportWebVitals from "./reportWebVitals";

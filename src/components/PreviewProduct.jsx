@@ -3,14 +3,18 @@ import "../css/Preview.css";
 
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { getProductById } from "../redux/actions/productsActions";
+import {
+  clearProduct,
+  getProductById,
+  deleteProduct,
+} from "../redux/actions/productsActions";
 import Swal from "sweetalert2";
 
 const PreviewProduct = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
-  const { productdetail } = useSelector((state) => state.product);
+  const { productdetail, status } = useSelector((state) => state.product);
   let productId = useParams();
   if (productdetail.length === 0) {
     setTimeout(() => {
@@ -31,10 +35,33 @@ const PreviewProduct = () => {
       dispatch(getProductById(productId.id));
     }, 1000);
   }
-  let id = useParams();
+
   const handleEdit = async () => {
-    return navigate("/editproduct/" + id.id);
+    dispatch(clearProduct());
+    return navigate("/editproduct/" + productId.id);
   };
+  const handleHapus = async () => {
+    Swal.fire({
+      title: "Loading",
+      text: "Mengambil data produk harap tunggu sebentar",
+      icon: "info",
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      allowEnterKey: false,
+      showConfirmButton: false,
+      showCloseButton: false,
+      showCancelButton: false,
+      showClass: {
+        popup: "animate__animated animate__fadeInDown",
+      },
+    });
+    dispatch(deleteProduct(productId.id));
+  };
+  if (status === "deleted") {
+    dispatch(clearProduct());
+    return navigate("/");
+  }
+
   return (
     <>
       {productdetail.length === 0 ? (
@@ -88,15 +115,24 @@ const PreviewProduct = () => {
                     {localStorage.getItem("token") && user ? (
                       <>
                         {productdetail.user.id === user.id ? (
-                          <div className="d-grid mt-4 gap-3">
-                            <Button
-                              className="button-edit fw-semibold mb-4 text-black"
-                              style={{ backgroundColor: "white" }}
-                              onClick={handleEdit}
-                            >
-                              Edit
-                            </Button>
-                          </div>
+                          <>
+                            <div className="d-grid mt-4 gap-3">
+                              <Button
+                                className="button-edit fw-semibold mb-1 text-black"
+                                style={{ backgroundColor: "white" }}
+                                onClick={handleEdit}
+                              >
+                                Edit
+                              </Button>
+                              <Button
+                                className="button-delete fw-semibold mb-4 text-black"
+                                style={{ backgroundColor: "white" }}
+                                onClick={handleHapus}
+                              >
+                                Hapus
+                              </Button>
+                            </div>
+                          </>
                         ) : (
                           <div className="d-grid mt-4 gap-3">
                             <Button
