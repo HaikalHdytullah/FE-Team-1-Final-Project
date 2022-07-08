@@ -3,7 +3,7 @@ import "../css/Preview.css";
 
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { getProductById } from "../redux/actions/productsActions";
+import { clearProduct, getProductById } from "../redux/actions/productsActions";
 import Swal from "sweetalert2";
 
 const PreviewProduct = () => {
@@ -31,9 +31,10 @@ const PreviewProduct = () => {
       dispatch(getProductById(productId.id));
     }, 1000);
   }
-  let id = useParams();
+
   const handleEdit = async () => {
-    return navigate("/editproduct/" + id.id);
+    dispatch(clearProduct());
+    return navigate("/editproduct/" + productId.id);
   };
   return (
     <>
@@ -88,15 +89,23 @@ const PreviewProduct = () => {
                     {localStorage.getItem("token") && user ? (
                       <>
                         {productdetail.user.id === user.id ? (
-                          <div className="d-grid mt-4 gap-3">
-                            <Button
-                              className="button-edit fw-semibold mb-4 text-black"
-                              style={{ backgroundColor: "white" }}
-                              onClick={handleEdit}
-                            >
-                              Edit
-                            </Button>
-                          </div>
+                          <>
+                            <div className="d-grid mt-4 gap-3">
+                              <Button
+                                className="button-edit fw-semibold mb-1 text-black"
+                                style={{ backgroundColor: "white" }}
+                                onClick={handleEdit}
+                              >
+                                Edit
+                              </Button>
+                              <Button
+                                className="button-delete fw-semibold mb-4 text-black"
+                                style={{ backgroundColor: "white" }}
+                              >
+                                Hapus
+                              </Button>
+                            </div>
+                          </>
                         ) : (
                           <div className="d-grid mt-4 gap-3">
                             <Button
