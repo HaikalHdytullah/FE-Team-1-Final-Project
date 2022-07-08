@@ -21,6 +21,7 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import store from "./redux/store";
+import Kategori from "./components/Kategori";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
