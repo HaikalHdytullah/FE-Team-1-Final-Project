@@ -18,7 +18,7 @@ function Kategori() {
 
   // if (status === "" && product.length === 0) {
   // }
-  if (status !== "produk kosong") {
+  if (status !== "produk kosong" && status === "") {
     Swal.fire({
       title: "Loading",
       text: "Mengambil data produk harap tunggu sebentar",

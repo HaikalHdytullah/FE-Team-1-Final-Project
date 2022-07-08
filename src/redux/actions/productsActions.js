@@ -8,6 +8,7 @@ import {
   CLEAR_PRODUCT,
   PRODUCT_ERROR,
   CLEAR_STATUS_PRODUCT,
+  DELETE_PRODUCT,
 } from "./types";
 
 export const getAllProducts = () => async (dispatch) => {
@@ -19,7 +20,6 @@ export const getAllProducts = () => async (dispatch) => {
       }
     );
     const data = await response.json();
-    console.log(data);
     if (data.message === "Product is Empty") {
       Swal.fire({
         position: "center",
@@ -423,6 +423,52 @@ export const updateProduct = (data) => async (dispatch) => {
   }
 };
 
+export const deleteProduct = (params) => async (dispatch) => {
+  try {
+    const response = await fetch(
+      process.env.REACT_APP_BACKEND_URL + "/api/v1/products/" + params,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
+    const data = await response.json();
+    if (data.message === "delete product berhasil") {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Berhasil",
+        text: "Data berhasil dihapus",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      return dispatch({
+        type: DELETE_PRODUCT,
+        status: "deleted",
+      });
+    } else {
+      dispatch({
+        type: PRODUCT_ERROR,
+        status: data.message,
+      });
+    }
+  } catch (error) {
+    dispatch({
+      type: PRODUCT_ERROR,
+      payload: error.response,
+      status: "produk kosong",
+    });
+    Swal.fire({
+      position: "center",
+      icon: "error",
+      title: error.message,
+      showConfirmButton: false,
+      timer: 1500,
+    });
+  }
+};
 export const clearProduct = () => async (dispatch) => {
   dispatch({
     type: CLEAR_PRODUCT,

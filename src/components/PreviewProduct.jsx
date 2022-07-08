@@ -3,14 +3,18 @@ import "../css/Preview.css";
 
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { clearProduct, getProductById } from "../redux/actions/productsActions";
+import {
+  clearProduct,
+  getProductById,
+  deleteProduct,
+} from "../redux/actions/productsActions";
 import Swal from "sweetalert2";
 
 const PreviewProduct = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
-  const { productdetail } = useSelector((state) => state.product);
+  const { productdetail, status } = useSelector((state) => state.product);
   let productId = useParams();
   if (productdetail.length === 0) {
     setTimeout(() => {
@@ -36,6 +40,28 @@ const PreviewProduct = () => {
     dispatch(clearProduct());
     return navigate("/editproduct/" + productId.id);
   };
+  const handleHapus = async () => {
+    Swal.fire({
+      title: "Loading",
+      text: "Mengambil data produk harap tunggu sebentar",
+      icon: "info",
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      allowEnterKey: false,
+      showConfirmButton: false,
+      showCloseButton: false,
+      showCancelButton: false,
+      showClass: {
+        popup: "animate__animated animate__fadeInDown",
+      },
+    });
+    dispatch(deleteProduct(productId.id));
+  };
+  if (status === "deleted") {
+    dispatch(clearProduct());
+    return navigate("/");
+  }
+
   return (
     <>
       {productdetail.length === 0 ? (
@@ -101,6 +127,7 @@ const PreviewProduct = () => {
                               <Button
                                 className="button-delete fw-semibold mb-4 text-black"
                                 style={{ backgroundColor: "white" }}
+                                onClick={handleHapus}
                               >
                                 Hapus
                               </Button>
