@@ -6,8 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import productImg from "../img/product.png";
 import { getProductById } from "../redux/actions/productsActions";
 
-import { Typography } from "@mui/material";
-
 import "../css/kartuHomepage.css";
 import Swal from "sweetalert2";
 
