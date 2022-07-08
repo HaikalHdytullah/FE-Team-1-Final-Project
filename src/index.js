@@ -14,14 +14,12 @@ import Preview from "./pages/Preview";
 import AddProduct from "./pages/InfoProduct";
 import EditProfile from "./pages/EditProfile";
 import EditProduk from "./pages/EditProduct";
-import HalamanProduct from "./pages/HalamanProduct";
 import NotFound from "./components/404";
 import DaftarJual from "./pages//DaftarJual";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import store from "./redux/store";
-import Kategori from "./components/Kategori";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
