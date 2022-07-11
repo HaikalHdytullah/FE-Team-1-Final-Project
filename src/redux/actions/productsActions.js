@@ -5,6 +5,7 @@ import {
   CREATE_PRODUCT,
   UPDATE_PRODUCT,
   PREVIEW_PRODUCT,
+  CLEAR_ALL_PRODUCT,
   CLEAR_PRODUCT,
   PRODUCT_ERROR,
   CLEAR_STATUS_PRODUCT,
@@ -15,6 +16,66 @@ export const getAllProducts = () => async (dispatch) => {
   try {
     const response = await fetch(
       process.env.REACT_APP_BACKEND_URL + "/api/v1/products",
+      {
+        method: "GET",
+      }
+    );
+    const data = await response.json();
+    if (data.message === "Product is Empty") {
+      Swal.fire({
+        position: "center",
+        icon: "warning",
+        title: "Data kosong",
+        text: "Data yang anda cari tidak ditemukan",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      return dispatch({
+        type: GET_ALL_PRODUCT,
+        payload: data,
+        status: "produk kosong",
+      });
+    } else {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Berhasil",
+        text: "Pencarian data berhasil",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+    dispatch({
+      type: GET_ALL_PRODUCT,
+      payload: data.data.products,
+      status: "Get All",
+    });
+  } catch (error) {
+    dispatch({
+      type: PRODUCT_ERROR,
+      payload: error.response,
+      status: "produk kosong",
+    });
+    Swal.fire({
+      position: "center",
+      icon: "error",
+      title: error.message,
+      showConfirmButton: false,
+      timer: 1500,
+    });
+  }
+};
+
+export const getProductByIdSeller = (params) => async (dispatch) => {
+  try {
+    const response = await fetch(
+      process.env.REACT_APP_BACKEND_URL +
+        "/api/v1/product/minat?" +
+        new URLSearchParams({
+          idUser: params.idUser,
+          minat: params.minat,
+          terjual: params.terjual,
+        }),
       {
         method: "GET",
       }
@@ -46,8 +107,8 @@ export const getAllProducts = () => async (dispatch) => {
     }
     dispatch({
       type: GET_ALL_PRODUCT,
-      payload: data.data.products,
-      status: "Get All",
+      payload: data.data,
+      status: "Get All By Id User",
     });
   } catch (error) {
     dispatch({
@@ -157,6 +218,7 @@ export const getProductByNama = (params) => async (dispatch) => {
     });
   }
 };
+
 export const getProductByKategory = (params) => async (dispatch) => {
   try {
     const kategori = params;
@@ -208,6 +270,7 @@ export const getProductByKategory = (params) => async (dispatch) => {
     });
   }
 };
+
 export const getProductsByMinatAndSeller = (params) => async (dispatch) => {
   try {
     const idUser = params.idUser;
@@ -266,7 +329,7 @@ export const addProduct = (data) => async (dispatch) => {
   try {
     var formdata = new FormData();
     formdata.append("nama", data.nama);
-    formdata.append("harga", data.harga);
+    formdata.append("harga", data.harga_new);
     formdata.append("kategori", data.kategori);
     formdata.append("deskripsi", data.deskripsi);
     if (data.gambar.length > 0) {
@@ -344,7 +407,7 @@ export const updateProduct = (data) => async (dispatch) => {
   try {
     var formdata = new FormData();
     formdata.append("nama", data.nama);
-    formdata.append("harga", data.harga);
+    formdata.append("harga", data.harga_new);
     formdata.append("kategori", data.kategori);
     formdata.append("deskripsi", data.deskripsi);
     // Upload File Image
@@ -469,11 +532,18 @@ export const deleteProduct = (params) => async (dispatch) => {
     });
   }
 };
+
 export const clearProduct = () => async (dispatch) => {
   dispatch({
     type: CLEAR_PRODUCT,
   });
 };
+export const clearAllProduct = () => async (dispatch) => {
+  dispatch({
+    type: CLEAR_ALL_PRODUCT,
+  });
+};
+
 export const clearStatusProduct = () => async (dispatch) => {
   dispatch({
     type: CLEAR_STATUS_PRODUCT,

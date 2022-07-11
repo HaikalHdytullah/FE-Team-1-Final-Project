@@ -9,6 +9,8 @@ import {
   deleteProduct,
 } from "../redux/actions/productsActions";
 import Swal from "sweetalert2";
+import CurrencyFormat from "react-currency-format";
+import User from "../img/user.png";
 
 const PreviewProduct = () => {
   const dispatch = useDispatch();
@@ -42,21 +44,34 @@ const PreviewProduct = () => {
   };
   const handleHapus = async () => {
     Swal.fire({
-      title: "Loading",
-      text: "Mengambil data produk harap tunggu sebentar",
-      icon: "info",
-      allowOutsideClick: false,
-      allowEscapeKey: false,
-      allowEnterKey: false,
-      showConfirmButton: false,
-      showCloseButton: false,
-      showCancelButton: false,
-      showClass: {
-        popup: "animate__animated animate__fadeInDown",
-      },
+      title: "Konfirmasi",
+      text: "Produk akan terhapus secara permanen, apakah anda yakin untuk mengapus produk ini?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Ya",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Loading",
+          text: "Permintaan anda sedang diproses, harap tunggu sebentar",
+          icon: "info",
+          allowOutsideClick: false,
+          allowEscapeKey: false,
+          allowEnterKey: false,
+          showConfirmButton: false,
+          showCloseButton: false,
+          showCancelButton: false,
+          showClass: {
+            popup: "animate__animated animate__fadeInDown",
+          },
+        });
+        dispatch(deleteProduct(productId.id));
+      }
     });
-    dispatch(deleteProduct(productId.id));
   };
+
   if (status === "deleted") {
     dispatch(clearProduct());
     return navigate("/");
@@ -109,9 +124,16 @@ const PreviewProduct = () => {
                     <p className="text-color ps-4 pt-1">
                       {productdetail.kategori}
                     </p>
-                    <p className="fw-bold text-family ps-4 pt-3">
-                      Rp {productdetail.harga}
-                    </p>
+                    <CurrencyFormat
+                      className="fw-bold text-family ps-4 pt-3"
+                      value={productdetail.harga}
+                      thousandSeparator={"."}
+                      decimalSeparator={","}
+                      prefix={"Rp. "}
+                      placeholder="Rp 0.00"
+                      required
+                    />
+
                     {localStorage.getItem("token") && user ? (
                       <>
                         {productdetail.user.id === user.id ? (
@@ -153,13 +175,19 @@ const PreviewProduct = () => {
                     style={{ borderRadius: "20px" }}
                   >
                     <Col lg={2} sm={3} className="me-3">
-                      <div className="layout-foto">
-                        <img
-                          className="foto"
-                          src={productdetail.user.gambar}
-                          alt="Foto Profile"
-                        />
-                      </div>
+                      {productdetail.user.gambar !== null ? (
+                        <div className="layout-foto">
+                          <img
+                            className="foto"
+                            src={productdetail.user.gambar}
+                            alt="Foto Profile"
+                          />
+                        </div>
+                      ) : (
+                        <div className="layout-foto">
+                          <img className="foto" src={User} alt="Foto Profile" />
+                        </div>
+                      )}
                     </Col>
                     <Col lg={9} sm={10}>
                       <p className="fw-bold text-family ps-3 fs-6">

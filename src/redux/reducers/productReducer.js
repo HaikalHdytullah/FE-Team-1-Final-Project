@@ -6,6 +6,7 @@ import {
   PRODUCT_ERROR,
   UPDATE_PRODUCT,
   CLEAR_PRODUCT,
+  CLEAR_ALL_PRODUCT,
   CLEAR_STATUS_PRODUCT,
   DELETE_PRODUCT,
 } from "../actions/types";
@@ -58,6 +59,16 @@ const productReducer = (state = initialState, action) => {
     case CLEAR_PRODUCT:
       return {
         ...state,
+        productdetail: [],
+        newproduct: [],
+        previewProduct: [],
+        status: "",
+        error: null,
+      };
+    case CLEAR_ALL_PRODUCT:
+      return {
+        ...state,
+        product: [],
         productdetail: [],
         newproduct: [],
         previewProduct: [],

@@ -20,6 +20,7 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import store from "./redux/store";
+import "./css/parent.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
