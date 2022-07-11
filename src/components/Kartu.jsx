@@ -4,7 +4,11 @@ import {Container, Card, Col, Row} from "react-bootstrap";
 import {useDispatch, useSelector} from "react-redux";
 
 import productImg from "../img/product.png";
+<<<<<<< HEAD
 import {getProductById} from "../redux/actions/productsActions";
+=======
+import { getProductById } from "../redux/actions/productsActions";
+>>>>>>> 2d5e8ba5e68b1f26be2061c6ffece4ea2ff6c8b8
 
 import "../css/kartuHomepage.css";
 import Swal from "sweetalert2";
