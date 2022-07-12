@@ -7,7 +7,7 @@ import {Container, Typography} from "@mui/material";
 import "../css/kategori.css";
 import Swal from "sweetalert2";
 
-function Kategori() {
+function kategori() {
     const dispatch = useDispatch();
     const {status} = useSelector((state) => state.product);
 
@@ -243,4 +243,4 @@ function Kategori() {
     );
 }
 
-export default Kategori;
+export default kategori;
