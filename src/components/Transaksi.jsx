@@ -89,7 +89,7 @@ export default function TransactionComponent() {
 
   const handleContact = (item) => {
     window.open(
-      `https://wa.me/${item.user.noHp}?text=Saya%20tertarik%20dengan%20mobil%20Anda%20yang%20dijual`,
+      `https://wa.me/${item.user.noHp}?text=Saya%20tertarik%20dengan%20barang%20Anda%20yang%20dijual`,
       "_blank"
     );
   };
