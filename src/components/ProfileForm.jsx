@@ -87,21 +87,38 @@ const ProfileForm = () => {
                 popup: "animate__animated animate__fadeInDown",
             },
         });
-        dispatch(
-            updateInfoUsers({
-                idUser: user.id,
-                nama: document.getElementById("nama").value,
-                kota: document.getElementById("kota").value,
-                alamat: document.getElementById("alamat").value,
-                hp: document.getElementById("hp").value,
-                gambar,
-            })
-        );
+        if (
+            gambar === "" ||
+            document.getElementById("nama").value === "" ||
+            document.getElementById("kota").value === "" ||
+            document.getElementById("alamat").value === "" ||
+            document.getElementById("hp").value === ""
+        ) {
+            Swal.fire({
+                title: "Warning!!",
+                text: "Harap isi semua field",
+                icon: "warning",
+                confirmButtonText: "Ok",
+            });
+        } else {
+            dispatch(
+                updateInfoUsers({
+                    idUser: user.id,
+                    nama: document.getElementById("nama").value,
+                    kota: document.getElementById("kota").value,
+                    alamat: document.getElementById("alamat").value,
+                    hp: document.getElementById("hp").value,
+                    gambar,
+                })
+            );
+        }
     };
+
     if (status === "Updated") {
         dispatch(clearStatus());
         return navigate("/");
     }
+
     return (
         <Container className="w-50 my-5 ">
             <div className="image-upload d-flex justify-content-center">
@@ -110,51 +127,47 @@ const ProfileForm = () => {
                 </label>
                 <input id="file-input1" name="gambar" type="file" onChange={imgPreview} required />
             </div>
-            <Form>
-                <Form.Group className="mb-3">
-                    <Form.Label className="font-weight">Nama*</Form.Label>
-                    <Form.Control
-                        className="form-text-box w-full resize-none rounded-2xl border border-neutral-02 bg-neutral-01 py-3 px-4 text-neutral-03 focus:outline-none"
-                        type="text"
-                        placeholder="Nama"
-                        id="nama"
-                    />
-                </Form.Group>
-
-                <Form.Group className="mb-3">
-                    <Form.Label className="font-weight">Kota*</Form.Label>
-                    <Form.Control
-                        className="form-text-box w-full resize-none rounded-2xl border border-neutral-02 bg-neutral-01 py-3 px-4 text-neutral-03 focus:outline-none"
-                        type="text"
-                        placeholder="Kota"
-                        id="kota"
-                    />
-                </Form.Group>
-                <Form.Group className="mb-3">
-                    <Form.Label className="font-weight ">Alamat*</Form.Label>
-                    <textarea
-                        id="alamat"
-                        rows="2"
-                        className="w-full resize-none rounded-2xl border border-neutral-02 bg-neutral-01 py-3 px-4 text-neutral-03 focus:outline-none"
-                        placeholder="Contoh: Jalan Ikan Hiu 33"
-                        required
-                    />
-                </Form.Group>
-                <Form.Group className="mb-3">
-                    <Form.Label className="font-weight">No Handphone*</Form.Label>
-                    <CurrencyFormat
-                        prefix={"+62"}
-                        placeholder="+62"
-                        className="form-control form-text-box w-full resize-none rounded-2xl border border-neutral-02 bg-neutral-01 py-3 px-4 text-neutral-03 focus:outline-none"
-                        id="hp"
-                    />
-                </Form.Group>
-                <div className="my-5">
-                    <Button variant="primary" onClick={handleSubmit} type="submit" className="w-100 form-text-box button-link">
-                        Simpan
-                    </Button>
-                </div>
-            </Form>
+            <Form.Group className="mb-3">
+                <Form.Label className="font-weight">Nama*</Form.Label>
+                <Form.Control
+                    className="form-text-box w-full resize-none rounded-2xl border border-neutral-02 bg-neutral-01 py-3 px-4 text-neutral-03 focus:outline-none"
+                    type="text"
+                    placeholder="Nama"
+                    id="nama"
+                />
+            </Form.Group>
+            <Form.Group className="mb-3">
+                <Form.Label className="font-weight">Kota*</Form.Label>
+                <Form.Control
+                    className="form-text-box w-full resize-none rounded-2xl border border-neutral-02 bg-neutral-01 py-3 px-4 text-neutral-03 focus:outline-none"
+                    type="text"
+                    placeholder="Kota"
+                    id="kota"
+                />
+            </Form.Group>
+            <Form.Group className="mb-3">
+                <Form.Label className="font-weight ">Alamat*</Form.Label>
+                <textarea
+                    id="alamat"
+                    rows="2"
+                    className="w-full resize-none rounded-2xl border border-neutral-02 bg-neutral-01 py-3 px-4 text-neutral-03 focus:outline-none"
+                    placeholder="Contoh: Jalan Ikan Hiu 33"
+                />
+            </Form.Group>
+            <Form.Group className="mb-3">
+                <Form.Label className="font-weight">No Handphone*</Form.Label>
+                <CurrencyFormat
+                    prefix={"+62"}
+                    placeholder="+62"
+                    className="form-control form-text-box w-full resize-none rounded-2xl border border-neutral-02 bg-neutral-01 py-3 px-4 text-neutral-03 focus:outline-none"
+                    id="hp"
+                />
+            </Form.Group>
+            <div className="my-5">
+                <Button variant="primary" onClick={handleSubmit} type="submit" className="w-100 form-text-box button-link">
+                    Simpan
+                </Button>
+            </div>
         </Container>
     );
 };

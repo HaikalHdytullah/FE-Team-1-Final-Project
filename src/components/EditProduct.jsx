@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {FiArrowLeft, FiChevronDown} from "react-icons/fi";
 import {Container, Row, Col, Modal, Button, Carousel} from "react-bootstrap";
-import {useNavigate, useParams} from "react-router-dom";
+import {useNavigate, useParams, Navigate} from "react-router-dom";
 import Swal from "sweetalert2";
 import CurrencyFormat from "react-currency-format";
 
@@ -108,6 +108,19 @@ const InfoProduk = () => {
         navigate("/");
         dispatch(getAllProducts());
         dispatch(clearProduct());
+    }
+
+    if (user !== null) {
+        if (user.alamat === null) {
+            Swal.fire({
+                position: "center",
+                icon: "warning",
+                title: "Harap Lengkapi Info Akun",
+                showConfirmButton: false,
+                timer: 1000,
+            });
+            return <Navigate to="/profile" />;
+        }
     }
 
     function cekProductDetail() {

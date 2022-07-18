@@ -1,14 +1,14 @@
 import React from "react";
 import Header from "../components/Header";
-import Jual from "../components/DaftarJual";
+import Transaksi from "../components/Transaksi";
 
-function DaftarJual() {
+function TransaksiPages() {
     return (
         <>
             <Header />
-            <Jual />
+            <Transaksi />
         </>
     );
 }
 
-export default DaftarJual;
+export default TransaksiPages;

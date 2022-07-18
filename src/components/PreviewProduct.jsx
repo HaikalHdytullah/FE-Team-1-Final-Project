@@ -1,6 +1,15 @@
-import { Carousel, Row, Col, Container, Button } from "react-bootstrap";
+import {
+  Carousel,
+  Row,
+  Col,
+  Container,
+  Button,
+  Modal,
+  Stack,
+  Form,
+} from "react-bootstrap";
 import "../css/Preview.css";
-
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import {
@@ -8,6 +17,7 @@ import {
   getProductById,
   deleteProduct,
 } from "../redux/actions/productsActions";
+import { createTransaction } from "../redux/actions/transactionsActions";
 import Swal from "sweetalert2";
 import CurrencyFormat from "react-currency-format";
 import User from "../img/user.png";
@@ -17,7 +27,9 @@ const PreviewProduct = () => {
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
   const { productdetail, status } = useSelector((state) => state.product);
+  const { statusTR } = useSelector((state) => state.transaction);
   let productId = useParams();
+
   if (productdetail.length === 0) {
     setTimeout(() => {
       Swal.fire({
@@ -38,10 +50,46 @@ const PreviewProduct = () => {
     }, 1000);
   }
 
+  const [negotiation, setNegotiation] = useState("");
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const handleSubmit = (e) => {
+    const { nama, kota, alamat, noHp } = user;
+    if (nama === null || kota === null || alamat === null || noHp === null) {
+      Swal.fire({
+        position: "center",
+        icon: "warning",
+        title: "Harap Lengkapi Info Akun",
+        showConfirmButton: false,
+        timer: 1000,
+      });
+      return navigate("/profile");
+    } else if (negotiation === "") {
+      Swal.fire({
+        position: "top-end",
+        icon: "warning",
+        title: "Harap isi nilai negosiasi",
+        showConfirmButton: false,
+        timer: 1000,
+      });
+    } else {
+      let data = {
+        idUser: user.id,
+        idProduct: productdetail.id,
+        penawaran: parseInt(negotiation.replace(/[^0-9]/g, "")),
+        status: "Menunggu",
+      };
+      dispatch(createTransaction(data));
+    }
+  };
+
   const handleEdit = async () => {
     dispatch(clearProduct());
     return navigate("/editproduct/" + productId.id);
   };
+
   const handleHapus = async () => {
     Swal.fire({
       title: "Konfirmasi",
@@ -73,6 +121,11 @@ const PreviewProduct = () => {
   };
 
   if (status === "deleted") {
+    dispatch(clearProduct());
+    return navigate("/");
+  }
+
+  if (statusTR === "OK") {
     dispatch(clearProduct());
     return navigate("/");
   }
@@ -160,9 +213,81 @@ const PreviewProduct = () => {
                             <Button
                               className="button-add fw-semibold text-white"
                               style={{ backgroundColor: "#7126B5" }}
+                              onClick={handleShow}
                             >
                               Saya tertarik dan ingin nego
                             </Button>
+                            <Modal
+                              show={show}
+                              onHide={handleClose}
+                              centered
+                              contentClassName="custom-modal"
+                            >
+                              <Modal.Header
+                                variant="Header"
+                                className="modalHeader"
+                                closeButton
+                              ></Modal.Header>
+                              <Modal.Body className="judul">
+                                Masukan tawaranmu di sini!
+                              </Modal.Body>
+                              <Modal.Body>
+                                Harga tawaranmu akan diketahui penual, jika
+                                penjual cocok kamu akan segera dihubungi
+                                penjual.
+                                <Stack
+                                  direction="horizontal"
+                                  gap={3}
+                                  className="infoPenjual mt-3"
+                                >
+                                  <img
+                                    src={productdetail.productpics[0].gambar}
+                                    alt=""
+                                    className="image-profile"
+                                  />
+                                  <div>
+                                    <h5 className="my-auto">
+                                      {productdetail.nama}
+                                    </h5>
+                                    <p className="my-auto mt-2">
+                                      <CurrencyFormat
+                                        value={productdetail.harga}
+                                        displayType={"text"}
+                                        thousandSeparator={"."}
+                                        decimalSeparator={","}
+                                        prefix={"Rp. "}
+                                      />
+                                    </p>
+                                  </div>
+                                </Stack>
+                                <Form className="nego">
+                                  <Form.Group className="mb-3" controlId="">
+                                    <Form.Label className="formLabel formLabelNego">
+                                      Harga Tawar
+                                    </Form.Label>
+                                    <CurrencyFormat
+                                      className="form-control formInput formNego"
+                                      placeholder="Rp xxx"
+                                      onChange={(e) =>
+                                        setNegotiation(e.target.value)
+                                      }
+                                      thousandSeparator={"."}
+                                      decimalSeparator={","}
+                                      prefix={"Rp. "}
+                                    />
+                                  </Form.Group>
+                                </Form>
+                              </Modal.Body>
+                              <Modal.Footer className="modalFooter">
+                                <Button
+                                  className="btnNego"
+                                  variant="primary"
+                                  onClick={handleSubmit}
+                                >
+                                  Kirim
+                                </Button>
+                              </Modal.Footer>
+                            </Modal>
                           </div>
                         )}
                       </>

@@ -2,12 +2,19 @@
     width: 400px;
     height: 43px;
     border-radius: 15px;
-    background-color: #EEEEEE;
+    background-color: #eeeeee;
     border: none;
     display: flexbox;
 }
 
-img, svg, video, canvas, audio, iframe, embed, object {
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
     display: inline-flex;
     vertical-align: middle;
 }
@@ -15,16 +22,17 @@ img, svg, video, canvas, audio, iframe, embed, object {
 .searchbar input {
     width: 360px;
     background: transparent;
-    border : none;
+    border: none;
     outline: none;
 }
-.carousel-inner{
+.carousel-inner {
     width: 100%;
     height: 600px;
     border-radius: 20px;
 }
 
-.carousel-control-prev, .carousel-control-next{
+.carousel-control-prev,
+.carousel-control-next {
     width: 50px;
     height: 50px;
     background-color: white;
@@ -32,11 +40,11 @@ img, svg, video, canvas, audio, iframe, embed, object {
     top: calc(50% - 25px);
 }
 
-.carousel-control-prev{
+.carousel-control-prev {
     left: 3%;
 }
 
-.carousel-control-next{
+.carousel-control-next {
     right: 3%;
 }
 
@@ -44,48 +52,48 @@ img, svg, video, canvas, audio, iframe, embed, object {
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background-color: #7126B5 !important;
+    background-color: #7126b5 !important;
 }
 
-.text-family{
-    font-family: 'Poppins', sans-serif;
+.text-family {
+    font-family: "Poppins", sans-serif;
 }
 
-.text-color{
-    font-family: 'Poppins', sans-serif;
-    color: #8A8A8A;
+.text-color {
+    font-family: "Poppins", sans-serif;
+    color: #8a8a8a;
 }
 
-.button-add{
+.button-add {
     height: 45px;
-    background-color: #7126B5;
+    background-color: #7126b5;
     border: none;
     border-radius: 20px;
 }
 
-.button-edit{
+.button-edit {
     height: 45px;
-    border: #7126B5 solid 2px;
+    border: #7126b5 solid 2px;
     border-radius: 20px;
 }
 
-.button-edit2{
-    border: #7126B5 solid 2px;
+.button-edit2 {
+    border: #7126b5 solid 2px;
     border-radius: 10px;
 }
 
-.button-delete{
+.button-delete {
     height: 45px;
     border: red solid 2px;
     border-radius: 20px;
 }
 
-.layout-foto{
+.layout-foto {
     width: 80px;
     height: 80px;
 }
 
-.foto{
+.foto {
     width: 60px;
     height: 60px;
     object-fit: cover;
@@ -93,10 +101,63 @@ img, svg, video, canvas, audio, iframe, embed, object {
     border-radius: 20%;
 }
 
-.line{
+.line {
     width: 225px;
     height: 1px;
-    background-color: #8A8A8A;
+    background-color: #8a8a8a;
     margin-top: -5px;
     margin-left: 10px;
 }
+
+/* Halaman Product */
+.custom-modal {
+    width: 420px;
+    border-radius: 16px !important;
+    padding: 16px;
+}
+
+.modal-body {
+    padding-bottom: 0px;
+}
+
+.judul.modal-body {
+    padding-top: 0px;
+    font-weight: bold;
+}
+
+.modalHeader {
+    border-bottom: 0 none;
+}
+
+.modalFooter {
+    border-top: 0 none;
+}
+
+.btnNego {
+    display: block;
+    width: 100%;
+    border-radius: 16px;
+    border: 0px;
+    color: white;
+    background-color: #4b1979;
+    padding: 12px 24px;
+}
+
+.btnNego:hover {
+    background: #511588;
+}
+
+.nego {
+    margin-top: 10px;
+}
+
+.formLabelNego {
+    font-weight: bold;
+}
+
+.formNego {
+    border-radius: 16px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+    height: 48px;
+}
+/* End Halaman Product */

@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {FiArrowLeft, FiChevronDown} from "react-icons/fi";
 import {Container, Row, Col, Modal, Button, Carousel} from "react-bootstrap";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, Navigate} from "react-router-dom";
 import Swal from "sweetalert2";
 import CurrencyFormat from "react-currency-format";
 
@@ -57,6 +57,7 @@ const InfoProduk = () => {
             setGambar1("");
         }
     };
+
     const imgPreview2 = (e) => {
         if (e.target.files[0]) {
             const reader = new FileReader();
@@ -70,6 +71,7 @@ const InfoProduk = () => {
             setGambar2("");
         }
     };
+
     const imgPreview3 = (e) => {
         if (e.target.files[0]) {
             const reader = new FileReader();
@@ -83,6 +85,7 @@ const InfoProduk = () => {
             setGambar3("");
         }
     };
+
     const imgPreview4 = (e) => {
         if (e.target.files[0]) {
             const reader = new FileReader();
@@ -247,8 +250,21 @@ const InfoProduk = () => {
 
     const handleBack = async () => {
         dispatch(clearProduct());
-        return navigate("/");
+        return navigate("/daftarjual");
     };
+
+    if (user !== null) {
+        if (user.alamat === null) {
+            Swal.fire({
+                position: "center",
+                icon: "warning",
+                title: "Harap Lengkapi Info Akun",
+                showConfirmButton: false,
+                timer: 1000,
+            });
+            return <Navigate to="/profile" />;
+        }
+    }
 
     return (
         <Container>
