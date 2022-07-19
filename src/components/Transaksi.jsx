@@ -267,13 +267,15 @@ export default function TransactionComponent() {
                               <Button
                                 className="btnOutlineInfo me-2 px-5"
                                 data-bs-toggle="modal"
-                                data-bs-target={`#status${item.id}`}
+                                data-bs-target={`#status${item.id}${item.harga}`}
                                 onClick={showModalTwo}
                               >
                                 Status
                               </Button>
                               <Button
                                 className="btnPrimaryInfo px-3"
+                                data-bs-toggle="modal"
+                                data-bs-target={`#modal${item.id}${item.harga}`}
                                 onClick={showModalOne}
                               >
                                 Hubungi di{" "}
@@ -288,7 +290,7 @@ export default function TransactionComponent() {
                             onHide={handleClose}
                             centered
                             contentClassName="custom-modal"
-                            id={`modal${item.id}`}
+                            id={`modal${item.id}${item.harga}`}
                           >
                             <Modal.Header
                               variant="Header"
@@ -387,7 +389,7 @@ export default function TransactionComponent() {
                                         displayType={"text"}
                                         thousandSeparator={"."}
                                         decimalSeparator={","}
-                                        prefix={"Rp. "}
+                                        prefix={" Rp. "}
                                       />
                                     </h5>
                                   </div>
@@ -412,7 +414,7 @@ export default function TransactionComponent() {
                             onHide={handleClose}
                             centered
                             contentClassName="custom-modal"
-                            id={`status${item.id}`}
+                            id={`status${item.id}${item.harga}`}
                           >
                             <Modal.Header
                               variant="Header"

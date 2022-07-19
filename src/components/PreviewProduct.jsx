@@ -9,9 +9,10 @@ import {
   Form,
 } from "react-bootstrap";
 import "../css/Preview.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
+
 import {
   clearProduct,
   getProductById,
@@ -30,8 +31,8 @@ const PreviewProduct = () => {
   const { statusTR } = useSelector((state) => state.transaction);
   let productId = useParams();
 
-  if (productdetail.length === 0) {
-    setTimeout(() => {
+  useEffect(() => {
+    if (productdetail.length === 0) {
       Swal.fire({
         title: "Loading",
         text: "Mengambil data produk harap tunggu sebentar",
@@ -47,8 +48,8 @@ const PreviewProduct = () => {
         },
       });
       dispatch(getProductById(productId.id));
-    }, 1000);
-  }
+    }
+  }, [dispatch, productId.id, productdetail.length]);
 
   const [negotiation, setNegotiation] = useState("");
   const [show, setShow] = useState(false);
@@ -232,7 +233,7 @@ const PreviewProduct = () => {
                                 Masukan tawaranmu di sini!
                               </Modal.Body>
                               <Modal.Body>
-                                Harga tawaranmu akan diketahui penual, jika
+                                Harga tawaranmu akan diketahui penjual, jika
                                 penjual cocok kamu akan segera dihubungi
                                 penjual.
                                 <Stack
