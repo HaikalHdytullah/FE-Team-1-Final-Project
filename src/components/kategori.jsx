@@ -15,23 +15,25 @@ function Kategori() {
   const { status } = useSelector((state) => state.product);
   let statusFilter = "";
 
-  if (status !== "produk kosong" && status === "" && status !== "logout") {
-    Swal.fire({
-      title: "Loading",
-      text: "Mengambil data produk harap tunggu sebentar",
-      icon: "info",
-      allowOutsideClick: false,
-      allowEscapeKey: false,
-      allowEnterKey: false,
-      showConfirmButton: false,
-      showCloseButton: false,
-      showCancelButton: false,
-      showClass: {
-        popup: "animate__animated animate__fadeInDown",
-      },
-    });
-    dispatch(getAllProducts());
-  }
+  React.useEffect(() => {
+    if (status !== "produk kosong" && status === "" && status !== "logout") {
+      Swal.fire({
+        title: "Loading",
+        text: "Mengambil data produk harap tunggu sebentar",
+        icon: "info",
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        allowEnterKey: false,
+        showConfirmButton: false,
+        showCloseButton: false,
+        showCancelButton: false,
+        showClass: {
+          popup: "animate__animated animate__fadeInDown",
+        },
+      });
+      dispatch(getAllProducts());
+    }
+  }, [dispatch, status]);
 
   const filterAll = (event) => {
     event.currentTarget.classList.remove("kategory-deactive");

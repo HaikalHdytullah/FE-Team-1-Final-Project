@@ -21,6 +21,7 @@ import AddProduct from "../img/addProduct.png";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "../css/daftarJual.css";
 import User from "../img/user.png";
+import { useEffect } from "react";
 
 const DaftarJual = () => {
   const dispatch = useDispatch();
@@ -28,8 +29,11 @@ const DaftarJual = () => {
   const { user } = useSelector((state) => state.auth);
   const { product, status } = useSelector((state) => state.product);
 
-  if (status !== "Get All By Id User" && user !== null)
-    dispatch(getAllProductByIdSeller({ idUser: user.id }));
+  useEffect(() => {
+    if (status !== "Get All By Id User" && user !== null) {
+      dispatch(getAllProductByIdSeller({ idUser: user.id }));
+    }
+  }, [dispatch, status, user]);
 
   const handlePreview = () => {
     dispatch(clearProduct());
