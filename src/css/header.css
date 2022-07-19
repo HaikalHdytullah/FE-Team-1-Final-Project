@@ -96,3 +96,11 @@
   top: 21%;
   left: 92%;
 }
+
+.imageSmall {
+  width: 48px !important;
+  height: 48px !important;
+  border: 2px solid #d0d0d0 !important;
+  border-radius: 12px !important;
+  object-fit: cover !important;
+}

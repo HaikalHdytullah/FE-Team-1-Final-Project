@@ -166,7 +166,10 @@ export default function TransactionComponent() {
                     return (
                       <div key={`modal${index}`}>
                         <div
-                          style={{ marginTop: "10px", marginBottom: "70px" }}
+                          style={{
+                            marginTop: "10px",
+                            marginBottom: "70px",
+                          }}
                         >
                           <Stack direction="horizontal" gap={3}>
                             <img
@@ -177,19 +180,28 @@ export default function TransactionComponent() {
                             <div>
                               <p
                                 className="my-auto"
-                                style={{ fontSize: "12px", color: "#BABABA" }}
+                                style={{
+                                  fontSize: "12px",
+                                  color: "#BABABA",
+                                }}
                               >
                                 Penawaran Produk
                               </p>
                               <h5
                                 className="my-auto"
-                                style={{ fontSize: "16px", lineHeight: "26px" }}
+                                style={{
+                                  fontSize: "16px",
+                                  lineHeight: "26px",
+                                }}
                               >
                                 {item.product.nama}
                               </h5>
                               <h5
                                 className="my-auto"
-                                style={{ fontSize: "14px", lineHeight: "26px" }}
+                                style={{
+                                  fontSize: "14px",
+                                  lineHeight: "26px",
+                                }}
                               >
                                 <CurrencyFormat
                                   value={item.product.harga}
@@ -200,7 +212,10 @@ export default function TransactionComponent() {
                               </h5>
                               <h5
                                 className="my-auto"
-                                style={{ fontSize: "14px", lineHeight: "26px" }}
+                                style={{
+                                  fontSize: "14px",
+                                  lineHeight: "26px",
+                                }}
                               >
                                 Ditawar{" "}
                                 <CurrencyFormat
@@ -213,12 +228,17 @@ export default function TransactionComponent() {
                             </div>
                             <p
                               className="align-self-start ms-auto"
-                              style={{ fontSize: "12px", color: "#BABABA" }}
+                              style={{
+                                fontSize: "12px",
+                                color: "#BABABA",
+                              }}
                             >
                               <SimpleDateTime
                                 dateSeparator="-"
                                 format="MYD"
-                                showTime="0"
+                                showTime="1"
+                                timeSeparator=":"
+                                meridians="1"
                               >
                                 {item.createdAt}
                               </SimpleDateTime>
@@ -281,7 +301,10 @@ export default function TransactionComponent() {
                             <Modal.Body>
                               <p
                                 className="align-self-start ms-auto"
-                                style={{ fontSize: "14px", color: "#BABABA" }}
+                                style={{
+                                  fontSize: "14px",
+                                  color: "#BABABA",
+                                }}
                               >
                                 Segera hubungi pembeli melalui whatsapp untuk
                                 transaksi selanjutnya
@@ -569,7 +592,9 @@ export default function TransactionComponent() {
                               <SimpleDateTime
                                 dateSeparator="-"
                                 format="MYD"
-                                showTime="0"
+                                showTime="1"
+                                timeSeparator=":"
+                                meridians="1"
                               >
                                 {item.createdAt}
                               </SimpleDateTime>
@@ -600,7 +625,7 @@ export default function TransactionComponent() {
                           ) : (
                             <> </>
                           )}
-                          {item.status === "Dibatalkan" ? (
+                          {item.status === "Ditolak" ? (
                             <div className="float-end mt-2">
                               <Alert
                                 variant="danger"
