@@ -601,7 +601,8 @@ export default function TransactionComponent() {
                             </p>
                           </Stack>
                           {/* Cek Status Produk */}
-                          {item.status === "Menunggu" ? (
+                          {item.status === "Menunggu" ||
+                          item.status === "Diproses" ? (
                             <div className="float-end mt-2">
                               <Alert
                                 variant="warning"

@@ -12,6 +12,7 @@ import {
   Dropdown,
   InputGroup,
   Form,
+  Badge,
 } from "react-bootstrap";
 import CurrencyFormat from "react-currency-format";
 import SimpleDateTime from "react-simple-timestamp-to-date";
@@ -42,9 +43,7 @@ const NavbarComponent = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isAuthenticated, user, status } = useSelector((state) => state.auth);
-  const { transactionSeller, transactionBuyer } = useSelector(
-    (state) => state.transaction
-  );
+  const { transactionSeller } = useSelector((state) => state.transaction);
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -58,10 +57,14 @@ const NavbarComponent = () => {
     dispatch(logout());
   };
 
-  if (status === "logout") {
-    dispatch(clearStatus());
-    return navigate("/");
-  }
+  useEffect(() => {
+    if (status === "logout" && !localStorage.getItem("token")) {
+      dispatch(clearStatus());
+      dispatch(clearProduct());
+
+      return navigate("/");
+    }
+  }, [dispatch, navigate, status]);
 
   setTimeout(() => {
     if (localStorage.getItem("token")) {
@@ -206,10 +209,13 @@ const NavbarComponent = () => {
     return navigate("/notification");
   };
 
-  if (transactionBuyer !== undefined) {
-    transactionBuyer.filter(
+  let transactionFiltered, transactionTotal;
+  if (transactionSeller !== undefined) {
+    transactionFiltered = transactionSeller.filter(
       (tr) => tr.status !== "Selesai" && tr.status !== "Ditolak"
     );
+
+    transactionTotal = transactionFiltered.length;
   }
   return (
     <Container>
@@ -310,6 +316,19 @@ const NavbarComponent = () => {
                             className="navbar-icon"
                           >
                             <img src={Bell} alt="" />
+                            {transactionTotal !== 0 ? (
+                              <Badge
+                                pill
+                                bg="danger"
+                                style={{
+                                  position: "absolute",
+                                }}
+                              >
+                                {transactionTotal}
+                              </Badge>
+                            ) : (
+                              <></>
+                            )}
                           </Dropdown.Toggle>
                           <Dropdown.Menu style={{ width: "320px" }}>
                             <Dropdown.Item onClick={handleTransaksi}>
