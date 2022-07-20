@@ -531,48 +531,66 @@ export default function TransactionComponent() {
                           style={{ marginTop: "10px", marginBottom: "70px" }}
                         >
                           <Stack direction="horizontal" gap={3}>
-                            <img
-                              src={item.product.productpics[0].gambar}
-                              alt=""
-                              className="imageSmall align-self-start mt-1"
-                            />
-                            <div>
-                              <p
-                                className="my-auto"
-                                style={{ fontSize: "12px", color: "#BABABA" }}
-                              >
-                                Penawaran Produk
-                              </p>
-                              <h5
-                                className="my-auto"
-                                style={{ fontSize: "16px", lineHeight: "26px" }}
-                              >
-                                {item.product.nama}
-                              </h5>
-                              <h5
-                                className="my-auto"
-                                style={{ fontSize: "14px", lineHeight: "26px" }}
-                              >
-                                <CurrencyFormat
-                                  value={item.product.harga}
-                                  displayType={"text"}
-                                  thousandSeparator={true}
-                                  prefix={"Rp. "}
+                            {item.product !== null ? (
+                              <>
+                                <img
+                                  src={item.product.productpics[0].gambar}
+                                  alt=""
+                                  className="imageSmall align-self-start mt-1"
                                 />
-                              </h5>
-                              <h5
-                                className="my-auto"
-                                style={{ fontSize: "14px", lineHeight: "26px" }}
-                              >
-                                Ditawar{" "}
-                                <CurrencyFormat
-                                  value={item.penawaran}
-                                  displayType={"text"}
-                                  thousandSeparator={true}
-                                  prefix={"Rp. "}
-                                />
-                              </h5>
-                            </div>
+                                <div>
+                                  <p
+                                    className="my-auto"
+                                    style={{
+                                      fontSize: "12px",
+                                      color: "#BABABA",
+                                    }}
+                                  >
+                                    Penawaran Produk
+                                  </p>
+                                  <h5
+                                    className="my-auto"
+                                    style={{
+                                      fontSize: "16px",
+                                      lineHeight: "26px",
+                                    }}
+                                  >
+                                    {item.product.nama}
+                                  </h5>
+                                  <h5
+                                    className="my-auto"
+                                    style={{
+                                      fontSize: "14px",
+                                      lineHeight: "26px",
+                                    }}
+                                  >
+                                    <CurrencyFormat
+                                      value={item.product.harga}
+                                      displayType={"text"}
+                                      thousandSeparator={true}
+                                      prefix={"Rp. "}
+                                    />
+                                  </h5>
+                                  <h5
+                                    className="my-auto"
+                                    style={{
+                                      fontSize: "14px",
+                                      lineHeight: "26px",
+                                    }}
+                                  >
+                                    Ditawar{" "}
+                                    <CurrencyFormat
+                                      value={item.penawaran}
+                                      displayType={"text"}
+                                      thousandSeparator={true}
+                                      prefix={"Rp. "}
+                                    />
+                                  </h5>
+                                </div>
+                              </>
+                            ) : (
+                              <></>
+                            )}
                             <p
                               className="align-self-start ms-auto"
                               style={{ fontSize: "12px", color: "#BABABA" }}
