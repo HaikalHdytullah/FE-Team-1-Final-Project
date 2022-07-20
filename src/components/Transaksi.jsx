@@ -68,8 +68,8 @@ export default function TransactionComponent() {
       args = { id, idProduk, status: "Dibatalkan", terjual: "false" };
     }
     dispatch(updateStatusTransaction(args));
-    document.getElementById("modalTransaksi").click();
     setUpdateStatus(false);
+    document.getElementById("modalTransaksi").click();
   };
 
   const handleContact = (item) => {
