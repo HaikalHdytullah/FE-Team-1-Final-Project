@@ -84,7 +84,7 @@ const PreviewProduct = () => {
       };
       Swal.fire({
         title: "Loading",
-        text: "Mengambil data produk harap tunggu sebentar",
+        text: "Permintaan sedang diproses harap tunggu sebentar",
         icon: "info",
         allowOutsideClick: false,
         allowEscapeKey: false,

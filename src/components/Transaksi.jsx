@@ -50,6 +50,20 @@ export default function TransactionComponent() {
     }).then((result) => {
       if (result.value) {
         const args = { id, status: "Diproses" };
+        Swal.fire({
+          title: "Loading",
+          text: "Permintaan sedang diproses harap tunggu sebentar",
+          icon: "info",
+          allowOutsideClick: false,
+          allowEscapeKey: false,
+          allowEnterKey: false,
+          showConfirmButton: false,
+          showCloseButton: false,
+          showCancelButton: false,
+          showClass: {
+            popup: "animate__animated animate__fadeInDown",
+          },
+        });
         dispatch(updateTransaction(args));
       }
     });
@@ -67,6 +81,20 @@ export default function TransactionComponent() {
     } else if (updateStatus === "Dibatalkan") {
       args = { id, idProduk, status: "Dibatalkan", terjual: "false" };
     }
+    Swal.fire({
+      title: "Loading",
+      text: "Permintaan sedang diproses harap tunggu sebentar",
+      icon: "info",
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      allowEnterKey: false,
+      showConfirmButton: false,
+      showCloseButton: false,
+      showCancelButton: false,
+      showClass: {
+        popup: "animate__animated animate__fadeInDown",
+      },
+    });
     dispatch(updateStatusTransaction(args));
     setUpdateStatus(false);
     document.getElementById("modalTransaksi").click();
