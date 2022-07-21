@@ -660,7 +660,8 @@ export default function TransactionComponent() {
                           ) : (
                             <> </>
                           )}
-                          {item.status === "Ditolak" ? (
+                          {item.status === "Ditolak" ||
+                          item.status === "Dibatalkan" ? (
                             <div className="float-end mt-2">
                               <Alert
                                 variant="danger"
