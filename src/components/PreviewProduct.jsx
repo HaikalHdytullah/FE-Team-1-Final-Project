@@ -199,6 +199,7 @@ const PreviewProduct = () => {
                       decimalSeparator={","}
                       prefix={"Rp. "}
                       placeholder="Rp 0.00"
+                      displayType={"text"}
                       required
                     />
 

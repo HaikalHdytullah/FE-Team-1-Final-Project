@@ -77,13 +77,7 @@ const NavbarComponent = () => {
 
   const handleDaftarJual = async () => {
     dispatch(clearAllProduct());
-    dispatch(
-      getProductByIdSeller({
-        idUser: user.id,
-        minat: "",
-        terjual: "",
-      })
-    );
+
     return navigate("/daftarjual");
   };
 
