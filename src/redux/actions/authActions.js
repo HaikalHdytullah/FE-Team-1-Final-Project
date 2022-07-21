@@ -134,6 +134,9 @@ export const updateInfoUsers = (data) => async (dispatch) => {
       {
         method: "PUT",
         body: formdata,
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
       }
     );
 

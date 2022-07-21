@@ -334,96 +334,104 @@ const NavbarComponent = () => {
                             <Dropdown.Item onClick={handleTransaksi}>
                               Transaksi
                             </Dropdown.Item>
-                            {transactionSeller.map((item, index) => {
-                              return (
-                                <Dropdown.Item
-                                  key={`modal${index}`}
-                                  onClick={() => navigate("/notification")}
-                                >
-                                  <Stack
-                                    direction="horizontal"
-                                    gap={3}
-                                    style={{
-                                      width: "100%",
-                                    }}
-                                  >
-                                    <img
-                                      src={item.product.productpics[0].gambar}
-                                      alt=""
-                                      className="imageSmall align-self-start mt-1"
-                                    />
-                                    <div>
-                                      <p
-                                        className="my-auto"
-                                        style={{
-                                          fontSize: "10px",
-                                          color: "#BABABA",
-                                        }}
-                                      >
-                                        Penawaran Produk
-                                      </p>
-                                      <h5
-                                        className="my-auto"
-                                        style={{
-                                          fontSize: "12px",
-                                          lineHeight: "22px",
-                                        }}
-                                      >
-                                        {item.product.nama}
-                                      </h5>
-                                      <h5
-                                        className="my-auto"
-                                        style={{
-                                          fontSize: "12px",
-                                          lineHeight: "22px",
-                                        }}
-                                      >
-                                        <CurrencyFormat
-                                          value={item.product.harga}
-                                          displayType={"text"}
-                                          thousandSeparator={"."}
-                                          decimalSeparator={","}
-                                          prefix={"Rp. "}
-                                        />
-                                      </h5>
-                                      <h5
-                                        className="my-auto"
-                                        style={{
-                                          fontSize: "12px",
-                                          lineHeight: "22px",
-                                        }}
-                                      >
-                                        Ditawar{" "}
-                                        <CurrencyFormat
-                                          value={item.penawaran}
-                                          displayType={"text"}
-                                          thousandSeparator={"."}
-                                          decimalSeparator={","}
-                                          prefix={"Rp. "}
-                                        />
-                                      </h5>
-                                    </div>
-                                    <p
-                                      className="align-self-start ms-auto"
-                                      style={{
-                                        fontSize: "12px",
-                                        color: "#BABABA",
-                                      }}
+                            {transactionSeller !== undefined ? (
+                              <>
+                                {transactionSeller.map((item, index) => {
+                                  return (
+                                    <Dropdown.Item
+                                      key={`modal${index}`}
+                                      onClick={() => navigate("/notification")}
                                     >
-                                      <SimpleDateTime
-                                        dateSeparator="-"
-                                        format="MYD"
-                                        showTime="1"
-                                        timeSeparator=":"
-                                        meridians="1"
+                                      <Stack
+                                        direction="horizontal"
+                                        gap={3}
+                                        style={{
+                                          width: "100%",
+                                        }}
                                       >
-                                        {item.createdAt}
-                                      </SimpleDateTime>
-                                    </p>
-                                  </Stack>
-                                </Dropdown.Item>
-                              );
-                            })}
+                                        <img
+                                          src={
+                                            item.product.productpics[0].gambar
+                                          }
+                                          alt=""
+                                          className="imageSmall align-self-start mt-1"
+                                        />
+                                        <div>
+                                          <p
+                                            className="my-auto"
+                                            style={{
+                                              fontSize: "10px",
+                                              color: "#BABABA",
+                                            }}
+                                          >
+                                            Penawaran Produk
+                                          </p>
+                                          <h5
+                                            className="my-auto"
+                                            style={{
+                                              fontSize: "12px",
+                                              lineHeight: "22px",
+                                            }}
+                                          >
+                                            {item.product.nama}
+                                          </h5>
+                                          <h5
+                                            className="my-auto"
+                                            style={{
+                                              fontSize: "12px",
+                                              lineHeight: "22px",
+                                            }}
+                                          >
+                                            <CurrencyFormat
+                                              value={item.product.harga}
+                                              displayType={"text"}
+                                              thousandSeparator={"."}
+                                              decimalSeparator={","}
+                                              prefix={"Rp. "}
+                                            />
+                                          </h5>
+                                          <h5
+                                            className="my-auto"
+                                            style={{
+                                              fontSize: "12px",
+                                              lineHeight: "22px",
+                                            }}
+                                          >
+                                            Ditawar{" "}
+                                            <CurrencyFormat
+                                              value={item.penawaran}
+                                              displayType={"text"}
+                                              thousandSeparator={"."}
+                                              decimalSeparator={","}
+                                              prefix={"Rp. "}
+                                            />
+                                          </h5>
+                                        </div>
+                                        <p
+                                          className="align-self-start ms-auto"
+                                          style={{
+                                            fontSize: "12px",
+                                            color: "#BABABA",
+                                          }}
+                                        >
+                                          <SimpleDateTime
+                                            dateSeparator="-"
+                                            format="MYD"
+                                            showTime="1"
+                                            timeSeparator=":"
+                                            meridians="1"
+                                          >
+                                            {item.createdAt}
+                                          </SimpleDateTime>
+                                        </p>
+                                      </Stack>
+                                    </Dropdown.Item>
+                                  );
+                                })}
+                              </>
+                            ) : (
+                              <></>
+                            )}
                           </Dropdown.Menu>
                         </Dropdown>
                         {/* Profile */}
