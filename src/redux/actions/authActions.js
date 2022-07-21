@@ -120,7 +120,6 @@ export const loginWithGoogle = (accessToken) => async (dispatch) => {
 export const updateInfoUsers = (data) => async (dispatch) => {
   try {
     var formdata = new FormData();
-    formdata.append("idUser", data.idUser);
     formdata.append("nama", data.nama);
     formdata.append("kota", data.kota);
     formdata.append("alamat", data.alamat);

@@ -31,7 +31,6 @@ import {
   getAllProducts,
   clearProduct,
   clearAllProduct,
-  getProductByIdSeller,
 } from "../redux/actions/productsActions";
 import {
   getTransactionBuyer,

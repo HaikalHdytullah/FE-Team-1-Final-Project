@@ -109,7 +109,6 @@ const ProfileForm = () => {
     } else {
       dispatch(
         updateInfoUsers({
-          idUser: user.id,
           nama: document.getElementById("nama").value,
           kota: document.getElementById("kota").value,
           alamat: document.getElementById("alamat").value,
