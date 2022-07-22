@@ -97,7 +97,7 @@ export default function TransactionComponent() {
     });
     dispatch(updateStatusTransaction(args));
     setUpdateStatus(false);
-    document.getElementById("modalTransaksi").click();
+    document.getElementById(`modalTransaksi${id}`).click();
   };
 
   const handleContact = (item) => {
@@ -437,9 +437,9 @@ export default function TransactionComponent() {
                                   <button
                                     type="button"
                                     className="btn-close"
+                                    id={`modalTransaksi${item.id}`}
                                     data-bs-dismiss="modal"
                                     aria-label="Close"
-                                    id="modalTransaksi"
                                   ></button>
                                 </div>
                                 <div className="modal-body mb-3">
