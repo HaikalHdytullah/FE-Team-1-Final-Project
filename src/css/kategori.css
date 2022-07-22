@@ -12,4 +12,18 @@
 
 .btn-kategory {
   padding: 14px 24px !important;
+  border-radius: 10px;
+  border: none;
+}
+
+.btn-kategory:hover {
+  background-color: #7126b5;
+  color: white;
+  border: 1px solid #7126b5;
+}
+
+.scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
 }

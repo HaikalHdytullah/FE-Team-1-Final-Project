@@ -4,7 +4,7 @@ import {
   getAllProducts,
   getProductByKategory,
 } from "../redux/actions/productsActions";
-import Button from "@mui/material/Button";
+import { Button } from "react-bootstrap";
 import SearchIcon from "@mui/icons-material/Search";
 import { Typography } from "@mui/material";
 import "../css/kategori.css";
@@ -281,67 +281,64 @@ function Kategori() {
   };
 
   return (
-    <section className="mt-5">
-      <div className="container">
-        <Typography variant="h6">Telusuri Kategori</Typography>
-        <div className="d-flex justify-content-start scroll py-3">
-          <Button
-            sx={{ borderRadius: "10px" }}
-            startIcon={<SearchIcon />}
-            id="filter-all"
-            className="kategory-active btn-kategory me-2"
-            onClick={filterAll}
-          >
-            Semua
-          </Button>
-          <Button
-            sx={{ borderRadius: "10px" }}
-            startIcon={<SearchIcon />}
-            id="filter-hobi"
-            className="kategory-deactive btn-kategory me-2"
-            onClick={filterByHobby}
-          >
-            Hobi
-          </Button>
-          <Button
-            sx={{ borderRadius: "10px" }}
-            startIcon={<SearchIcon />}
-            id="filter-kendaraan"
-            className="kategory-deactive btn-kategory me-2"
-            onClick={filterByVehicle}
-          >
-            Kendaraan
-          </Button>
-          <Button
-            className="kategory-deactive btn-kategory me-2"
-            id="filter-baju"
-            sx={{ borderRadius: "10px" }}
-            startIcon={<SearchIcon />}
-            onClick={filterByCLothe}
-          >
-            Baju
-          </Button>
-          <Button
-            className="kategory-deactive btn-kategory me-2"
-            sx={{ borderRadius: "10px" }}
-            startIcon={<SearchIcon />}
-            id="filter-elektronik"
-            onClick={filterByElectronic}
-          >
-            Elektronik
-          </Button>
-          <Button
-            className="kategory-deactive btn-kategory me-2"
-            sx={{ borderRadius: "10px" }}
-            id="filter-kesehatan"
-            startIcon={<SearchIcon />}
-            onClick={filterByHealth}
-          >
-            Kesehatan
-          </Button>
-        </div>
+    <div className="container mt-5">
+      <Typography variant="h6">Telusuri Kategori</Typography>
+      <div className="d-flex justify-content-start scroll py-3">
+        <Button
+          startIcon={<SearchIcon />}
+          id="filter-all"
+          className="kategory-active btn-kategory me-2"
+          onClick={filterAll}
+        >
+          Semua
+        </Button>
+        <Button
+          sx={{ borderRadius: "10px" }}
+          startIcon={<SearchIcon />}
+          id="filter-hobi"
+          className="kategory-deactive btn-kategory me-2"
+          onClick={filterByHobby}
+        >
+          Hobi
+        </Button>
+        <Button
+          sx={{ borderRadius: "10px" }}
+          startIcon={<SearchIcon />}
+          id="filter-kendaraan"
+          className="kategory-deactive btn-kategory me-2"
+          onClick={filterByVehicle}
+        >
+          Kendaraan
+        </Button>
+        <Button
+          className="kategory-deactive btn-kategory me-2"
+          id="filter-baju"
+          sx={{ borderRadius: "10px" }}
+          startIcon={<SearchIcon />}
+          onClick={filterByCLothe}
+        >
+          Baju
+        </Button>
+        <Button
+          className="kategory-deactive btn-kategory me-2"
+          sx={{ borderRadius: "10px" }}
+          startIcon={<SearchIcon />}
+          id="filter-elektronik"
+          onClick={filterByElectronic}
+        >
+          Elektronik
+        </Button>
+        <Button
+          className="kategory-deactive btn-kategory me-2"
+          sx={{ borderRadius: "10px" }}
+          id="filter-kesehatan"
+          startIcon={<SearchIcon />}
+          onClick={filterByHealth}
+        >
+          Kesehatan
+        </Button>
       </div>
-    </section>
+    </div>
   );
 }
 
