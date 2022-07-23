@@ -200,6 +200,7 @@ export const register = (data) => async (dispatch) => {
     dispatch({
       type: REGISTER,
       payload: result.user,
+      status: "register success",
     });
     if (result.user) {
       await Swal.fire({

@@ -31,6 +31,7 @@ import {
   getAllProducts,
   clearProduct,
   clearAllProduct,
+  clearStatusProduct,
 } from "../redux/actions/productsActions";
 import {
   getTransactionBuyer,
@@ -179,21 +180,7 @@ const NavbarComponent = () => {
   const handleBeranda = async (e) => {
     e.preventDefault();
     dispatch(clearProduct());
-    Swal.fire({
-      title: "Loading",
-      text: "Mengambil data produk harap tunggu sebentar",
-      icon: "info",
-      allowOutsideClick: false,
-      allowEscapeKey: false,
-      allowEnterKey: false,
-      showConfirmButton: false,
-      showCloseButton: false,
-      showCancelButton: false,
-      showClass: {
-        popup: "animate__animated animate__fadeInDown",
-      },
-    });
-    dispatch(getAllProducts());
+    dispatch(clearStatusProduct());
     return navigate("/");
   };
 
@@ -323,7 +310,7 @@ const NavbarComponent = () => {
                               <></>
                             )}
                           </Dropdown.Toggle>
-                          <Dropdown.Menu style={{ width: "320px" }}>
+                          <Dropdown.Menu className="notif">
                             <Dropdown.Item onClick={handleTransaksi}>
                               Transaksi
                             </Dropdown.Item>
@@ -339,7 +326,7 @@ const NavbarComponent = () => {
                                         direction="horizontal"
                                         gap={3}
                                         style={{
-                                          width: "100%",
+                                          overFlow: "auto",
                                         }}
                                       >
                                         <img

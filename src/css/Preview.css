@@ -160,4 +160,8 @@ object {
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
   height: 48px;
 }
+
+.preview-carousel {
+  height: 450px !important;
+}
 /* End Halaman Product */

@@ -3,6 +3,7 @@ import {
   CLEAR_STATUS,
   LOGIN,
   LOGOUT,
+  REGISTER,
   UPDATE_INFO_USERS,
 } from "../actions/types";
 
@@ -23,6 +24,12 @@ const authReducer = (state = initialState, action) => {
         isAuthenticated: true,
         token: action.payload,
         user: action.user,
+        status: action.status,
+        error: null,
+      };
+    case REGISTER:
+      return {
+        ...state,
         status: action.status,
         error: null,
       };

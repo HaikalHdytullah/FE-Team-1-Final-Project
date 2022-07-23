@@ -3,6 +3,7 @@
   border-radius: 4px;
   width: 100%;
   color: black !important;
+  transition: ease-in-out;
 }
 
 .product-img {

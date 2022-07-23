@@ -156,14 +156,18 @@ const PreviewProduct = () => {
               <Row className="gx-5 justify-content-center mt-4">
                 <Col sm={8}>
                   <Row>
-                    <Carousel variant="dark">
+                    <Carousel variant="dark" className="preview-carousel">
                       {productdetail.productpics.length === 0 ? (
                         <></>
                       ) : (
                         productdetail.productpics.map((productpics, index) => (
-                          <Carousel.Item key={index}>
+                          <Carousel.Item
+                            key={index}
+                            className="preview-carousel"
+                          >
                             <img
-                              className="d-block w-100"
+                              className="d-block w-100 h-100"
+                              style={{ objectFit: "contain" }}
                               src={productpics.gambar}
                               alt="First slide"
                             />

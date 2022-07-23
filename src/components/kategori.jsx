@@ -290,6 +290,7 @@ function Kategori() {
           className="kategory-active btn-kategory me-2"
           onClick={filterAll}
         >
+          <i className="bi bi-search me-2"></i>
           Semua
         </Button>
         <Button
@@ -299,6 +300,7 @@ function Kategori() {
           className="kategory-deactive btn-kategory me-2"
           onClick={filterByHobby}
         >
+          <i className="bi bi-search me-2"></i>
           Hobi
         </Button>
         <Button
@@ -308,6 +310,7 @@ function Kategori() {
           className="kategory-deactive btn-kategory me-2"
           onClick={filterByVehicle}
         >
+          <i className="bi bi-search me-2"></i>
           Kendaraan
         </Button>
         <Button
@@ -317,6 +320,7 @@ function Kategori() {
           startIcon={<SearchIcon />}
           onClick={filterByCLothe}
         >
+          <i className="bi bi-search me-2"></i>
           Baju
         </Button>
         <Button
@@ -326,6 +330,7 @@ function Kategori() {
           id="filter-elektronik"
           onClick={filterByElectronic}
         >
+          <i className="bi bi-search me-2"></i>
           Elektronik
         </Button>
         <Button
@@ -335,6 +340,7 @@ function Kategori() {
           startIcon={<SearchIcon />}
           onClick={filterByHealth}
         >
+          <i className="bi bi-search me-2"></i>
           Kesehatan
         </Button>
       </div>
