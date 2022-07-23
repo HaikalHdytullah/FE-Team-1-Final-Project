@@ -2,7 +2,6 @@ import React from "react";
 import { Container, Row, Col, Carousel } from "react-bootstrap";
 import Banner from "../img/banner.png";
 import "../css/Carousel.css";
-
 const BannerSection = () => {
   return (
     <section id="carousel" className="mt-1 mb-4">
